@@ -323,6 +323,7 @@ Support has been added for using the units information in matplotlib plots. To u
 
 ```python
 from astropy.visualization import quantity_support
+quantity_support() # see note below
 ```
 
 We will create a numpy array of the angles between 0-180 degrees, and plot the sin of these:
@@ -343,6 +344,17 @@ plt.plot(angles.to(u.rad), np.sin(angles))
 ```
 
 ![](fig/sin_curve_rad.png){alt='Plot of sin curve for degrees between 0-180'}
+
+::::::::::::::::: callout
+NOTE
+The call to `quantity_support()` is required to "patch" `matplotlib` to recognize the `astropy.units`, and it will affect anything you plot from that point onward. 
+If you only need `quantity_support` for some plots, you can use a _context manager_:
+
+```python
+with quantity_support():
+  plt.plot(angles, np.sin(angles))
+```
+:::::::::::::::::::::::::
 
 ## Temperature
 
