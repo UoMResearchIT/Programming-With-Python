@@ -326,8 +326,8 @@ answers 2 and 4).
 - CSV data is loaded using the `read_csv()` function to create a pandas `DataFrame` object
 - The `describe()` function gives a quick analysis of the DataFrame
 - `loc[<index>,<column>]` indexes the DataFrame by the index and column labels
-- `iloc[<index>,<column>]` indexes the DataFrame using numerical indicies
-- The data can be sliced by providing index and/or column indicies as ranges or lists of values
+- `iloc[<index>,<column>]` indexes the DataFrame using numerical indices
+- The data can be sliced by providing index and/or column indices as ranges or lists of values
 - The built-in `plot()` function can be used to plot the data using the `matplotlib` library
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
