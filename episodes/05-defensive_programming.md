@@ -75,16 +75,24 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We can avoid problems like this by wrapping our code in an `if` statement:
+We can avoid problems like this by wrapping our code in an `if` statement.
+To make things simpler, we will first write the test as a function:
 
 ```python
-if type(val) is int or type(val) is float:
+def check_value(val):
     if val>0 and val<10:
         print('Value: ', val, 'is a digit.')
     elif val==0:
         print('Value ', val, 'is nul')
     else:
         print('Value: ', val, 'is a number.')
+```
+
+Then wrap the function call in an `if` statement:
+
+```python
+if type(val) is int or type(val) is float:
+    check_value(val)
 else:
     print('val is not a number')
 ```
@@ -95,12 +103,7 @@ Python provides the `try-except` structure to avoid this issue, enabling develop
 
 ```python
 try:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_value(val)
 except:
     print('Val is not a number')
     print('Enter a new number')
@@ -112,12 +115,7 @@ The `except` statement will catch all errors and so we do not, initially at leas
 
 ```python
 try:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_value(val)
 except TypeError as err:
     print('Val is not a number')
     print('But our code does not crash anymore')
@@ -130,12 +128,7 @@ As with `if` statements, multiple `except` statements can be used, each with a d
 
 ```python
 try:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_value(val)
 except TypeError as err:
     print('Val is not a number')
     print('But our code does not crash anymore')
@@ -219,12 +212,7 @@ val = 'a'
 
 assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
 
-if val>0 and val<10:
-    print('Value: ', val, 'is a digit.')
-elif val==0:
-    print('Value ', val, 'is nul')
-else:
-    print('Value: ', val, 'is a number.')
+check_value(val)
 ```
 
 ```output
@@ -252,12 +240,7 @@ val = np.nan
 
 assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
 
-if val>0 and val<10:
-  print('Value: ', val, 'is a digit.')
-elif val==0:
-  print('Value ', val, 'is nul')
-else:
-  print('Value: ', val, 'is a number.')
+check_value(val)
 ```
 
 ```output
@@ -281,12 +264,7 @@ val = np.nan
 assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
 assert not np.isnan(val), "Variable must not be a NaN"
 
-if val>0 and val<10:
-    print('Value: ', val, 'is a digit.')
-elif val==0:
-    print('Value ', val, 'is nul')
-else:
-    print('Value: ', val, 'is a number.')
+check_value(val)
 ```
 
 ```output
