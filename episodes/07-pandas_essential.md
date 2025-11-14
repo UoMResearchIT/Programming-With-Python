@@ -155,6 +155,40 @@ Albania     1601.056136     2760.196931     3630.880722     3193.054604
 Belgium     8343.105127    13149.041190    20979.845890    27561.196630
 ```
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Changing Column Labels
+
+Note that the x-tick labels have been taken directly from the index values of the transposed DataFrame (which were the original column labels). These don't really need to be more than the year of the GDP values, so we could change the column labels to reflect this.
+
+First we make a new copy of the DataFrame (in case anything goes wrong):
+
+```python
+gdpPercap = data.copy(deep=True)
+```
+
+We have given this new dataframe a more appropriate name, replacing the information that will be removed from the column headers.
+
+Now we will use the inbuilt `str.strip` method to clean up our column labels for the new
+dataframe. Which of these commands is correct:
+
+1. `gdpPercap.columns = data.columns.str.strip('gdpPercap_')`
+2. `gdpPercap = data.columns.str.strip('gdpPercap_')`
+
+:::::::::::::::  solution
+
+## Solution
+
+The correct answer is 1. We have to pass the new column labels explicitly back to the
+array columns, otherwise all we do is replace the data array with a list of the new
+column labels.
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 ## Masking data
 
 Pandas data arrays are based on numpy arrays, and retain some of the numpy tools, such as masked arrays. This enables us to apply selection criteria to the datasets, so that only the values that we require are shown. For example, the following selects all data where the GDP is above $10,000:
@@ -247,43 +281,9 @@ fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Changing Column Labels
-
-Note that the x-tick labels have been taken directly from the index values of the transposed DataFrame (which were the original column labels). These don't really need to be more than the year of the GDP values, so we could change the column labels to reflect this.
-
-First we make a new copy of the dataframe (in case anything goes wrong):
-
-```python
-gdpPercap = data.copy(deep=True)
-```
-
-We have given this new dataframe a more appropriate name, replacing the information that will be removed from the column headers.
-
-Now we will use the inbuilt `str.strip` method to clean up our column labels for the new
-dataframe. Which of these commands is correct:
-
-1. `gdpPercap.columns = data.columns.str.strip('gdpPercap_')`
-2. `gdpPercap = data.columns.str.strip('gdpPercap_')`
-
-:::::::::::::::  solution
-
-## Solution
-
-The correct answer is 1. We have to pass the new column labels explicitly back to the
-array columns, otherwise all we do is replace the data array with a list of the new
-column labels.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
 ## Plotting GDP increases with time
 
-Now that we've cleaned up the column labels, we now want to plot the GDP data for
+We now want to plot the GDP data for
 Sweden and Iceland from 1972 onwards. The code block we will be using is:
 
 ```python
