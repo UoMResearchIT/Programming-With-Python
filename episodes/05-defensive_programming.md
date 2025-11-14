@@ -110,6 +110,7 @@ except:
 ```
 
 At the top of the statement is the code that we are interested in executing, which is run in the `try` statement. If that fails then the `except` statement comes into effect, (hopefully) returning helpful information to the user about what happened and giving them some guidance on how to avoid the problem in future.
+
 Using `try-except` statements results in clearer, easier to understand code by following the common Python coding style of [EAFP](https://docs.python.org/3.6/glossary.html#term-eafp) (it's easier to ask for forgiveness than permission). This style shows the code we want to execute first, assuming that the incoming data is correct, before dealing with exceptions if the assumptions prove false.
 
 The `except` statement will catch all errors and so we do not, initially at least, need to know exactly what errors we are trying to avoid. However, python does provide error codes, which we can use to expand the structure to capture specific error types. For the example above, we would want to capture a `TypeError`:
