@@ -297,10 +297,10 @@ plt.ylabel('GDP per capita ($)')
 
 Which of the following blocks of code should replace the `<BLOCK>` in the code above?
 
-1. `.loc['Sweden':'Iceland','gdpPercap_1972':]`
-2. `.loc['gdpPercap_1972':,['Sweden','Iceland']]`
-3. `.loc[['Sweden','Iceland'],'gdpPercap_1972':]`
-4. `.loc['gdpPercap_1972':,'Sweden':'Iceland']`
+1. `.loc['Sweden':'Iceland','1972':]`
+2. `.loc['1972':,['Sweden','Iceland']]`
+3. `.loc[['Sweden','Iceland'],'1972':]`
+4. `.loc['1972':,'Sweden':'Iceland']`
 
 :::::::::::::::  solution
 
