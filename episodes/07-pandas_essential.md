@@ -323,7 +323,7 @@ answers 2 and 4).
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- CSV data is loaded using the `load_csv()` function to create a pandas `DataFrame` object
+- CSV data is loaded using the `read_csv()` function to create a pandas `DataFrame` object
 - The `describe()` function gives a quick analysis of the DataFrame
 - `loc[<index>,<column>]` indexes the DataFrame by the index and column labels
 - `iloc[<index>,<column>]` indexes the DataFrame using numerical indicies
