@@ -295,7 +295,7 @@ u.rad.find_equivalent_units()
 We can see from this that the degree unit is `u.deg`, so we can use this to define our angles:
 
 ```python
-angle = 90 * u.deg()
+angle = 90 * u.deg
 print('angle in degrees: {}; and in radians: {}'.format(angle.value,angle.to(u.rad).value))
 ```
 
