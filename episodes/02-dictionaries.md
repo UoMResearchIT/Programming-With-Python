@@ -350,7 +350,7 @@ This package provides the method `json.load()` to read JSON data from a file and
 ```python
 import json
 
-with open('ro-crate-metadata-1.json') as f:
+with open('data/ro-crate-metadata-1.json') as f:
     data = json.load(f)
 ```
 

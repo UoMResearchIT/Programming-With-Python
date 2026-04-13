@@ -41,7 +41,7 @@ with a text editor and look at the data layout.
 The data within this file is organised much as you'd expect the data within a spreadsheet.  The first row of the file contains the headers for each of the columns. The first column contains the name of the countries, while the remaining columns contain the GDP values for these countries for each year. Pandas has the `read_csv` function for reading structured data such as this, which makes reading the file easy:
 
 ```python
-data = pd.read_csv('data/gapminder_gdp_europe.csv',index_col='country')
+df = pd.read_csv('data/gapminder_gdp_europe.csv',index_col='country')
 ```
 
 Here we specify that the `country` column should be used as the index column (`index_col`).
@@ -49,7 +49,7 @@ Here we specify that the `country` column should be used as the index column (`i
 This creates a `DataFrame` object containing the dataset. This is similar to a numpy array, but has a number of significant differences. The first is that there are more ways to quickly understand a pandas dataframe. For example, the `info` function gives an overview of the data types and layout of the DataFrame:
 
 ```python
-data.info()
+df.info()
 ```
 
 ```output
@@ -74,10 +74,10 @@ dtypes: float64(12)
 memory usage: 3.0+ KB
 ```
 
-You can also carry out quick analysis of the data using the `describe` function:
+You can also carry out quick analysis of the DataFrame using the `describe` function:
 
 ```python
-data.describe()
+df.describe()
 ```
 
 ```output
@@ -94,38 +94,38 @@ max 	14734.232750 	17909.489730 	20431.092700 ...
 
 ## Accessing elements, rows, and columns
 
-The other major difference to numpy arrays is that we cannot directly access the array elements using numerical indices such as `data[0,0]`. It is possible to access columns of data using the column headers as indices (for example, `data['gdpPercap_1952']`), but this is not recommended. Instead you should use the `iloc` and `loc` methods.
+The other major difference to numpy arrays is that we cannot directly access the array elements using numerical indices such as `df[0,0]`. It is possible to access columns of data using the column headers as indices (for example, `df['gdpPercap_1952']`), but this is not recommended. Instead you should use the `iloc` and `loc` methods.
 
 The `iloc` method enables us to access the DataFrame as we would a numpy array:
 
 ```python
-print(data.iloc[0,0])
+print(df.iloc[0,0])
 ```
 
 while the `loc` method enables the same access using the index and column headers:
 
 ```python
-print(data.loc["Albania", "gdpPercap_1952"])
+print(df.loc["Albania", "gdpPercap_1952"])
 ```
 
 For both of these methods, we can leave out the column indexes, and these will all be returned for the specified index row:
 
 ```python
-print(data.loc["Albania"])
+print(df.loc["Albania"])
 ```
 
-This will not work for column headings (in the inverse of the `data['gdpPercap_1952']` method) however. While it is quick to type, we recommend trying to avoid using this method of slicing the DataFrame, in favour of the methods described below.
+This will not work for column headings (in the inverse of the `df['gdpPercap_1952']` method) however. While it is quick to type, we recommend trying to avoid using this method of slicing the DataFrame, in favour of the methods described below.
 
 For both of these methods we can use the `:` character to select all elements in a row or column. For example, to get all information for Albania:
 
 ```python
-print(data.loc["Albania", :])
+print(df.loc["Albania", :])
 ```
 
 or:
 
 ```python
-print(data.iloc[0, :])
+print(df.iloc[0, :])
 ```
 
 Note that here we knew that Albania was the first country in the DataFrame, so we were able to ask for the first column (0). If you needed to know the column ID for a particular country, you could do this using `get_loc()`, e.g. `data.index.get_loc("France")` should tell you the column ID value for France.
@@ -133,13 +133,13 @@ Note that here we knew that Albania was the first country in the DataFrame, so w
 The `:` character by itself is shorthand to indicate all elements across that index, but it can also be combined with index values or column headers to specify a slice of the DataArray:
 
 ```python
-print(data.loc["Albania", 'gdpPercap_1962':'gdpPercap_1972'])
+print(df.loc["Albania", 'gdpPercap_1962':'gdpPercap_1972'])
 ```
 
 If either end of the slice definition is omitted, then the slice will run to the end of that index (just as it does for `:` by itself):
 
 ```python
-print(data.loc["Albania", 'gdpPercap_1962':])
+print(df.loc["Albania", 'gdpPercap_1962':])
 ```
 
 Slices can also be defined using a list of indexes or column headings:
@@ -147,7 +147,7 @@ Slices can also be defined using a list of indexes or column headings:
 ```python
 year_list = ['gdpPercap_1952','gdpPercap_1967','gdpPercap_1982','gdpPercap_1997']
 country_list = ['Albania','Belgium']
-print(data.loc[country_list, year_list])
+print(df.loc[country_list, year_list])
 ```
 
 ```output
@@ -159,10 +159,10 @@ Belgium     8343.105127    13149.041190    20979.845890    27561.196630
 
 ## Masking data
 
-Pandas data arrays are based on numpy arrays, and retain some of the numpy tools, such as masked arrays. This enables us to apply selection criteria to the datasets, so that only the values that we require are shown. For example, the following selects all data where the GDP is above $10,000:
+Pandas Dataframes are based on numpy arrays, and retain some of the numpy tools, such as masked arrays. This enables us to apply selection criteria to the Dataframes, so that only the values that we require are shown. For example, the following selects all data where the GDP is above $10,000:
 
 ```python
-subset = data.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+subset = df.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
 print(subset[subset>10000])
 ```
 
@@ -181,7 +181,7 @@ Poland                  NaN             NaN             NaN
 Pandas is integrated with matplotlib, and so data can be plotted directly using the integrated `plot` method. For example, to plot the GDP for Sweden:
 
 ```python
-data.loc['Sweden',:].plot()
+df.loc['Sweden',:].plot()
 plt.xticks(rotation=90)
 ```
 
@@ -193,7 +193,7 @@ Note that, in the case above, we passed a single column of data to the `plot` me
 For example, we will transpose the GDP data for the first 3 countries in our dataset:
 
 ```python
-print(data.iloc[0:3,:].T)
+print(df.iloc[0:3,:].T)
 ```
 
 ```output
@@ -216,7 +216,7 @@ This data is now ready to be plotted as a histogram - first we set the style of 
 
 ```python
 plt.style.use('ggplot')
-data.iloc[0:3,:].T.plot(kind='bar')
+df.iloc[0:3,:].T.plot(kind='bar')
 plt.xticks(rotation=90)
 plt.ylabel('GDP per capita')
 ```
@@ -239,7 +239,7 @@ axis (`axs`) objects. Pass the axis object to pandas when plotting your figure
 
 ```python
 fig, axs = plt.subplots()
-data.loc['Albania':'Belgium',:].T.plot(kind='bar',ax=axs)
+df.loc['Albania':'Belgium',:].T.plot(kind='bar',ax=axs)
 plt.xticks(rotation=90)
 plt.ylabel('GDP per capita')
 fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
@@ -253,26 +253,26 @@ fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
 
 Note that the x-tick labels have been taken directly from the index values of the transposed DataFrame (which were the original column labels). These don't really need to be more than the year of the GDP values, so we could change the column labels to reflect this.
 
-First we make a new copy of the dataframe (in case anything goes wrong):
+First we make a new copy of the DataFrame (in case anything goes wrong):
 
 ```python
-gdpPercap = data.copy(deep=True)
+df_gdpPercap = df.copy(deep=True)
 ```
 
-We have given this new dataframe a more appropriate name, replacing the information that will be removed from the column headers.
+We have given this new DataFrame a more appropriate name, replacing the information that will be removed from the column headers.
 
 Now we will use the inbuilt `str.strip` method to clean up our column labels for the new
-dataframe. Which of these commands is correct:
+DataFrame. Which of these commands is correct:
 
-1. `gdpPercap.columns = data.columns.str.strip('gdpPercap_')`
-2. `gdpPercap = data.columns.str.strip('gdpPercap_')`
+1. `df_gdpPercap.columns = df.columns.str.strip('gdpPercap_')`
+2. `df_gdpPercap = df.columns.str.strip('gdpPercap_')`
 
 :::::::::::::::  solution
 
 ## Solution
 
 The correct answer is 1. We have to pass the new column labels explicitly back to the
-array columns, otherwise all we do is replace the data array with a list of the new
+array columns, otherwise all we do is replace the DataFrame with a list of the new
 column labels.
 
 
@@ -289,7 +289,7 @@ Now that we've cleaned up the column labels, we now want to plot the GDP data fo
 Sweden and Iceland from 1972 onwards. The code block we will be using is:
 
 ```python
-gdp_percap<BLOCK>.T.plot(kind='line')
+df_gdpPercap<BLOCK>.T.plot(kind='line')
 
 # Create legend.
 plt.legend(loc='upper left')
@@ -299,10 +299,10 @@ plt.ylabel('GDP per capita ($)')
 
 Which of the following blocks of code should replace the `<BLOCK>` in the code above?
 
-1. `.loc['Sweden':'Iceland','gdpPercap_1972':]`
-2. `.loc['gdpPercap_1972':,['Sweden','Iceland']]`
-3. `.loc[['Sweden','Iceland'],'gdpPercap_1972':]`
-4. `.loc['gdpPercap_1972':,'Sweden':'Iceland']`
+1. `.loc['Sweden':'Iceland','1972':]`
+2. `.loc['1972':,['Sweden','Iceland']]`
+3. `.loc[['Sweden','Iceland'],'1972':]`
+4. `.loc['1972':,'Sweden':'Iceland']`
 
 :::::::::::::::  solution
 
@@ -310,7 +310,7 @@ Which of the following blocks of code should replace the `<BLOCK>` in the code a
 
 The correct answer is 3. The two countries are not adjacent in the dataset, so we need
 to use a list to slice them, not a range (disqualifying answers 1 and 4). At the point
-where we select the countries using `.loc`, we have not yet transposed the dataset
+where we select the countries using `.loc`, we have not yet transposed the DataFrame
 (using `.T`), so the country names are still indexes, not column labels, and therefore
 need to be referenced first (ie in the first set of square brackets), (disqualifying
 answers 2 and 4).
@@ -325,11 +325,11 @@ answers 2 and 4).
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- CSV data is loaded using the `load_csv()` function
-- The `describe()` function gives a quick analysis of the data
-- `loc[<index>,<column>]` indexes the data array by the index and column labels
-- `iloc[<index>,<column>]` indexes the data array using numerical indicies
-- The data can be sliced by providing index and/or column indicies as ranges or lists of values
+- CSV data is loaded using the `read_csv()` function to create a pandas `DataFrame` object
+- The `describe()` function gives a quick analysis of the DataFrame
+- `loc[<index>,<column>]` indexes the DataFrame by the index and column labels
+- `iloc[<index>,<column>]` indexes the DataFrame using numerical indices
+- The data can be sliced by providing index and/or column indices as ranges or lists of values
 - The built-in `plot()` function can be used to plot the data using the `matplotlib` library
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
