@@ -30,15 +30,15 @@ More importantly, applications are not expected to crash and we are going to lea
 
 Please look at the following code. Can you find the fundamental problem in this test?
 
-```bash
+```python
 val = 1
 
-if val>0 and val<10:
-    print('Value: ', val, 'is a digit.')
-elif val==0:
-    print('Value ', val, 'is nul')
+if val > 0:
+    print('Value:', val, 'is positive.')
+elif val == 0:
+    print('Value:', val, 'is zero.')
 else:
-    print('Value: ', val, 'is a number.')
+    print('Value:', val, 'is negative.')
 ```
 
 :::::::::::::::  solution
@@ -47,26 +47,26 @@ else:
 
 The test assumes that `val` is a number, and throws an uncontrolled error if it is not.
 
-```bash
+```python
 val = 'a'
 
-if val>0 and val<10:
-    print('Value: ', val, 'is a digit.')
-elif val==0:
-    print('Value ', val, 'is nul')
+if val > 0:
+    print('Value:', val, 'is positive.')
+elif val == 0:
+    print('Value:', val, 'is zero.')
 else:
-    print('Value: ', val, 'is a number.')
+    print('Value:', val, 'is negative.')
 ```
 
 ```output
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
 <ipython-input-2-99c0e25bf5e9> in <module>()
-      1 val = 'a'
-      2
-----> 3 if val>0 and val<10:
-      4     print('Value: ', val, 'is a digit.')
-      5 elif val==0:
+      1 def check_sign(val):
+----> 2     if val > 0:
+      3         print('Value:', val, 'is positive.')
+      4     elif val == 0:
+      5         print('Value:', val, 'is zero.')
 
 TypeError: '>' not supported between instances of 'str' and 'int'
 ```
@@ -75,16 +75,24 @@ TypeError: '>' not supported between instances of 'str' and 'int'
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-We can avoid problems like this by wrapping our code in an `if` statement:
+We can avoid problems like this by wrapping our code in an `if` statement.
+To make things simpler, we will first write the test as a function:
+
+```python
+def check_sign(val):
+    if val > 0:
+        print('Value:', val, 'is positive.')
+    elif val == 0:
+        print('Value:', val, 'is zero.')
+    else:
+        print('Value:', val, 'is negative.')
+```
+
+Then wrap the function call in an `if` statement:
 
 ```python
 if type(val) is int or type(val) is float:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_sign(val)
 else:
     print('val is not a number')
 ```
@@ -95,12 +103,7 @@ Python provides the `try-except` structure to avoid this issue, enabling develop
 
 ```python
 try:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_sign(val)
 except:
     print('Val is not a number')
     print('Enter a new number')
@@ -108,16 +111,13 @@ except:
 
 At the top of the statement is the code that we are interested in executing, which is run in the `try` statement. If that fails then the `except` statement comes into effect, (hopefully) returning helpful information to the user about what happened and giving them some guidance on how to avoid the problem in future.
 
+Using `try-except` statements results in clearer, easier to understand code by following the common Python coding style of [EAFP](https://docs.python.org/3.6/glossary.html#term-eafp) (it's easier to ask for forgiveness than permission). This style shows the code we want to execute first, assuming that the incoming data is correct, before dealing with exceptions if the assumptions prove false.
+
 The `except` statement will catch all errors and so we do not, initially at least, need to know exactly what errors we are trying to avoid. However, python does provide error codes, which we can use to expand the structure to capture specific error types. For the example above, we would want to capture a `TypeError`:
 
 ```python
 try:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_sign(val)
 except TypeError as err:
     print('Val is not a number')
     print('But our code does not crash anymore')
@@ -130,21 +130,18 @@ As with `if` statements, multiple `except` statements can be used, each with a d
 
 ```python
 try:
-    if val>0 and val<10:
-        print('Value: ', val, 'is a digit.')
-    elif val==0:
-        print('Value ', val, 'is nul')
-    else:
-        print('Value: ', val, 'is a number.')
+    check_sign(val)
+    reciprocal = 1/val
 except TypeError as err:
     print('Val is not a number')
-    print('But our code does not crash anymore')
+    print('The run-time error is:', err)
+except Exception as err:
+    print('Some error other than a TypeError occured')
     print('The run-time error is:', err)
 else:
-    print('1/val = ', 1/val)
+    print('The reciprocal of the value =', reciprocal)
 finally:
     print('release memory')
-    del(val)
 ```
 
 The typical use of the `finally` statement is to deal with the release of external resources (such as files or network connections) whether or not the attempted action has been successful.
@@ -219,12 +216,7 @@ val = 'a'
 
 assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
 
-if val>0 and val<10:
-    print('Value: ', val, 'is a digit.')
-elif val==0:
-    print('Value ', val, 'is nul')
-else:
-    print('Value: ', val, 'is a number.')
+check_sign(val)
 ```
 
 ```output
@@ -252,12 +244,7 @@ val = np.nan
 
 assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
 
-if val>0 and val<10:
-  print('Value: ', val, 'is a digit.')
-elif val==0:
-  print('Value ', val, 'is nul')
-else:
-  print('Value: ', val, 'is a number.')
+check_sign(val)
 ```
 
 ```output
@@ -281,12 +268,7 @@ val = np.nan
 assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
 assert not np.isnan(val), "Variable must not be a NaN"
 
-if val>0 and val<10:
-    print('Value: ', val, 'is a digit.')
-elif val==0:
-    print('Value ', val, 'is nul')
-else:
-    print('Value: ', val, 'is a number.')
+check_sign(val)
 ```
 
 ```output
