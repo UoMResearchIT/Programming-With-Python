@@ -128,7 +128,11 @@ or:
 print(df.iloc[0, :])
 ```
 
-Note that here we knew that Albania was the first country in the DataFrame, so we were able to ask for the first column (0). If you needed to know the column ID for a particular country, you could do this using `get_loc()`, e.g. `data.index.get_loc("France")` should tell you the column ID value for France.
+Note that here we knew that Albania was the first country in the DataFrame, so we were able to ask for the first column (0). If you needed to know the column ID for a particular country, you could do this using `get_loc()`, e.g. to get the column ID value for France:
+
+```python
+df.index.get_loc("France")
+```
 
 The `:` character by itself is shorthand to indicate all elements across that index, but it can also be combined with index values or column headers to specify a slice of the DataArray:
 
