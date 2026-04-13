@@ -251,6 +251,18 @@ plt.show()
 
 ![](fig/gauss_curve_noisy.png){alt='Gaussian curve plot, with random noise added'}
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Matplotlib in Jupyter notebooks
+
+By default, a Jupyter notebook evaluates and displays the final step in a cell. In the
+case of the 'matplotlib' library's `plot(...)` function, this means that it automatically 
+displays a plot without requiring the `show()` function. However, since this function is
+required in other scenarios (e.g. a standalone python script), the course notes will include
+it each time it is required. 
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 To identify any signal in the data we can use the standard deviation as an estimate of the noise around the mean value of the data.
 
 ```python
