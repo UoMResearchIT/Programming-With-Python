@@ -338,7 +338,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Pandas Essential</h1>
-        <p>Last updated on 2025-04-15 |
+        <p>Last updated on 2026-04-13 |
 
         <a href="https://github.com/UoMResearchIT/programming_with_python/edit/main/episodes/07-pandas_essential.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -409,7 +409,7 @@ easy:</p>
 <div class="codewrapper sourceCode" id="cb3">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>data <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_europe.csv'</span>,index_col<span class="op">=</span><span class="st">'country'</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(<span class="st">'data/gapminder_gdp_europe.csv'</span>,index_col<span class="op">=</span><span class="st">'country'</span>)</span></code></pre>
 </div>
 <p>Here we specify that the <code>country</code> column should be used
 as the index column (<code>index_col</code>).</p>
@@ -421,7 +421,7 @@ overview of the data types and layout of the DataFrame:</p>
 <div class="codewrapper sourceCode" id="cb4">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>data.info()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>df.info()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -446,12 +446,12 @@ Data columns (total 12 columns):
 dtypes: float64(12)
 memory usage: 3.0+ KB</code></pre>
 </div>
-<p>You can also carry out quick analysis of the data using the
+<p>You can also carry out quick analysis of the DataFrame using the
 <code>describe</code> function:</p>
 <div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>data.describe()</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>df.describe()</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -469,35 +469,34 @@ max 	14734.232750 	17909.489730 	20431.092700 ...</code></pre>
 <section><h2 class="section-heading" id="accessing-elements-rows-and-columns">Accessing elements, rows, and columns<a class="anchor" aria-label="anchor" href="#accessing-elements-rows-and-columns"></a></h2>
 <hr class="half-width"><p>The other major difference to numpy arrays is that we cannot directly
 access the array elements using numerical indices such as
-<code>data[0,0]</code>. It is possible to access columns of data using
-the column headers as indices (for example,
-<code>data['gdpPercap_1952']</code>), but this is not recommended.
-Instead you should use the <code>iloc</code> and <code>loc</code>
-methods.</p>
+<code>df[0,0]</code>. It is possible to access columns of data using the
+column headers as indices (for example,
+<code>df['gdpPercap_1952']</code>), but this is not recommended. Instead
+you should use the <code>iloc</code> and <code>loc</code> methods.</p>
 <p>The <code>iloc</code> method enables us to access the DataFrame as we
 would a numpy array:</p>
 <div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>,<span class="dv">0</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>,<span class="dv">0</span>])</span></code></pre>
 </div>
 <p>while the <code>loc</code> method enables the same access using the
 index and column headers:</p>
 <div class="codewrapper sourceCode" id="cb9">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="bu">print</span>(data.loc[<span class="st">"Albania"</span>, <span class="st">"gdpPercap_1952"</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="st">"Albania"</span>, <span class="st">"gdpPercap_1952"</span>])</span></code></pre>
 </div>
 <p>For both of these methods, we can leave out the column indexes, and
 these will all be returned for the specified index row:</p>
 <div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">print</span>(data.loc[<span class="st">"Albania"</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="st">"Albania"</span>])</span></code></pre>
 </div>
 <p>This will not work for column headings (in the inverse of the
-<code>data['gdpPercap_1952']</code> method) however. While it is quick
-to type, we recommend trying to avoid using this method of slicing the
+<code>df['gdpPercap_1952']</code> method) however. While it is quick to
+type, we recommend trying to avoid using this method of slicing the
 DataFrame, in favour of the methods described below.</p>
 <p>For both of these methods we can use the <code>:</code> character to
 select all elements in a row or column. For example, to get all
@@ -505,13 +504,13 @@ information for Albania:</p>
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">print</span>(data.loc[<span class="st">"Albania"</span>, :])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="st">"Albania"</span>, :])</span></code></pre>
 </div>
 <p>or:</p>
 <div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>, :])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>, :])</span></code></pre>
 </div>
 <p>The <code>:</code> character by itself is shorthand to indicate all
 elements across that indice, but it can also be combined with index
@@ -519,7 +518,7 @@ values or column headers to specify a slice of the DataArray:</p>
 <div class="codewrapper sourceCode" id="cb13">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="bu">print</span>(data.loc[<span class="st">"Albania"</span>, <span class="st">'gdpPercap_1962'</span>:<span class="st">'gdpPercap_1972'</span>])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="st">"Albania"</span>, <span class="st">'gdpPercap_1962'</span>:<span class="st">'gdpPercap_1972'</span>])</span></code></pre>
 </div>
 <p>If either end of the slice definition is omitted, then the slice will
 run to the end of that indice (just as it does for <code>:</code> by
@@ -527,7 +526,7 @@ itself):</p>
 <div class="codewrapper sourceCode" id="cb14">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="bu">print</span>(data.loc[<span class="st">"Albania"</span>, <span class="st">'gdpPercap_1962'</span>:])</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" tabindex="-1"></a><span class="bu">print</span>(df.loc[<span class="st">"Albania"</span>, <span class="st">'gdpPercap_1962'</span>:])</span></code></pre>
 </div>
 <p>Slices can also be defined using a list of indexes or column
 headings:</p>
@@ -536,7 +535,7 @@ headings:</p>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1"></a>year_list <span class="op">=</span> [<span class="st">'gdpPercap_1952'</span>,<span class="st">'gdpPercap_1967'</span>,<span class="st">'gdpPercap_1982'</span>,<span class="st">'gdpPercap_1997'</span>]</span>
 <span id="cb15-2"><a href="#cb15-2" tabindex="-1"></a>country_list <span class="op">=</span> [<span class="st">'Albania'</span>,<span class="st">'Belgium'</span>]</span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="bu">print</span>(data.loc[country_list, year_list])</span></code></pre>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1"></a><span class="bu">print</span>(df.loc[country_list, year_list])</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -547,15 +546,15 @@ Albania     1601.056136     2760.196931     3630.880722     3193.054604
 Belgium     8343.105127    13149.041190    20979.845890    27561.196630</code></pre>
 </div>
 </section><section><h2 class="section-heading" id="masking-data">Masking data<a class="anchor" aria-label="anchor" href="#masking-data"></a></h2>
-<hr class="half-width"><p>Pandas data arrays are based on numpy arrays, and retain some of the
+<hr class="half-width"><p>Pandas Dataframes are based on numpy arrays, and retain some of the
 numpy tools, such as masked arrays. This enables us to apply selection
-criteria to the datasets, so that only the values that we require are
+criteria to the Dataframes, so that only the values that we require are
 shown. For example, the following selects all data where the GDP is
 above $10,000:</p>
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>subset <span class="op">=</span> data.loc[<span class="st">'Italy'</span>:<span class="st">'Poland'</span>, <span class="st">'gdpPercap_1962'</span>:<span class="st">'gdpPercap_1972'</span>]</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" tabindex="-1"></a>subset <span class="op">=</span> df.loc[<span class="st">'Italy'</span>:<span class="st">'Poland'</span>, <span class="st">'gdpPercap_1962'</span>:<span class="st">'gdpPercap_1972'</span>]</span>
 <span id="cb17-2"><a href="#cb17-2" tabindex="-1"></a><span class="bu">print</span>(subset[subset<span class="op">&gt;</span><span class="dv">10000</span>])</span></code></pre>
 </div>
 <div class="codewrapper">
@@ -576,7 +575,7 @@ plot the GDP for Sweden:</p>
 <div class="codewrapper sourceCode" id="cb19">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>data.loc[<span class="st">'Sweden'</span>,:].plot()</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" tabindex="-1"></a>df.loc[<span class="st">'Sweden'</span>,:].plot()</span>
 <span id="cb19-2"><a href="#cb19-2" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span></code></pre>
 </div>
 <p><img src="fig/sweden-pandas-fig1.png" alt="Line plot of increase in Sweden's GDP from 1952 to 2002, with no axis labels, and awkward x-axis tick labels." class="figure">
@@ -593,7 +592,7 @@ in our dataset:</p>
 <div class="codewrapper sourceCode" id="cb20">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="bu">print</span>(data.iloc[<span class="dv">0</span>:<span class="dv">3</span>,:].T)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" tabindex="-1"></a><span class="bu">print</span>(df.iloc[<span class="dv">0</span>:<span class="dv">3</span>,:].T)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -618,7 +617,7 @@ the style of the plot to match that of the ggplot package in R:</p>
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" tabindex="-1"></a>plt.style.use(<span class="st">'ggplot'</span>)</span>
-<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>data.iloc[<span class="dv">0</span>:<span class="dv">3</span>,:].T.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" tabindex="-1"></a>df.iloc[<span class="dv">0</span>:<span class="dv">3</span>,:].T.plot(kind<span class="op">=</span><span class="st">'bar'</span>)</span>
 <span id="cb22-3"><a href="#cb22-3" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
 <span id="cb22-4"><a href="#cb22-4" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per capita'</span>)</span></code></pre>
 </div>
@@ -645,7 +644,7 @@ then use the figure object at the end to save the figure
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" tabindex="-1"></a>fig, axs <span class="op">=</span> plt.subplots()</span>
-<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>data.loc[<span class="st">'Albania'</span>:<span class="st">'Belgium'</span>,:].T.plot(kind<span class="op">=</span><span class="st">'bar'</span>,ax<span class="op">=</span>axs)</span>
+<span id="cb23-2"><a href="#cb23-2" tabindex="-1"></a>df.loc[<span class="st">'Albania'</span>:<span class="st">'Belgium'</span>,:].T.plot(kind<span class="op">=</span><span class="st">'bar'</span>,ax<span class="op">=</span>axs)</span>
 <span id="cb23-3"><a href="#cb23-3" tabindex="-1"></a>plt.xticks(rotation<span class="op">=</span><span class="dv">90</span>)</span>
 <span id="cb23-4"><a href="#cb23-4" tabindex="-1"></a>plt.ylabel(<span class="st">'GDP per capita'</span>)</span>
 <span id="cb23-5"><a href="#cb23-5" tabindex="-1"></a>fig.savefig(<span class="st">'albania-austria-belgium_GDP.png'</span>, bbox_inches<span class="op">=</span><span class="st">'tight'</span>)</span></code></pre>
@@ -665,20 +664,20 @@ then use the figure object at the end to save the figure
 values of the transposed DataFrame (which were the original column
 labels). These don’t really need to be more than the year of the GDP
 values, so we could change the column labels to reflect this.</p>
-<p>First we make a new copy of the dataframe (in case anything goes
+<p>First we make a new copy of the DataFrame (in case anything goes
 wrong):</p>
 <div class="codewrapper sourceCode" id="cb24">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>gdpPercap <span class="op">=</span> data.copy(deep<span class="op">=</span><span class="va">True</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" tabindex="-1"></a>df_gdpPercap <span class="op">=</span> df.copy(deep<span class="op">=</span><span class="va">True</span>)</span></code></pre>
 </div>
-<p>We have given this new dataframe a more appropriate name, replacing
+<p>We have given this new DataFrame a more appropriate name, replacing
 the information that will be removed from the column headers.</p>
 <p>Now we will use the inbuilt <code>str.strip</code> method to clean up
-our column labels for the new dataframe. Which of these commands is
+our column labels for the new DataFrame. Which of these commands is
 correct:</p>
-<ol style="list-style-type: decimal"><li><code>gdpPercap.columns = data.columns.str.strip('gdpPercap_')</code></li>
-<li><code>gdpPercap = data.columns.str.strip('gdpPercap_')</code></li>
+<ol style="list-style-type: decimal"><li><code>df_gdpPercap.columns = df.columns.str.strip('gdpPercap_')</code></li>
+<li><code>df_gdpPercap = df.columns.str.strip('gdpPercap_')</code></li>
 </ol></div>
 </div>
 </div>
@@ -691,7 +690,7 @@ correct:</p>
 <div class="accordion-body">
 <p>The correct answer is 1. We have to pass the new column labels
 explicitly back to the array columns, otherwise all we do is replace the
-data array with a list of the new column labels.</p>
+DataFrame with a list of the new column labels.</p>
 </div>
 </div>
 </div>
@@ -710,7 +709,7 @@ will be using is:</p>
 <div class="codewrapper sourceCode" id="cb25">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>gdp_percap<span class="op">&lt;</span>BLOCK<span class="op">&gt;</span>.T.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" tabindex="-1"></a>df_gdpPercap<span class="op">&lt;</span>BLOCK<span class="op">&gt;</span>.T.plot(kind<span class="op">=</span><span class="st">'line'</span>)</span>
 <span id="cb25-2"><a href="#cb25-2" tabindex="-1"></a></span>
 <span id="cb25-3"><a href="#cb25-3" tabindex="-1"></a><span class="co"># Create legend.</span></span>
 <span id="cb25-4"><a href="#cb25-4" tabindex="-1"></a>plt.legend(loc<span class="op">=</span><span class="st">'upper left'</span>)</span>
@@ -719,10 +718,10 @@ will be using is:</p>
 </div>
 <p>Which of the following blocks of code should replace the
 <code>&lt;BLOCK&gt;</code> in the code above?</p>
-<ol style="list-style-type: decimal"><li><code>.loc['Sweden':'Iceland','gdpPercap_1972':]</code></li>
-<li><code>.loc['gdpPercap_1972':,['Sweden','Iceland']]</code></li>
-<li><code>.loc[['Sweden','Iceland'],'gdpPercap_1972':]</code></li>
-<li><code>.loc['gdpPercap_1972':,'Sweden':'Iceland']</code></li>
+<ol style="list-style-type: decimal"><li><code>.loc['Sweden':'Iceland','1972':]</code></li>
+<li><code>.loc['1972':,['Sweden','Iceland']]</code></li>
+<li><code>.loc[['Sweden','Iceland'],'1972':]</code></li>
+<li><code>.loc['1972':,'Sweden':'Iceland']</code></li>
 </ol></div>
 </div>
 </div>
@@ -737,9 +736,10 @@ will be using is:</p>
 dataset, so we need to use a list to slice them, not a range
 (disqualifying answers 1 and 4). At the point where we select the
 countries using <code>.loc</code>, we have not yet transposed the
-dataset (using <code>.T</code>), so the country names are still indexes,
-not column labels, and therefore need to be referenced first (ie in the
-first set of square brackets), (disqualifying answers 2 and 4).</p>
+DataFrame (using <code>.T</code>), so the country names are still
+indexes, not column labels, and therefore need to be referenced first
+(ie in the first set of square brackets), (disqualifying answers 2 and
+4).</p>
 </div>
 </div>
 </div>
@@ -751,16 +751,17 @@ first set of square brackets), (disqualifying answers 2 and 4).</p>
 <span class="callout-header">Key Points</span>
 <div class="callout-inner">
 <div class="callout-content">
-<ul><li>CSV data is loaded using the <code>load_csv()</code> function</li>
+<ul><li>CSV data is loaded using the <code>read_csv()</code> function to
+create a pandas <code>DataFrame</code> object</li>
 <li>The <code>describe()</code> function gives a quick analysis of the
-data</li>
+DataFrame</li>
 <li>
-<code>loc[&lt;index&gt;,&lt;column&gt;]</code> indexes the data
-array by the index and column labels</li>
+<code>loc[&lt;index&gt;,&lt;column&gt;]</code> indexes the DataFrame
+by the index and column labels</li>
 <li>
-<code>iloc[&lt;index&gt;,&lt;column&gt;]</code> indexes the data
-array using numerical indicies</li>
-<li>The data can be sliced by providing index and/or column indicies as
+<code>iloc[&lt;index&gt;,&lt;column&gt;]</code> indexes the
+DataFrame using numerical indices</li>
+<li>The data can be sliced by providing index and/or column indices as
 ranges or lists of values</li>
 <li>The built-in <code>plot()</code> function can be used to plot the
 data using the <code>matplotlib</code> library</li>
@@ -830,9 +831,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://uomresearchit.github.io/programming_with_python/07-pandas_essential.html",
   "identifier": "https://uomresearchit.github.io/programming_with_python/07-pandas_essential.html",
-  "dateCreated": "2025-11-17",
-  "dateModified": "2025-04-15",
-  "datePublished": "2026-03-24"
+  "dateCreated": "2026-04-13",
+  "dateModified": "2026-04-13",
+  "datePublished": "2026-04-13"
 }
 
   </script><script>
