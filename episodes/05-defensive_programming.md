@@ -62,11 +62,11 @@ else:
 ---------------------------------------------------------------------------
 TypeError                                 Traceback (most recent call last)
 <ipython-input-2-99c0e25bf5e9> in <module>()
-      1 val = 'a'
-      2
-----> 3 if val > 0:
-      4     print('Value: ', val, 'is positive.')
-      5 elif val > 0:
+      1 def check_sign(val):
+----> 2     if val > 0:
+      3         print('Value: ', val, 'is positive.')
+      4     elif val == 0:
+      5         print('Value: ', val, 'is zero.')
 
 TypeError: '>' not supported between instances of 'str' and 'int'
 ```
@@ -136,7 +136,7 @@ except TypeError as err:
     print('But our code does not crash anymore')
     print('The run-time error is:', err)
 else:
-    print('1/val = ', 1/val)
+    print('The value provided to the check_sign function did not result in a TypeError')
 finally:
     print('release memory')
     del(val)

@@ -52,3 +52,6 @@ vendor/
 .docker-vendor/
 Gemfile.lock
 .*history
+
+# Course developer file to testing lesson code
+test.ipynb
