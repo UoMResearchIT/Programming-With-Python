@@ -134,11 +134,9 @@ try:
     reciprocal = 1/val
 except TypeError as err:
     print('Val is not a number')
-    print('But our code does not crash anymore')
     print('The run-time error is:', err)
 except Exception as err:
     print('Some error other than a TypeError occured')
-    print('But our code does not crash')
     print('The run-time error is:', err)
 else:
     print('The reciprocal of the value =', reciprocal)
