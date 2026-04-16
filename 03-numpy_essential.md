@@ -241,10 +241,13 @@ plt.show()
 
 ## Noisy Signal
 
-Now we are going to add some random noise to that curve. To do it we can use the NumPy function `normal` from the module `random` provided by NumPy library. We will scale the magnitude of the noise so it is (roughly) a 10th of the magnitude of the Gaussian maximum:
+Now we are going to add some random noise to that curve. To do this we need to create a Random Number Generator (RNG), which we can then use with the function `normal` from the module `random` provided by the NumPy library. We create an array of zeros of the same length as the array for our curve `g` as the mean values for the random noise, and then scale the magnitude of the noise so it is (roughly) a 10th of the magnitude of the Gaussian maximum. Finally, we then plot the result of adding the noise to the original curve:
 
 ```python
-noisy = np.random.normal(g, scale=g.max() / 10)
+rng = np.random.default_rng()
+zeros = np.zeros(len(g))
+noise = rng.normal(zeros, g.max() / 10)
+noisy = g + noise
 plt.plot(x, noisy)
 plt.show()
 ```
