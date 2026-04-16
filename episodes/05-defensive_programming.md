@@ -228,7 +228,15 @@ Traceback (most recent call last):
 AssertionError: Variable has to be a numerical object
 ```
 
-Like the earlier `if` statement, this catches the problematic variable before it reaches our calculation. However it is far less intrusive code, and assert tests can be added in sequence, so that we can quickly and easily increase the coverage of such tests.
+Like the earlier `if` statement, this catches the problematic variable before it reaches our calculation. However it is far less intrusive code, and `assert` tests can be added in sequence, so that we can quickly and easily increase the coverage of such tests.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Warning when using optimisations
+
+Using asserts when testing and running code while debugging is an invaluable way of checking that your code is working. However, be aware that if you are using `assert` in conjunction with optimization, then there are some built-in variables which change value when optimization is requested which have a knock-on effect on the behaviour of an `assert`; for more information look at the documentation on [the assert statement](https://docs.python.org/3/reference/simple_stmts.html#the-assert-statement).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
