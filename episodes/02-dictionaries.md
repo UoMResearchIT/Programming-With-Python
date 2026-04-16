@@ -170,7 +170,7 @@ The name of the person is used as key: alice
 The value associated to that key is: 35
 ```
 
-### Adding an element
+### Adding and deleting elements
 
 Adding an element to a dictionary is done by creating a new key and attaching a value to it.
 
@@ -196,6 +196,30 @@ print('Updated dictionary:', d)
 
 ```output
 Updated dictionary: {'alice': 35, 'bob': 18, 'jane': 24, 'tom': 54, 'david': 87}
+```
+
+To delete an element, use the `del` method:
+
+```python
+del d['tom']
+print('Dictionary with item deleted:', d)
+```
+
+```output
+Dictionary with item deleted: {'alice': 35, 'bob': 18, 'jane': 24, 'david': 87}
+```
+
+Alternatively, the `pop` function can be used to take an element out of a dictionary and assign it's value to a new variable:
+
+```python
+david_age = d.pop('david')
+print('Age of David:', david_age)
+print('Dictionary with david popped out:', d)
+```
+
+```output
+Age of David: 87
+Dictionary with david popped out: {'alice': 35, 'bob': 18, 'jane': 24}
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
