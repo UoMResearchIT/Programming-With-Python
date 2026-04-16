@@ -80,12 +80,12 @@ One example of such usage in research is the storage of metadata for data, progr
     {
       "@id": "#project-1",
       "@type": "Organization",
-      "name": "Science Workflows",
+      "name": "Science Workflows"
     },
     {
       "@id": "#person-1",
       "@type": "Person",
-      "name": "Alice Smith",
+      "name": "Alice Smith"
     }
   ]
 }
