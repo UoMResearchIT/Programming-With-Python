@@ -38,7 +38,7 @@ for launching the python interface.
 [anaconda-website]: https://www.anaconda.com/
 [anaconda-instructions]: https://carpentries.github.io/workshop-template/#python
 [anaconda-install]: https://docs.anaconda.com/anaconda/install
-[prog_python_course]: https://swcarpentry.github.io/python-novice-inflammation/setup.html
+[prog_python_course]: https://swcarpentry.github.io/python-novice-inflammation/index.html
 
 
 
