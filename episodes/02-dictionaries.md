@@ -293,7 +293,7 @@ d.keys()
 ```
 
 ```output
-dict_keys(['alice', 'bob', 'jane', 'tom', 'david'])
+dict_keys(['alice', 'bob', 'jane'])
 ```
 
 ```python
@@ -301,7 +301,7 @@ d.values()
 ```
 
 ```output
-dict_values([12, 18, 24, 54, 87])
+dict_values([12, 18, 24])
 ```
 
 Note that the *dict\_keys* and *dict\_values* objects are iterable but are not lists. This means that they can be used somewhere like a `for` loop but you can not index them directly.
@@ -324,6 +324,20 @@ list(d.values())[0]
 
 ```output
 12
+```
+
+It is also possible to iterate through the keys and items in the dictionary at the same time using the `items` function.
+This will return a `key, value` pair, which is very useful when using a dictionary in a `for` loop:
+
+```python
+for key, value in d.items():
+    print("Name:", key, " Age:", value)
+```
+
+```output
+Name: alice  Age: 35
+Name: bob  Age: 18
+Name: jane  Age: 24
 ```
 
 ## Presence (or not) of an element inside a dictionary
