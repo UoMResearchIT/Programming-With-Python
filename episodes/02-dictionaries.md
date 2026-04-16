@@ -326,8 +326,18 @@ list(d.values())[0]
 12
 ```
 
-It is also possible to iterate through the keys and items in the dictionary at the same time using the `items` function.
-This will return a `key, value` pair, which is very useful when using a dictionary in a `for` loop:
+It is also possible to iterate through the keys and items in the dictionary at the same time using the `items` function,
+which returns a *dict\_items* object containing `key, value` pairs:
+
+```python
+d.items()
+```
+
+```output
+dict_items([('alice', 35), ('bob', 18), ('jane', 24)])
+```
+
+This is very useful when using a dictionary in a `for` loop:
 
 ```python
 for key, value in d.items():
