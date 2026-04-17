@@ -296,7 +296,7 @@ We can see from this that the degree unit is `u.deg`, so we can use this to defi
 
 ```python
 angle = 90 * u.deg
-print('angle in degrees: {}; and in radians: {}'.format(angle.value,angle.to(u.rad).value))
+print(f'angle in degrees: {angle.value}; and in radians: {angle.to(u.rad).value}')
 ```
 
 ```output
@@ -306,9 +306,9 @@ angle in degrees: 90.0; and in radians: 1.5707963267948966
 Now we can pass the angle directly to `np.sin` without having to convert directly to radians:
 
 ```python
-print('sin of 90 degrees is: {}'.format(np.sin(angle)))
-print('sin of pi/2 radians is: {}'.format(np.sin(1.57079632)))
-print('sin of 90 degrees is not: {}'.format(np.sin(90)))
+print(f'sin of 90 degrees is: {np.sin(angle)}')
+print(f'sin of pi/2 radians is: {np.sin(1.57079632)}')
+print(f'sin of 90 degrees is not: {np.sin(90)}')
 ```
 
 ```output
@@ -362,7 +362,8 @@ Each of the temperature scales is considered as using an irreducible unit in sta
 
 ```python
 t2 = 1 * u.deg_C
-print('{} is equivalent to {}'.format(t2,t2.to(imperial.Fahrenheit, equivalencies=u.temperature())))
+t2_deg_f = t2.to(imperial.Fahrenheit, equivalencies=u.temperature())
+print(f'{t2} is equivalent to {t2_deg_f}')
 ```
 
 ```output
@@ -376,19 +377,16 @@ To get the incremental value of 1 degree Celsius in Fahrenheit we would need to 
 ```python
 t1 = 0 * u.deg_C
 t2 = 1 * u.deg_C
-print('{} increment is equivalent to a {} increment'.format(
-    t2 - t1,
-    t2.to(imperial.Fahrenheit,equivalencies=u.temperature())
-        - t1.to(imperial.Fahrenheit, equivalencies=u.temperature())
-    )
-)
+t1_deg_f = t1.to(imperial.Fahrenheit, equivalencies=u.temperature())
+t2_deg_f = t2.to(imperial.Fahrenheit,equivalencies=u.temperature())
+print(f'{t2 - t1} increment is equivalent to a {t2_deg_f - t1_deg_f} increment')
 ```
 
 ```output
 1.0 deg_C increment is equivalent to a 1.7999999999999972 deg_F increment
 ```
 
-This is verging on unreadable (as is demonstrated by us having to split a simple arithmetic expression involving two variables across two lines of code).
+This is verging on unreadable (as is demonstrated by us having to split a simple arithmetic expression involving two variables across several lines of code).
 
 Fortunately there is support for cleaner temperature conversions in the [pint](https://pint.readthedocs.io/en/latest/index.html) package. This has similar functionality to the `astropy.unit` package, but has been built from the ground up with a focus on different aspects. These include unit parsing and standalone unit definitions, uncertainties integration, and (important for our example here), cleaner treatment of temperature units.
 
@@ -411,7 +409,7 @@ This library has the temperature units as before:
 
 ```python
 t2 = 1 * ureg.degC
-print('{} is equivalent to {}'.format(t2,t2.to(ureg.degF)))
+print(f'{t2} is equivalent to {t2.to(ureg.degF)}')
 ```
 
 ```output
@@ -422,7 +420,7 @@ But it also includes the concept of temperature increments:
 
 ```python
 deltaT = 1 * ureg.delta_degC
-print('{} is equivalent to {}'.format(deltaT,deltaT.to(ureg.delta_degF)))
+print(f'{deltaT} is equivalent to {deltaT.to(ureg.delta_degF)}')
 ```
 
 ```output
