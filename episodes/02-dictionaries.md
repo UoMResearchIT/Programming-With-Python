@@ -117,9 +117,6 @@ Following the previous example, we can create a python dictionary using the name
 
 ```python
 d = {'alice': 35, 'bob': 18}
-```
-
-```python
 print(d)
 ```
 
@@ -169,6 +166,49 @@ print('The value associated to that key is:', d[key])
 The name of the person is used as key: alice
 The value associated to that key is: 35
 ```
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Formatting Variables and Objects in Strings
+
+Here and elsewhere in the course, we will be printing the values of variables inside strings to understand what the actions we are demostrating do. There are a number of ways to this in Python. In this course, we will be using `f-strings`, which are the recomended string interpollation syntax from Python version 3.6 onwards.
+
+To use `f-strings` simply start a string literal with `f` or `F`, then embed any variable you want interpollating into the string within curly braces `{}`.
+
+```python
+two = 2
+f_string = f"{two} + {2} = {two + 2}"
+print(f_string)
+```
+
+Numerical values can be formatted ":" to have particular decimal places
+
+```python
+pi = 3.141592653589793
+print(pi)
+print(f"pi to three decimal places is {pi:.3f}")
+```
+```output
+3.141592653589793
+pi to three decimal places is 3.142
+```
+```python
+print(1e9)
+print(f"A billion in scientific notation is {1e9:.1e}")
+```
+```output
+1000000000.0
+A billion in E notation is 1.0e+09
+```
+
+This is only scratching the surface of what `f-strings` are capable of, they are often the most powerful and conside way to format variables inside strings. However, there are occations when other methods are preferable, and you should be careful using them with Python [before version 3.12](https://realpython.com/python-f-strings/#upgrading-f-strings-python-312-and-beyond).
+
+To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
 
 ### Adding and deleting elements
 
