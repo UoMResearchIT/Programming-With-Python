@@ -189,6 +189,15 @@ else:
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
+## Generative AI
+
+We would like to reiterate the [Carpentries](https://carpentries.org/) stance on [Generative AI in coding](https://swcarpentry.github.io/python-novice-inflammation/01-intro.html#generative-ai) which you may have seen when preparing for this course.
+
+To summarise the position, the recommendation is that you **avoid** getting help from generative AI during the workshop for several reasons:
+
+ - For most problems you will encounter at this stage, help and answers can be found among the first results returned by searching the internet or looking on e.g. [StackOverflow](https://stackoverflow.com/questions).
+ - The foundational knowledge and skills you will learn in this lesson by writing and fixing your own programs are essential to be able to evaluate the correctness and safety of any code you receive from online help or a generative AI chatbot. If you choose to use these tools in the future, the expertise you gain from learning and practising these fundamentals on your own will help you use them more effectively.
+ - As you continue programming, the mistakes you make will be the kinds that have also been made – and overcome! – by everybody else who learned to program before you. Since these mistakes and the questions you are likely to have at this stage are common, they are also better represented than other, more specialised problems and tasks in the data that was used to train generative AI tools. This means that a generative AI chatbot is more likely to produce accurate responses to questions that novices ask, which could give you a false impression of how reliable they will be when you are ready to do things that are more advanced.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
