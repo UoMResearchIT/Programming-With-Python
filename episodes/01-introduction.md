@@ -193,7 +193,7 @@ else:
 
 ## Formatting Variables and Objects in Strings
 
-Throughout this course, we will be printing the values of variables inside strings to demonstrate what the code does. There are a number of ways to this in Python; in this course we will be using `f-strings` which are the recomended string interpollation syntax from version 3.6 onwards.
+Throughout this course, we will be printing the values of variables inside strings to demonstrate what the code does. There are a number of ways to this in Python; in this course we will be using `f-strings` which are the recommended string interpollation syntax from version 3.6 onwards.
 
 To use `f-strings` simply start a string literal with `f` or `F`, then embed whatever you want interpollating into the string within curly braces `{}`:
 
@@ -240,7 +240,7 @@ print(f"A billion in scientific notation is {1e9:.1e}")
 A billion in scientific notation is 1.0e+09
 ```
 
-This is only scratching the surface of what `f-strings` are capable of, they are often the most powerful and conside way to format variables inside strings. However, there are occations when other methods are preferable, and you should be careful using them with Python [before version 3.12](https://realpython.com/python-f-strings/#upgrading-f-strings-python-312-and-beyond).
+This is only scratching the surface of what you can do with `f-strings`, they are often the most powerful and conside way to format variables inside strings. However, there are occations when other methods are preferable, and you should be careful using them with Python [before version 3.12](https://realpython.com/python-f-strings/#upgrading-f-strings-python-312-and-beyond).
 
 To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/).
 
