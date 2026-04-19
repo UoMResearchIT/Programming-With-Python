@@ -379,11 +379,11 @@ t1 = 0 * u.deg_C
 t2 = 1 * u.deg_C
 t1_deg_f = t1.to(imperial.Fahrenheit, equivalencies=u.temperature())
 t2_deg_f = t2.to(imperial.Fahrenheit,equivalencies=u.temperature())
-print(f'{t2 - t1} increment is equivalent to a {t2_deg_f - t1_deg_f} increment')
+print(f'{t2 - t1} increment is equivalent to a {t2_deg_f - t1_deg_f:.1f} increment')
 ```
 
 ```output
-1.0 deg_C increment is equivalent to a 1.7999999999999972 deg_F increment
+1.0 deg_C increment is equivalent to a 1.8 deg_F increment
 ```
 
 This is verging on unreadable (as is demonstrated by us having to split a simple arithmetic expression involving two variables across several lines of code).
@@ -409,22 +409,22 @@ This library has the temperature units as before:
 
 ```python
 t2 = 1 * ureg.degC
-print(f'{t2} is equivalent to {t2.to(ureg.degF)}')
+print(f'{t2} is equivalent to {t2.to(ureg.degF):.1f}')
 ```
 
 ```output
-1 degree_Celsius is equivalent to 33.79999999999993 degree_Fahrenheit
+1 degree_Celsius is equivalent to 33.8 degree_Fahrenheit
 ```
 
 But it also includes the concept of temperature increments:
 
 ```python
 deltaT = 1 * ureg.delta_degC
-print(f'{deltaT} is equivalent to {deltaT.to(ureg.delta_degF)}')
+print(f'{deltaT} is equivalent to {deltaT.to(ureg.delta_degF):.1f}')
 ```
 
 ```output
-1 delta_degree_Celsius is equivalent to 1.7999999999999998 delta_degree_Fahrenheit
+1 delta_degree_Celsius is equivalent to 1.8 delta_degree_Fahrenheit
 ```
 
 Because of the popularity of python this overlap of functionality of packages can be common. We would recommend exploring the different available packages that might cover your requirements before settling on one. And keep watching out for new packages, and be prepared to switch when starting new projects if/when you find better packages.
