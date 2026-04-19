@@ -271,13 +271,12 @@ To identify any signal in the data we can use the standard deviation as an estim
 ```python
 stddev_noisy = np.std(noisy)
 mean_noisy = np.mean(noisy)
-print(f'standard deviation is: {stddev_noisy}')
-print(f'mean value is: {mean_noisy}')
+print(f'standard deviation is: {stddev_noisy:.5f}')
+print(f'mean value is: {mean_noisy:.5f}')
 ```
-
 ```output
-standard deviation is: 0.011592652442611553
-mean value is: 0.005047252119578472
+standard deviation is: 0.01159
+mean value is: 0.00505
 ```
 
 We will create a mask for the data, by selecting all data points below this threshold value (we'll assume here that any signal we might be interested in is positive):
@@ -394,10 +393,10 @@ To improve the visible output we will carry out some simple analysis of the imag
 First we examine the general stats of the data (using built-in methods, except for the median, which has to be called from NumPy directly):
 
 ```python
-print('mean value im1:', imdata.mean())
-print('median value im1:', np.median(imdata))
-print('max value im1:', imdata.max())
-print('min value im1:', imdata.min())
+print(f'mean value im1: {imdata.mean()}')
+print(f'median value im1: {np.median(imdata)}')
+print(f'max value im1: {imdata.max()}')
+print(f'min value im1: {imdata.min()}')
 ```
 
 ```output
@@ -482,17 +481,17 @@ plt.imshow(immasked.mask, cmap='gray', origin='lower')
 This mask is applied to the data for all built-in functions. But where we have to directly use a NumPy function we have to make sure we use the equivalent function in the mask (`ma`) library:
 
 ```python
-print('original average:', imdata.mean())
-print('Masked average:', immasked.mean())
-print()
-print('original max:', imdata.max())
-print('Masked max:', immasked.max())
-print()
-print('original min:', imdata.min())
-print('Masked min:', immasked.min())
-print()
-print('original median:', np.mean(imdata))
-print('Masked median:', np.ma.median(immasked))
+print(f'original average: {imdata.mean()}')
+print(f'Masked average: {immasked.mean()}\n')
+
+print(f'original max: {imdata.max()}')
+print(f'Masked max: {immasked.max()}\n')
+
+print(f'original min: {imdata.min()}')
+print(f'Masked min: {immasked.min()}\n')
+
+print(f'original median: {np.mean(imdata)}')
+print(f'Masked median: {np.ma.median(immasked)}')
 ```
 
 ```output
