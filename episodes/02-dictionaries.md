@@ -147,7 +147,7 @@ d4 = dict(zip(['jane','alice','bob'],[24,35,18]))
 To access an element of the dictionary we must use the *key*:
 
 ```python
-print('The age of alice is :', d['alice'])
+print(f'The age of alice is: {d["alice"]}')
 ```
 
 ```output
@@ -158,8 +158,8 @@ We can also use a variable to index the dictionary:
 
 ```python
 key = 'alice'
-print('The name of the person is used as key:', key)
-print('The value associated to that key is:', d[key])
+print(f'The name of the person is used as key: {key}')
+print(f'The value associated to that key is: {d[key]}')
 ```
 
 ```output
@@ -167,57 +167,14 @@ The name of the person is used as key: alice
 The value associated to that key is: 35
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-## Formatting Variables and Objects in Strings
-
-Here and elsewhere in the course, we will be printing the values of variables inside strings to understand what the actions we are demostrating do. There are a number of ways to this in Python. In this course, we will be using `f-strings`, which are the recomended string interpollation syntax from Python version 3.6 onwards.
-
-To use `f-strings` simply start a string literal with `f` or `F`, then embed any variable you want interpollating into the string within curly braces `{}`.
-
-```python
-two = 2
-f_string = f"{two} + {2} = {two + 2}"
-print(f_string)
-```
-
-Numerical values can be formatted ":" to have particular decimal places
-
-```python
-pi = 3.141592653589793
-print(pi)
-print(f"pi to three decimal places is {pi:.3f}")
-```
-```output
-3.141592653589793
-pi to three decimal places is 3.142
-```
-```python
-print(1e9)
-print(f"A billion in scientific notation is {1e9:.1e}")
-```
-```output
-1000000000.0
-A billion in E notation is 1.0e+09
-```
-
-This is only scratching the surface of what `f-strings` are capable of, they are often the most powerful and conside way to format variables inside strings. However, there are occations when other methods are preferable, and you should be careful using them with Python [before version 3.12](https://realpython.com/python-f-strings/#upgrading-f-strings-python-312-and-beyond).
-
-To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::::  callout
-
-
 ### Adding and deleting elements
 
 Adding an element to a dictionary is done by creating a new key and attaching a value to it.
 
 ```python
-print('Original dictionary:', d)
+print(f'Original dictionary: {d}')
 d['jane'] = 24
-print('New dictionary:', d)
+print(f'New dictionary: {d}')
 ```
 
 ```output
@@ -231,7 +188,7 @@ To add one or more new elements we can also use the `update` method:
 d_extra = {'tom': 54, 'david': 87}
 
 d.update(d_extra)
-print('Updated dictionary:', d)
+print(f'Updated dictionary: {d}')
 ```
 
 ```output
@@ -242,7 +199,7 @@ To delete an element, use the `del` method:
 
 ```python
 del d['tom']
-print('Dictionary with item deleted:', d)
+print(f'Dictionary with item deleted: {d}')
 ```
 
 ```output
@@ -253,8 +210,8 @@ Alternatively, the `pop` function can be used to take an element out of a dictio
 
 ```python
 david_age = d.pop('david')
-print('Age of David:', david_age)
-print('Dictionary with david popped out:', d)
+print(f'Age of David: {david_age}')
+print(f'Dictionary with david popped out: {d}')
 ```
 
 ```output
@@ -290,9 +247,9 @@ TypeError: unsupported operand type(s) for +: 'dict' and 'dict'
 Keys have to be unique; you cannot have two keys with the same name. If you try to add an item using a key already present in the dictionary you will overwrite the previous value.
 
 ```python
-print('Original dictionary:', d)
+print(f'Original dictionary: {d}')
 d['alice'] = 12
-print('New dictionary:', d)
+print(f'New dictionary: {d}')
 ```
 
 ```output
@@ -313,9 +270,9 @@ d1 = {'alice': 12, 'bob': 18, 'jane': 24, 'tom': 54, 'david': 87}
 d2 = {'tom': 54, 'david': 87}
 d3 = {'bob': 18, 'alice': 35, 'jane': 24}
 d4 = {'alice': 35, 'bob': 18, 'jane': 24}
-print('Dictionary 1 and dictionary 2 are equal:', d1 == d2)
-print('Dictionary 1 and dictionary 3 are equal:', d1 == d3)
-print('Dictionary 3 and dictionary 4 are equal:', d3 == d4)
+print(f'Dictionary 1 and dictionary 2 are equal: {d1 == d2}')
+print(f'Dictionary 1 and dictionary 3 are equal: {d1 == d3}')
+print(f'Dictionary 3 and dictionary 4 are equal: {d3 == d4}')
 ```
 
 ```output
@@ -367,7 +324,7 @@ list(d.values())[0]
 ```
 
 It is also possible to iterate through the keys and items in the dictionary at the same time using the `items` function,
-which returns a *dict\_items* object containing `key, value` pairs:
+which returns a *dict\_items* object containing *key, value* pairs:
 
 ```python
 d.items()
@@ -381,7 +338,7 @@ This is very useful when using a dictionary in a `for` loop:
 
 ```python
 for key, value in d.items():
-    print("Name:", key, " Age:", value)
+    print(f'Name: {key}, Age: {value}')
 ```
 
 ```output
