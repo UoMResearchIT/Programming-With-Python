@@ -610,7 +610,7 @@ This caching behaviour is very useful for datasets for are accessed regularly.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- JSON is simple
+- JSON is a simple, easy to interpret format for unstructured data
 - Dictionaries are defined using `key`:`value` pairs
 - Dictionaries can be nested, and mixed with lists
 - Web API's can be accessed using the `requests` library
