@@ -266,6 +266,7 @@ To summarise the position, the recommendation is that you **avoid** getting help
 - loops
 - conditionals
 - string formatting
+- avoid using generative AI during this course
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
