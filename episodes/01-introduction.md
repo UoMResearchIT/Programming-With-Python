@@ -189,6 +189,63 @@ else:
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Formatting Variables and Objects in Strings
+
+Throughout this course, we will be printing the values of variables inside strings to demonstrate what the code does. There are a number of ways to this in Python; in this course we will be using `f-strings` which are the recommended string interpolation syntax from version 3.6 onwards.
+
+To use `f-strings` simply start a string literal with `f` or `F`, then embed whatever you want interpolating into the string within curly braces `{}`:
+
+```python
+two_int = 2
+two_str = "2"
+f_string = f"{two_int} + {two_str} = {2 + 2}"
+print(f_string)
+```
+```output
+2 + 2 = 4
+```
+
+Numerical values can be formatted using `:` inside the curly braces. For example, an integer `i` can be made to have a width `n` using `{i:nd}`, or `{i:0nd}` to pad it out with zeros:
+
+```python
+print(f"One with four leading spaces {1:5d}")
+print(f"One with four leading zeros {1:05d}")
+```
+```output
+One with four leading spaces     1
+One with four leading zeros 00001
+```
+
+Floating point variables can have their precision specified with a number after a decimal point and an `f`:
+```python
+pi = 3.141592653589793
+print(pi)
+print(f"pi to three decimal places is {pi:.3f}")
+```
+```output
+3.141592653589793
+pi to three decimal places is 3.142
+```
+
+Or made to use scientific notation with an `e`:
+
+```python
+print(1e9)
+print(f"A billion in scientific notation is {1e9:.1e}")
+```
+```output
+1000000000.0
+A billion in scientific notation is 1.0e+09
+```
+
+This is only scratching the surface of what you can do with `f-strings`, they are often the most powerful and concise way to format variables inside strings. However, there are occasions when other methods are preferable, and you should be careful using them with Python [before version 3.12](https://realpython.com/python-f-strings/#upgrading-f-strings-python-312-and-beyond).
+
+To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 ## Generative AI
 
 We would like to reiterate the [Carpentries](https://carpentries.org/) stance on [Generative AI in coding](https://swcarpentry.github.io/python-novice-inflammation/01-intro.html#generative-ai) which you may have seen when preparing for this course.
