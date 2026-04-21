@@ -216,7 +216,7 @@ In this case we use the `spectral` equivalence library, which allows conversions
 
 Other built-in equivalencies are:
 
-- Doppler (`dopplr_radio`, `doppler_optical`, `doppler_relativistic`)
+- Doppler (`doppler_radio`, `doppler_optical`, `doppler_relativistic`)
 - spectral flux density
 - temperature
 - brightness temperature
