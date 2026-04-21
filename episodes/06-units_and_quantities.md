@@ -137,7 +137,7 @@ print(speed.decompose())
 If you wish to reduce to different base units you can pass a list of those units to the `bases` parameter when calling the `decompose` function:
 
 ```python
-print(f'{speed.decompose(bases=["km", "s"]):.3f}')
+print(speed.decompose(bases=["km", "s"]))
 ```
 ```output
 0.05 km / s
