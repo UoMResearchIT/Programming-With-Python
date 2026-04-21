@@ -172,6 +172,7 @@ To demonstrate this we are going to create a Gaussian function and use it to gen
 
 *Reminder*: the Gaussian function is defined by:
 ![](fig/gauss_function.png){alt='Gaussian function equation.'}
+
 where **x** is an array, **µ** is the position of the centre of the curve/peak and **σ** is the width of the bell.
 
 
