@@ -190,6 +190,7 @@ plt.xticks(rotation=90)
 ```
 
 ![](fig/sweden-pandas-fig1.png){alt="Line plot of increase in Sweden's GDP from 1952 to 2002, with no axis labels, and awkward x-axis tick labels."}
+
 Note that we've had to rotate the xtick labels by 90 degrees, because they do not fit neatly under the x-axis. Later we will clean these up properly.
 
 Note that, in the case above, we passed a single column of data to the `plot` method - which it automatically transposed in order to make sense of the plot request (because this method usually works on rows of data). If you want to plot more than one column of data you will need to explicitly transpose the DataFrame yourself.
