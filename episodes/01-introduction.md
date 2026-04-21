@@ -258,11 +258,13 @@ To summarise the position, the recommendation is that you **avoid** getting help
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- variables
-- lists
-- indexing
-- loops
-- conditionals
+- Assign values to variables using `=`
+- Generate lists using square brackets `[]`
+- Use indexes inside `[]`, starting at 0, to select characters from strings and items from lists
+- Use `for` to loop through items in iterable objects
+- Make conditional expressions using `==`, `!=`, `>`, `<`, `>=` and `<=`
+- Use `f'{}'` to embed formatted variables inside strings
+- Avoid use of generative AI for this course
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
