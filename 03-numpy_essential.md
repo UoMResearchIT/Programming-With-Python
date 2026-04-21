@@ -170,8 +170,11 @@ Masked arrays associate a NumPy array with another array composed only of boolea
 
 To demonstrate this we are going to create a Gaussian function and use it to generate an example dataset and generate a plot. We will then add some noise to it and use a masked array to filter out the noisy data. This represents the kind of processing that can be used for datasets such as a seismographs, where we would wish to isolate single events from noisy background data.
 
-Reminder: the Gaussian function is defined by:
+*Reminder*: the Gaussian function is defined by:
 ![](fig/gauss_function.png){alt='Gaussian function equation.'}
+
+where **x** is an array, **µ** is the position of the centre of the curve/peak and **σ** is the width of the bell.
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -179,14 +182,13 @@ Reminder: the Gaussian function is defined by:
 
 1. Create a function called `gauss` which will take three arguments (inputs):
   **x**, **µ**, and **σ**,
-  as defined above. (x is an array, µ is the position of the centre of the
-  curve/peak and σ is the width of the bell)
-2. Create a NumPy array using the 'numpy' function 'linspace' which will contain 1000
-  points equally spaced between x=-100 and x=100. Hint: You can print the help
-  documentation of a function with 'help(name\_of\_the\_function)'
-3. Using the above gauss function and the array, create a list which contains the value
-  of the gauss from x=-100 to x=100.
-4. Use the 'matplotlib' library to plot the curve with mu=0 and sigma=10.
+  as defined above. *Hint*: you may wish to use the NumPy constant `pi`, and NumPy functions `square`, `sqrt` and `exp` for calcuating the square, square-root and exponential of **e** respectively for all elements in an array.
+2. Create a NumPy array using the Numpy function `linspace` which will contain 1000
+  points equally spaced between **x**=-100 and **x**=100. *Hint*: You can print the help
+  documentation of a function with 'help(name\_of\_the\_function)'.
+3. Using the above gauss function and the array, create an array which contains the values
+  of the Gaussian from **x**=-100 to **x**=100.
+4. Use the 'matplotlib' library to plot the curve with **µ**=0 and **σ**=10.
 
 :::::::::::::::  solution
 
@@ -194,8 +196,9 @@ Reminder: the Gaussian function is defined by:
 
 ```python
 def gauss(x, mu=0, sigma=1):
-    return (1. / (np.sqrt(2 * np.pi * sigma ** 2)) *
-            np.exp( - (x - mu) ** 2 / (2 * sigma ** 2)))
+    amp = 1. / (np.sqrt(2 * np.pi) * sigma)
+    inv = 1. / (2. * np.square(sigma))
+    return amp * np.exp(- np.square(x - mu) * inv)
 ```
 
 :::::::::::::::::::::::::
