@@ -194,9 +194,9 @@ Reminder: the Gaussian function is defined by:
 
 ```python
 def gauss(x, mu=0, sigma=1):
-    amplitude = 1. / (np.sqrt(2 * np.pi * sigma ** 2))
-    exponent = - (x - mu) ** 2 / (2 * sigma ** 2)
-    return amplitude * np.exp(exponent)
+    amp = 1. / (np.sqrt(2 * np.pi) * sigma)
+    inv = 1. / (2. * np.square(sigma))
+    return amp * np.exp(- np.square(x - mu) * inv)
 ```
 
 :::::::::::::::::::::::::
