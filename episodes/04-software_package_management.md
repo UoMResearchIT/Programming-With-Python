@@ -22,7 +22,7 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Virtual environments are a useful tool for isolating and managing the software packages you use. Doing this enables you to track the packages you use for your work, letting you to create reproducable environments so that others can use your code. It also allows you to use packages which might have conflicting requirements (or even different versions of the same package) without the hassle of having to install and uninstall these each time.
+Virtual environments are a useful tool for isolating and managing the software packages you use. Doing this enables you to track the packages you use for your work, letting you create reproducable environments so that others can use your code. It also allows you to use packages which might have conflicting requirements (or even different versions of the same package) without the hassle of having to install and uninstall these each time.
 
 Python has built in tools for managing virtual environments ([venv](https://docs.python.org/3/tutorial/venv.html)) and packages ([pip](https://pypi.org/project/pip/)). However, we will not cover these tools today. While venv and pip are very useful for managing pure python packages, they are not very flexible when we want to use packages which are built on other languages (or perhaps do not use python at all). Another tool, [conda](https://docs.conda.io/en/latest/index.html), has been built to extend their functionality to cover these mixed-language packages for a wide range of computing platforms, and it is this which we will cover today.
 
