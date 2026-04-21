@@ -375,7 +375,7 @@ type(imdata)
 ```
 
 ```output
-<class 'numpy.ndarray'>
+numpy.ndarray
 ```
 
 Note that this data is in the form of a NumPy array, and so we can use our standard NumPy tools for processing and displaying this data.
