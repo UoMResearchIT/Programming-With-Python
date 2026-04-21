@@ -496,7 +496,7 @@ What is the result of these two additions?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The correct answer is (2)</p>
 </div>
@@ -589,7 +589,10 @@ add some noise to it and use a masked array to filter out the noisy
 data. This represents the kind of processing that can be used for
 datasets such as a seismographs, where we would wish to isolate single
 events from noisy background data.</p>
-<p>Reminder: the Gaussian function is defined by: <img src="fig/gauss_function.png" alt="Gaussian function equation." class="figure"></p>
+<p><em>Reminder</em>: the Gaussian function is defined by: <img src="fig/gauss_function.png" alt="Gaussian function equation." class="figure"></p>
+<p>where <strong>x</strong> is an array, <strong>µ</strong> is the
+position of the centre of the curve/peak and <strong>σ</strong> is the
+width of the bell.</p>
 <div id="gaussian-function" class="callout challenge">
 <div class="callout-square">
 <i class="callout-icon" data-feather="zap"></i>
@@ -600,16 +603,21 @@ events from noisy background data.</p>
 <div class="callout-content">
 <ol style="list-style-type: decimal"><li>Create a function called <code>gauss</code> which will take three
 arguments (inputs): <strong>x</strong>, <strong>µ</strong>, and
-<strong>σ</strong>, as defined above. (x is an array, µ is the position
-of the centre of the curve/peak and σ is the width of the bell)</li>
-<li>Create a NumPy array using the ‘numpy’ function ‘linspace’ which
-will contain 1000 points equally spaced between x=-100 and x=100. Hint:
-You can print the help documentation of a function with
-‘help(name_of_the_function)’</li>
-<li>Using the above gauss function and the array, create a list which
-contains the value of the gauss from x=-100 to x=100.</li>
-<li>Use the ‘matplotlib’ library to plot the curve with mu=0 and
-sigma=10.</li>
+<strong>σ</strong>, as defined above. <em>Hint</em>: you may wish to use
+the NumPy constant <code>pi</code>, and NumPy functions
+<code>square</code>, <code>sqrt</code> and <code>exp</code> for
+calcuating the square, square-root and exponential of <strong>e</strong>
+respectively for all elements in an array.</li>
+<li>Create a NumPy array using the Numpy function <code>linspace</code>
+which will contain 1000 points equally spaced between
+<strong>x</strong>=-100 and <strong>x</strong>=100. <em>Hint</em>: You
+can print the help documentation of a function with
+‘help(name_of_the_function)’.</li>
+<li>Using the above gauss function and the array, create an array which
+contains the values of the Gaussian from <strong>x</strong>=-100 to
+<strong>x</strong>=100.</li>
+<li>Use the ‘matplotlib’ library to plot the curve with
+<strong>µ</strong>=0 and <strong>σ</strong>=10.</li>
 </ol></div>
 </div>
 </div>
@@ -618,14 +626,15 @@ sigma=10.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> challenge 1: </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" tabindex="-1" aria-label="code-block-15-1"></a><span class="kw">def</span> gauss(x, mu<span class="op">=</span><span class="dv">0</span>, sigma<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a>    <span class="cf">return</span> (<span class="fl">1.</span> <span class="op">/</span> (np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi <span class="op">*</span> sigma <span class="op">**</span> <span class="dv">2</span>)) <span class="op">*</span></span>
-<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a>            np.exp( <span class="op">-</span> (x <span class="op">-</span> mu) <span class="op">**</span> <span class="dv">2</span> <span class="op">/</span> (<span class="dv">2</span> <span class="op">*</span> sigma <span class="op">**</span> <span class="dv">2</span>)))</span></code></pre>
+<span id="cb15-2"><a href="#cb15-2" tabindex="-1" aria-label="code-block-15-2"></a>    amp <span class="op">=</span> <span class="fl">1.</span> <span class="op">/</span> (np.sqrt(<span class="dv">2</span> <span class="op">*</span> np.pi) <span class="op">*</span> sigma)</span>
+<span id="cb15-3"><a href="#cb15-3" tabindex="-1" aria-label="code-block-15-3"></a>    inv <span class="op">=</span> <span class="fl">1.</span> <span class="op">/</span> (<span class="fl">2.</span> <span class="op">*</span> np.square(sigma))</span>
+<span id="cb15-4"><a href="#cb15-4" tabindex="-1" aria-label="code-block-15-4"></a>    <span class="cf">return</span> amp <span class="op">*</span> np.exp(<span class="op">-</span> np.square(x <span class="op">-</span> mu) <span class="op">*</span> inv)</span></code></pre>
 </div>
 </div>
 </div>
@@ -636,7 +645,7 @@ sigma=10.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> challenge 2: </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -652,7 +661,7 @@ sigma=10.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> challenge 3: </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -670,7 +679,7 @@ sigma=10.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> challenge 4: </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1031,7 +1040,7 @@ data array.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> New mask </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1047,7 +1056,7 @@ data array.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Combining masks </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
