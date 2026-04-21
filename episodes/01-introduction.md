@@ -244,8 +244,6 @@ To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Generative AI
 
 We would like to reiterate the [Carpentries](https://carpentries.org/) stance on [Generative AI in coding](https://swcarpentry.github.io/python-novice-inflammation/01-intro.html#generative-ai) which you may have seen when preparing for this course.
