@@ -34,11 +34,11 @@ Please look at the following code. Can you find the fundamental problem in this 
 val = 1
 
 if val > 0:
-    print('Value:', val, 'is positive.')
+    print(f'Value: {val} is positive.')
 elif val == 0:
-    print('Value:', val, 'is zero.')
+    print(f'Value: {val} is zero.')
 else:
-    print('Value:', val, 'is negative.')
+    print(f'Value: {val} is negative.')
 ```
 
 :::::::::::::::  solution
@@ -51,11 +51,11 @@ The test assumes that `val` is a number, and throws an uncontrolled error if it 
 val = 'a'
 
 if val > 0:
-    print('Value:', val, 'is positive.')
+    print(f'Value: {val} is positive.')
 elif val == 0:
-    print('Value:', val, 'is zero.')
+    print(f'Value: {val} is zero.')
 else:
-    print('Value:', val, 'is negative.')
+    print(f'Value: {val} is negative.')
 ```
 
 ```output
@@ -64,9 +64,9 @@ TypeError                                 Traceback (most recent call last)
 <ipython-input-2-99c0e25bf5e9> in <module>()
       1 def check_sign(val):
 ----> 2     if val > 0:
-      3         print('Value:', val, 'is positive.')
+      3         print(f'Value: {val} is positive.')
       4     elif val == 0:
-      5         print('Value:', val, 'is zero.')
+      5         print(f'Value: {val} is zero.')
 
 TypeError: '>' not supported between instances of 'str' and 'int'
 ```
@@ -81,11 +81,11 @@ To make things simpler, we will first write the test as a function:
 ```python
 def check_sign(val):
     if val > 0:
-        print('Value:', val, 'is positive.')
+        print(f'Value: {val} is positive.')
     elif val == 0:
-        print('Value:', val, 'is zero.')
+        print(f'Value: {val} is zero.')
     else:
-        print('Value:', val, 'is negative.')
+        print(f'Value: {val} is negative.')
 ```
 
 Then wrap the function call in an `if` statement:
@@ -121,7 +121,7 @@ try:
 except TypeError as err:
     print('Val is not a number')
     print('But our code does not crash anymore')
-    print('The run-time error is:', err)
+    print(f'The run-time error is: {err}')
 ```
 
 As with `if` statements, multiple `except` statements can be used, each with a different error test. These can be followed by an (optional) catch-all bare `except` statement (as we started with) to catch any unexpected errors. Note that only one `try` statement is allowed in the structure.
@@ -134,12 +134,12 @@ try:
     reciprocal = 1/val
 except TypeError as err:
     print('Val is not a number')
-    print('The run-time error is:', err)
+    print(f'The run-time error is: {err}')
 except Exception as err:
     print('Some error other than a TypeError occured')
-    print('The run-time error is:', err)
+    print(f'The run-time error is: {err}')
 else:
-    print('The reciprocal of the value =', reciprocal)
+    print(f'The reciprocal of the value = {reciprocal}')
 finally:
     print('release memory')
 ```
@@ -214,7 +214,7 @@ To conduct such a test we can use an `assert` statement. This follows the struct
 ```python
 val = 'a'
 
-assert type(val) is float or type(val) is int, "Variable has to be a numerical object"
+assert type(val) is float or type(val) is int, 'Variable has to be a numerical object'
 
 check_sign(val)
 ```
