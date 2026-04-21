@@ -181,7 +181,7 @@ where **x** is an array, **µ** is the position of the centre of the curve/peak 
 
 1. Create a function called `gauss` which will take three arguments (inputs):
   **x**, **µ**, and **σ**,
-  as defined above. *Hint*: you may wish to use the NumPy constant `pi`, and NumPy functions `square` and `sqrt` for calcuating the square and square-root respectively of all elements in an array.
+  as defined above. *Hint*: you may wish to use the NumPy constant `pi`, and NumPy functions `square`, `sqrt` and `exp` for calcuating the square, square-root and exponential of **e** respectively for all elements in an array.
 2. Create a NumPy array using the Numpy function `linspace` which will contain 1000
   points equally spaced between **x**=-100 and **x**=100. *Hint*: You can print the help
   documentation of a function with 'help(name\_of\_the\_function)'.
