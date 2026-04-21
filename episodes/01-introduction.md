@@ -10,6 +10,8 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::: questions
+
 - Python Refresher
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -187,8 +189,6 @@ else:
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::::  callout
-
 ## Formatting Variables and Objects in Strings
 
 Throughout this course, we will be printing the values of variables inside strings to demonstrate what the code does. There are a number of ways to this in Python; in this course we will be using `f-strings` which are the recommended string interpolation syntax from version 3.6 onwards.
@@ -243,6 +243,8 @@ This is only scratching the surface of what you can do with `f-strings`, they ar
 To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/).
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Generative AI
 
