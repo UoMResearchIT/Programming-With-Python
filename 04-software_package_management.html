@@ -338,7 +338,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Software Package Management</h1>
-        <p>Last updated on 2025-04-15 |
+        <p>Last updated on 2026-04-22 |
 
         <a href="https://github.com/UoMResearchIT/programming_with_python/edit/main/episodes/04-software_package_management.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -380,23 +380,30 @@ requirements</li>
 </div>
 <p>Virtual environments are a useful tool for isolating and managing the
 software packages you use. Doing this enables you to track the packages
-you use for your work (enabling you to create reproducable environments,
-so that others can also use your code). It also allows you to use
-packages which might have conflicting requirements (or even different
-versions of the same package) without the hassle of haveing to install
-and uninstall these each time.</p>
-<p>Python has a built in tools for managing virtual environments (<a href="https://docs.python.org/3/tutorial/venv.html" class="external-link">venv</a>) and
-packages (<a href="https://pypi.org/project/pip/" class="external-link">pip</a>). However we
+you use for your work, letting you create reproducable environments so
+that others can use your code. It also allows you to use packages which
+might have conflicting requirements (or even different versions of the
+same package) without the hassle of having to install and uninstall
+these each time.</p>
+<p>Python has built in tools for managing virtual environments (<a href="https://docs.python.org/3/tutorial/venv.html" class="external-link">venv</a>) and
+packages (<a href="https://pypi.org/project/pip/" class="external-link">pip</a>). However, we
 will not cover these tools today. While venv and pip are very useful for
 managing pure python packages, they are not very flexible when we want
 to use packages which are built on other languages (or perhaps do not
-use python at all). Another tool, conda, has been built to extend their
-functionality to cover these mixed-language packages, for a wide range
-of computing platforms, and it is this which we will cover today. More
-details on the differences between conda and pip are given in this <a href="https://www.anaconda.com/blog/understanding-conda-and-pip" class="external-link">summary</a>.</p>
-<p>The lesson below is not conducted using a python interpreter, but
+use python at all). Another tool, <a href="https://docs.conda.io/en/latest/index.html" class="external-link">conda</a>, has been
+built to extend their functionality to cover these mixed-language
+packages for a wide range of computing platforms, and it is this which
+we will cover today.</p>
+<p>More details on the differences between conda and pip are given in
+this <a href="https://www.anaconda.com/blog/understanding-conda-and-pip" class="external-link">summary</a>.
+Other tools for package management exist as well as conda - popular ones
+include <a href="https://docs.astral.sh/uv/" class="external-link">uv</a> and <a href="https://python-poetry.org/" class="external-link">poetry</a>. See here for a full list
+of <a href="https://packaging.python.org/en/latest/key_projects/" class="external-link">packaging
+projects</a>.</p>
+<p>The lesson below is not conducted using a Python interpreter, but
 instead using the unix shell. When you are asked to type in code below,
-please do this in a terminal window and not in this browser.</p>
+please do this in a terminal window and not in a Jupyter notebook or
+other Python interpreter.</p>
 <section><h2 class="section-heading" id="installing-conda">Installing Conda<a class="anchor" aria-label="anchor" href="#installing-conda"></a></h2>
 <hr class="half-width"><p>The conda package manager is available to install by itself (using
 the miniconda installer), or with a preprepared set of commonly used
@@ -1045,7 +1052,7 @@ any links that you are not going to use.
   "url": "https://uomresearchit.github.io/programming_with_python/04-software_package_management.html",
   "identifier": "https://uomresearchit.github.io/programming_with_python/04-software_package_management.html",
   "dateCreated": "2026-04-22",
-  "dateModified": "2025-04-15",
+  "dateModified": "2026-04-22",
   "datePublished": "2026-04-22"
 }
 
