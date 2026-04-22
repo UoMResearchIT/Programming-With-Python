@@ -424,7 +424,8 @@ This will present the same information, but in the more readable [YAML](https://
 To create a higher-level record of the environment you can use:
 
 ```bash
-conda export --from-history
+conda export --from-history > envfile.yml
+more envfile.yml
 ```
 
 ```output
