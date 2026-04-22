@@ -395,7 +395,7 @@ This contains similar information to the standard `conda list` command, but in a
 A better method is to use:
 
 ```bash
-conda env export
+conda export
 ```
 
 ```output
@@ -421,12 +421,13 @@ dependencies:
 prefix: /home/mbessdl2/.conda/envs/myenv
 ```
 
-This will present the same information, but in the more readable [YAML](https://yaml.org/) format, and it will also include the channel information in the output. This information can be saved as a text file as before, and used to create a new environment using the command `conda env create`. However it is still operating system specific information.
+This will present the same information, but in the more readable [YAML](https://yaml.org/) format, and it will also include the channel information in the output. This information can be saved as a txt or yml file as before e.g. `conda export > envfile.yml`, and used to create a new environment using the command `conda env create` (see below). However it is still using operating system specific information.
 
 To create a higher-level record of the environment you can use:
 
 ```bash
-conda env export --from-history
+conda export --from-history > envfile.yml
+more envfile.yml
 ```
 
 ```output
@@ -464,7 +465,7 @@ The name that you give the environment does not have to be the same as the name 
 - `conda install -n <env> <pacakge(s)>` installs packages in a pre-existing environment
 - `conda activate <env>` activates the named environment, giving access to the software installed there
 - `conda deactivate` deactivates the current environment
-- `conda env export --from-history > <file.yml>` creates a portable record of your current environment
+- `conda export --from-history > <file.yml>` creates a portable record of your current environment
 - `conda env create --file <file.yml> <env>` creates a new environment from an environment file
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
