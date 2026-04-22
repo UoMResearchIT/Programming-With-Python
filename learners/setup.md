@@ -8,7 +8,7 @@ This lesson is designed to be run on a personal computer. All of the software an
 
 ## Install Python
 
-In this lesson, we will be using Python 3 with some of its most popular scientific libraries. Although one can install a plain-vanilla Python and all required libraries by hand, the University of Manchester also maintains a [Jupyter instance][jupyter_hub_its] which we recommend you use for this training course.
+In this lesson, we will be using Python 3 with some of its most popular scientific libraries. Although one can install a plain-vanilla Python and all required libraries by hand, the University of Manchester also maintains a [Jupyter instance][jupyter_hub_its], for which an active University of Manchester account is required, which we recommend you use for this training course.
 
 If you would prefer to install something on your machine yourself, we recommend installing [Anaconda][anaconda-website], a Python distribution that comes with everything we need for the lesson. Detailed installation instructions for this and other Python interfaces for various operating systems can be found on The Carpentries [template website for workshops][anaconda-instructions] and in [Anaconda documentation][anaconda-install].
 
