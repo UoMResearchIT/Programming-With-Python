@@ -420,6 +420,7 @@ plt.ylabel('Pixel Count')
 ```
 
 ![](fig/photon_count_a.png){alt='Histogram showing photon count, with (almost) all values around 0.'}
+
 This confirms our suspicions that many pixels have very low photon counts.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -452,6 +453,7 @@ plt.ylabel('Pixel Count')
 ```
 
 ![](fig/photon_count_c.png){alt='Histogram showing photon counts between 1 and 30'}
+
 We see that there is a bi-modal distribution, with the largest peak around 8-9 photons, and a smaller peak around 3-4 photons.
 
 Now that we can see that the majority of the data is below a photon count of 25, we can start manipulating our image plot to see more details of the nebulae:
