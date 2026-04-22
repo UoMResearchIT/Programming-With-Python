@@ -68,10 +68,10 @@ episodes:
 - 01-introduction.md
 - 02-dictionaries.md
 - 03-numpy_essential.md
-- 04-software_package_management.md
-- 05-defensive_programming.md
-- 06-units_and_quantities.md
-- 07-pandas_essential.md
+- 04-defensive_programming.md
+- 05-units_and_quantities.md
+- 06-pandas_essential.md
+- 07-software_package_management.md
 
 # Information for Learners
 learners: 
