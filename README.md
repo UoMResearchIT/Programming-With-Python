@@ -25,7 +25,7 @@ Once you've chosen a new title, you can set the value for `lesson_title`
 in <_config.yml>
 - [ ] Add the URL to your built lesson pages to the repository description\*
 - [ ] [Add relevant topic tags to your lesson repository][cdh-topic-tags].
-- [ ] Fill in the fields marked `FIXME` in:
+- [x] Fill in the fields marked `FIXME` in:
 - this README
 - <_config.yml>
 - [ ] If you're going to be developing lesson material for the first time
@@ -46,17 +46,12 @@ the lesson URL <https://carpentries-incubator.github.io/new-lesson/>.
 
 ## Contributing
 
-We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any
-questions, concerns, or experience any difficulties along the way.
+We welcome all contributions to improve the lesson! Maintainers will do their best to help you if you have any questions, concerns, or experience any difficulties along the way.
 
-We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at
-the [more detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even
+We'd like to ask you to familiarize yourself with our [Contribution Guide](CONTRIBUTING.md) and have a look at the [more detailed guidelines][lesson-example] on proper formatting, ways to render the lesson locally, and even
 how to write new episodes.
 
-Please see the current list of [issues][FIXME] for ideas for contributing to this
-repository. For making your contribution, we use the GitHub flow, which is
-nicely explained in the chapter [Contributing to a Project](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro Git
-by Scott Chacon.
+Please see the current list of [issues][issues-list] for ideas for contributing to this repository. For making your contribution, we use the GitHub flow, which is nicely explained in the chapter [Contributing to a Project](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project) in Pro Git by Scott Chacon.
 Look for the tag ![good\_first\_issue](https://img.shields.io/badge/-good%20first%20issue-gold.svg). This indicates that the maintainers will welcome a pull request fixing this issue.
 
 ## Maintainer(s)
@@ -68,17 +63,18 @@ Current maintainers of this lesson are
 
 ## Authors
 
-A list of contributors to the lesson can be found in <AUTHORS>
+A list of contributors to this lesson can be found in the AUTHORS file.
 
 ## Citation
 
-To cite this lesson, please consult with <CITATION>
+Information about citing this lesson will be made available in the CITATION file.
 
 [community-lessons]: https://carpentries.org/community-lessons
 [cdh-topic-tags]: https://cdh.carpentries.org/the-carpentries-incubator.html#topic-tags
 [cdh]: https://cdh.carpentries.org
 [lesson-example]: https://carpentries.github.io/lesson-example
 [change-default-branch]: https://docs.github.com/en/github/administering-a-repository/changing-the-default-branch
+[issues-list]: https://github.com/UoMResearchIT/Programming-With-Python/issues
 
 
 
