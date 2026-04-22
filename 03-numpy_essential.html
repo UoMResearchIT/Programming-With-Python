@@ -334,7 +334,7 @@
       </div>
       <hr></nav><main id="main-content" class="main-content"><div class="container lesson-content">
         <h1>Numpy and Matplotlib Essential</h1>
-        <p>Last updated on 2026-04-21 |
+        <p>Last updated on 2026-04-22 |
 
         <a href="https://github.com/UoMResearchIT/programming_with_python/edit/main/episodes/03-numpy_essential.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 
@@ -496,7 +496,7 @@ What is the result of these two additions?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>The correct answer is (2)</p>
 </div>
@@ -626,7 +626,7 @@ contains the values of the Gaussian from <strong>x</strong>=-100 to
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> challenge 1: </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb15">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -645,7 +645,7 @@ contains the values of the Gaussian from <strong>x</strong>=-100 to
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> challenge 2: </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb16">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -661,7 +661,7 @@ contains the values of the Gaussian from <strong>x</strong>=-100 to
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution4" aria-expanded="false" aria-controls="collapseSolution4">
   <h4 class="accordion-header" id="headingSolution4"> challenge 3: </h4>
 </button>
-<div id="collapseSolution4" class="accordion-collapse collapse" aria-labelledby="headingSolution4" data-bs-parent="#accordionSolution4">
+<div id="collapseSolution4" class="accordion-collapse collapse" data-bs-parent="#accordionSolution4" aria-labelledby="headingSolution4">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb17">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -679,7 +679,7 @@ contains the values of the Gaussian from <strong>x</strong>=-100 to
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution5" aria-expanded="false" aria-controls="collapseSolution5">
   <h4 class="accordion-header" id="headingSolution5"> challenge 4: </h4>
 </button>
-<div id="collapseSolution5" class="accordion-collapse collapse" aria-labelledby="headingSolution5" data-bs-parent="#accordionSolution5">
+<div id="collapseSolution5" class="accordion-collapse collapse" data-bs-parent="#accordionSolution5" aria-labelledby="headingSolution5">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb18">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -906,8 +906,7 @@ vs the number of photons:</p>
 <span id="cb35-2"><a href="#cb35-2" tabindex="-1" aria-label="code-block-35-2"></a>plt.xlabel(<span class="st">'Number of Photons'</span>)</span>
 <span id="cb35-3"><a href="#cb35-3" tabindex="-1" aria-label="code-block-35-3"></a>plt.ylabel(<span class="st">'Pixel Count'</span>)</span></code></pre>
 </div>
-<p><img src="fig/photon_count_a.png" alt="Histogram showing photon count, with (almost) all values around 0." class="figure">
-This confirms our suspicions that many pixels have very low photon
+<figure><img src="fig/photon_count_a.png" alt="Histogram showing photon count, with (almost) all values around 0." class="figure mx-auto d-block"></figure><p>This confirms our suspicions that many pixels have very low photon
 counts.</p>
 <div id="flattening-n-d-arrays" class="callout">
 <div class="callout-square">
@@ -947,9 +946,8 @@ the best cut-off point for this plot.</p>
 <span id="cb37-2"><a href="#cb37-2" tabindex="-1" aria-label="code-block-37-2"></a>plt.xlabel(<span class="st">'Number of Photons'</span>)</span>
 <span id="cb37-3"><a href="#cb37-3" tabindex="-1" aria-label="code-block-37-3"></a>plt.ylabel(<span class="st">'Pixel Count'</span>)</span></code></pre>
 </div>
-<p><img src="fig/photon_count_c.png" alt="Histogram showing photon counts between 1 and 30" class="figure"> We see that
-there is a bi-modal distribution, with the largest peak around 8-9
-photons, and a smaller peak around 3-4 photons.</p>
+<figure><img src="fig/photon_count_c.png" alt="Histogram showing photon counts between 1 and 30" class="figure mx-auto d-block"></figure><p>We see that there is a bi-modal distribution, with the largest peak
+around 8-9 photons, and a smaller peak around 3-4 photons.</p>
 <p>Now that we can see that the majority of the data is below a photon
 count of 25, we can start manipulating our image plot to see more
 details of the nebulae:</p>
@@ -1040,7 +1038,7 @@ data array.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution6" aria-expanded="false" aria-controls="collapseSolution6">
   <h4 class="accordion-header" id="headingSolution6"> New mask </h4>
 </button>
-<div id="collapseSolution6" class="accordion-collapse collapse" aria-labelledby="headingSolution6" data-bs-parent="#accordionSolution6">
+<div id="collapseSolution6" class="accordion-collapse collapse" data-bs-parent="#accordionSolution6" aria-labelledby="headingSolution6">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb43">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1056,7 +1054,7 @@ data array.</li>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution7" aria-expanded="false" aria-controls="collapseSolution7">
   <h4 class="accordion-header" id="headingSolution7"> Combining masks </h4>
 </button>
-<div id="collapseSolution7" class="accordion-collapse collapse" aria-labelledby="headingSolution7" data-bs-parent="#accordionSolution7">
+<div id="collapseSolution7" class="accordion-collapse collapse" data-bs-parent="#accordionSolution7" aria-labelledby="headingSolution7">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb44">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1154,7 +1152,7 @@ any links that you are not going to use.
   "url": "https://uomresearchit.github.io/programming_with_python/03-numpy_essential.html",
   "identifier": "https://uomresearchit.github.io/programming_with_python/03-numpy_essential.html",
   "dateCreated": "2026-04-22",
-  "dateModified": "2026-04-21",
+  "dateModified": "2026-04-22",
   "datePublished": "2026-04-22"
 }
 
