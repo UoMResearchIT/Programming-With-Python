@@ -55,6 +55,9 @@ When printing the variable the unit information will now be attached:
 ```python
 print(length)
 ```
+```output
+26.2 m
+```
 
 The type of this new variable is an `astropy` `Quantity`:
 
@@ -93,13 +96,20 @@ distance_end = 23 * u.km
 length = distance_end - distance_start
 print(length)
 ```
+```output
+19.99999 km
+```
 
 And it also enables the combining of quantities, for example, to calculate a speed:
 
 ```python
+distance = 45 * u.km
 time = 15 * u.minute
-speed = length / time
+speed = distance / time
 print(speed)
+```
+```output
+3.0 km / min
 ```
 
 By default the units library will select units to report for these values based on what the units are of the objects that you have passed it. You can, as before, convert these to the units of your choice:
@@ -107,11 +117,17 @@ By default the units library will select units to report for these values based 
 ```python
 print(speed.to(u.km/u.s))
 ```
+```output
+0.05 km / s
+```
 
 You can also convert the units to the base (irreducible) units for the unit system you are using with the `decompose` function (changing the unit system choice will be covered later):
 
 ```python
 print(speed.decompose())
+```
+```output
+50.0 m / s
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -121,10 +137,13 @@ print(speed.decompose())
 If you wish to reduce to different base units you can pass a list of those units to the `bases` parameter when calling the `decompose` function:
 
 ```python
-print(speed.decompose(bases=['km','s']))
+print(speed.decompose(bases=["km", "s"]))
+```
+```output
+0.05 km / s
 ```
 
-Note that the order of the values in the list passed to `bases` parameter doesn't matter. However, the base units you choose must be either one of the original units used, or a standard base unit. This function cannot be used to convert from km to cm, for example. Instead it is useful where you only want to reduce select units within the object.
+Note that the order of the values in the list passed to the `bases` parameter doesn't matter. However, the base units you choose must be either one of the original units used, or a standard base unit. This function cannot be used to convert from km to cm, for example. Instead it is useful where you only want to reduce select units within the object.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -133,6 +152,9 @@ You can change the base system using functions such as `si` (to change to the de
 
 ```python
 print(speed.cgs)
+```
+```output
+5000.0 cm / s
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -151,7 +173,7 @@ print(jerk)
 ```
 
 ```output
-0.1111111111111111 m / (h min2)
+0.11111111111111112 m / (h min2)
 ```
 
 For the report we are writing we need to convert this to the units `km/hour^3`, which of
@@ -189,6 +211,9 @@ These can then be used in the same manner as the standard units:
 ```python
 speed.to(imperial.mile/u.hour)
 ```
+```output
+111.84681 mi/h​
+```
 
 ## Equivalent Units
 
@@ -205,11 +230,17 @@ This, however, does not work as above:
 ```python
 (656.281 * u.nm).to(u.Hz)
 ```
+```output
+UnitConversionError: 'nm' (length) and 'Hz' (frequency) are not convertible
+```
 
 Instead we need to inform `units` what unit equivalency we want it to use, which can be specified with the `equivalencies` option:
 
 ```python
 (656.281 * u.nm).to(u.Hz, equivalencies=u.spectral())
+```
+```output
+4.5680502×10^14 Hz
 ```
 
 In this case we use the `spectral` equivalence library, which allows conversions between wavelengths, wave number, frequency, and energy equivalent pairs. There are a number of other built-in equivalency libraries, for commonly used pairings.
