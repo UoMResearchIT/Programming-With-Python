@@ -882,7 +882,7 @@ replicate.</p>
 <div class="codewrapper sourceCode" id="cb35">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1" aria-label="code-block-35-1"></a><span class="ex">conda</span> env export</span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb35-1"><a href="#cb35-1" tabindex="-1" aria-label="code-block-35-1"></a><span class="ex">conda</span> export</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -910,14 +910,17 @@ prefix: /home/mbessdl2/.conda/envs/myenv</code></pre>
 </div>
 <p>This will present the same information, but in the more readable <a href="https://yaml.org/" class="external-link">YAML</a> format, and it will also include the
 channel information in the output. This information can be saved as a
-text file as before, and used to create a new environment using the
-command <code>conda env create</code>. However it is still operating
-system specific information.</p>
+txt or yml file as before
+e.g. <code>conda export &gt; envfile.yml</code>, and used to create a
+new environment using the command <code>conda env create</code> (see
+below). However it is still using operating system specific
+information.</p>
 <p>To create a higher-level record of the environment you can use:</p>
 <div class="codewrapper sourceCode" id="cb37">
 <h3 class="code-label">BASH<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1" aria-label="code-block-37-1"></a><span class="ex">conda</span> env export <span class="at">--from-history</span></span></code></pre>
+<pre class="sourceCode bash" tabindex="0"><code class="sourceCode bash"><span id="cb37-1"><a href="#cb37-1" tabindex="-1" aria-label="code-block-37-1"></a><span class="ex">conda</span> export <span class="at">--from-history</span> <span class="op">&gt;</span> envfile.yml</span>
+<span id="cb37-2"><a href="#cb37-2" tabindex="-1" aria-label="code-block-37-2"></a><span class="fu">more</span> envfile.yml</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -980,7 +983,7 @@ environment, giving access to the software installed there</li>
 <code>conda deactivate</code> deactivates the current
 environment</li>
 <li>
-<code>conda env export --from-history &gt; &lt;file.yml&gt;</code>
+<code>conda export --from-history &gt; &lt;file.yml&gt;</code>
 creates a portable record of your current environment</li>
 <li>
 <code>conda env create --file &lt;file.yml&gt; &lt;env&gt;</code>
