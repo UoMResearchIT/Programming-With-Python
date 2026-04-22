@@ -26,7 +26,7 @@ Virtual environments are a useful tool for isolating and managing the software p
 
 Python has built in tools for managing virtual environments ([venv](https://docs.python.org/3/tutorial/venv.html)) and packages ([pip](https://pypi.org/project/pip/)). However, we will not cover these tools today. While venv and pip are very useful for managing pure python packages, they are not very flexible when we want to use packages which are built on other languages (or perhaps do not use python at all). Another tool, [conda](https://docs.conda.io/en/latest/index.html), has been built to extend their functionality to cover these mixed-language packages for a wide range of computing platforms, and it is this which we will cover today.
 
-More details on the differences between conda and pip are given in this [summary](https://www.anaconda.com/blog/understanding-conda-and-pip). Other tools for package management exist as well as conda - popular ones include [uv](https://docs.astral.sh/uv/) and [poetry](https://python-poetry.org/). A full list of tools can be found [here](https://packaging.python.org/en/latest/key_projects/).
+More details on the differences between conda and pip are given in this [summary](https://www.anaconda.com/blog/understanding-conda-and-pip). Other tools for package management exist as well as conda - popular ones include [uv](https://docs.astral.sh/uv/) and [poetry](https://python-poetry.org/). See here for a full list of [packaging projects](https://packaging.python.org/en/latest/key_projects/).
 
 The lesson below is not conducted using a Python interpreter, but instead using the unix shell. When you are asked to type in code below, please do this in a terminal window and not in a Jupyter notebook or other Python interpreter.
 
