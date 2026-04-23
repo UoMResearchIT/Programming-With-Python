@@ -4,9 +4,12 @@ name: Check Markdown links
 # access to secrets
 on:
   workflow_run:
-    workflows: ["Receive Pull Request"]
+    workflows: ["Pull Request Preflight Check"]
     types:
       - completed
+
+permissions:
+    contents: read
 
 jobs:
   markdown-link-check:
