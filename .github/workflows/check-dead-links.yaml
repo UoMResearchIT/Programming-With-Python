@@ -24,5 +24,5 @@ jobs:
     
     - name: Check URLs
       run: |
-        find . -name '*.md' -exec markdown-link-check '{}' --config config.json -q \; || exit 1
+        find . -name '*.md' -exec markdown-link-check '{}' -q \; || exit 1
 
