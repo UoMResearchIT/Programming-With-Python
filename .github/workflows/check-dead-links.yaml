@@ -19,8 +19,10 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Check links
-      uses: tcort/github-action-markdown-link-check@v1.1.2
-      with:
-        use-verbose-mode: 'yes'
-        check-modified-files-only: 'no'
+    - name: Install markdown-link-check
+      run: npm i -g markdown-link-check@3.14.2
+    
+    - name: Check URLs
+      run: |
+        find . -name '*.md' -exec markdown-link-check '{}' --config config.json -q \; || exit 1
+
