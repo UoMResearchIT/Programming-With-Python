@@ -2,11 +2,13 @@ name: Check Markdown links
 
 # read-write repo token
 # access to secrets
+# on:
+#   workflow_run:
+#     workflows: ["Pull Request Preflight Check"]
+#     types:
+#       - completed
 on:
-  workflow_run:
-    workflows: ["Pull Request Preflight Check"]
-    types:
-      - completed
+    push:
 
 permissions:
     contents: read
