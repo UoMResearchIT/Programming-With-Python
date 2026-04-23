@@ -274,7 +274,7 @@
 <div class="accordion accordion-flush" id="accordionFlush5">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading5">
-        <a href="04-software_package_management.html">4. Software Package Management</a>
+        <a href="04-defensive_programming.html">4. Defensive Programming</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -286,7 +286,7 @@
 <div class="accordion accordion-flush" id="accordionFlush6">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading6">
-        <a href="05-defensive_programming.html">5. Defensive Programming</a>
+        <a href="05-units_and_quantities.html">5. Units and Quantities</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -298,7 +298,7 @@
 <div class="accordion accordion-flush" id="accordionFlush7">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading7">
-        <a href="06-units_and_quantities.html">6. Units and Quantities</a>
+        <a href="06-pandas_essential.html">6. Pandas Essential</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -310,7 +310,7 @@
 <div class="accordion accordion-flush" id="accordionFlush8">
   <div class="accordion-item">
     <div class="accordion-header" id="flush-heading8">
-        <a href="07-pandas_essential.html">7. Pandas Essential</a>
+        <a href="07-software_package_management.html">7. Software Package Management</a>
     </div>
 <!--/div.accordion-header-->
 
@@ -410,7 +410,52 @@ library</li>
 an analysis</li>
 <li>NumPy libraries are available for reading a lot of different file
 formats</li>
-</ul></section><section id="04-software_package_management"><h2 class="section-heading"><a href="04-software_package_management.html">Software Package Management</a></h2>
+</ul></section><section id="04-defensive_programming"><h2 class="section-heading"><a href="04-defensive_programming.html">Defensive Programming</a></h2>
+<hr class="half-width">
+<ul>
+<li>
+<code>try-except</code> structures are useful for catching errors as
+they occur</li>
+<li>
+<code>assert</code> structures are useful for forcing errors early,
+to avoid wasted effort</li>
+</ul></section><section id="05-units_and_quantities"><h2 class="section-heading"><a href="05-units_and_quantities.html">Units and Quantities</a></h2>
+<hr class="half-width">
+<ul>
+<li>
+<code>astropy.units</code> library provides unit support</li>
+<li>
+<code>Quantity</code> objects are created by multiplying values by
+the desired units</li>
+<li>The <code>.to()</code> function can be used to convert units</li>
+<li>The <code>.decompose()</code> function can be used to convert to the
+base (irreducible) units</li>
+<li>Equivalences can be found using the
+<code>.find_equivalent_units()</code> function</li>
+<li>Specific equivalence libraries can be defined using the
+<code>equivalences=</code> keyword</li>
+<li>Import quantity-support from <code>astropy.visualization</code> to
+integrate units with matplotlib for data plotting</li>
+<li>The <code>pint</code> library provides similar unit support, but is
+better for working with temperature increments</li>
+</ul></section><section id="06-pandas_essential"><h2 class="section-heading"><a href="06-pandas_essential.html">Pandas Essential</a></h2>
+<hr class="half-width">
+<ul>
+<li>CSV data is loaded using the <code>read_csv()</code> function to
+create a pandas <code>DataFrame</code> object</li>
+<li>The <code>describe()</code> function gives a quick analysis of the
+DataFrame</li>
+<li>
+<code>loc[&lt;index&gt;,&lt;column&gt;]</code> indexes the DataFrame
+by the index and column labels</li>
+<li>
+<code>iloc[&lt;index&gt;,&lt;column&gt;]</code> indexes the
+DataFrame using numerical indices</li>
+<li>The data can be sliced by providing index and/or column indices as
+ranges or lists of values</li>
+<li>The built-in <code>plot()</code> function can be used to plot the
+data using the <code>matplotlib</code> library</li>
+</ul></section><section id="07-software_package_management"><h2 class="section-heading"><a href="07-software_package_management.html">Software Package Management</a></h2>
 <hr class="half-width">
 <ul>
 <li>conda virtual environments are useful for installing programs with
@@ -439,51 +484,6 @@ creates a portable record of your current environment</li>
 <li>
 <code>conda env create --file &lt;file.yml&gt; &lt;env&gt;</code>
 creates a new environment from an environment file</li>
-</ul></section><section id="05-defensive_programming"><h2 class="section-heading"><a href="05-defensive_programming.html">Defensive Programming</a></h2>
-<hr class="half-width">
-<ul>
-<li>
-<code>try-except</code> structures are useful for catching errors as
-they occur</li>
-<li>
-<code>assert</code> structures are useful for forcing errors early,
-to avoid wasted effort</li>
-</ul></section><section id="06-units_and_quantities"><h2 class="section-heading"><a href="06-units_and_quantities.html">Units and Quantities</a></h2>
-<hr class="half-width">
-<ul>
-<li>
-<code>astropy.units</code> library provides unit support</li>
-<li>
-<code>Quantity</code> objects are created by multiplying values by
-the desired units</li>
-<li>The <code>.to()</code> function can be used to convert units</li>
-<li>The <code>.decompose()</code> function can be used to convert to the
-base (irreducible) units</li>
-<li>Equivalences can be found using the
-<code>.find_equivalent_units()</code> function</li>
-<li>Specific equivalence libraries can be defined using the
-<code>equivalences=</code> keyword</li>
-<li>Import quantity-support from <code>astropy.visualization</code> to
-integrate units with matplotlib for data plotting</li>
-<li>The <code>pint</code> library provides similar unit support, but is
-better for working with temperature increments</li>
-</ul></section><section id="07-pandas_essential"><h2 class="section-heading"><a href="07-pandas_essential.html">Pandas Essential</a></h2>
-<hr class="half-width">
-<ul>
-<li>CSV data is loaded using the <code>read_csv()</code> function to
-create a pandas <code>DataFrame</code> object</li>
-<li>The <code>describe()</code> function gives a quick analysis of the
-DataFrame</li>
-<li>
-<code>loc[&lt;index&gt;,&lt;column&gt;]</code> indexes the DataFrame
-by the index and column labels</li>
-<li>
-<code>iloc[&lt;index&gt;,&lt;column&gt;]</code> indexes the
-DataFrame using numerical indices</li>
-<li>The data can be sliced by providing index and/or column indices as
-ranges or lists of values</li>
-<li>The built-in <code>plot()</code> function can be used to plot the
-data using the <code>matplotlib</code> library</li>
 </ul></section>
 </div>
     </main>
@@ -533,9 +533,9 @@ data using the <code>matplotlib</code> library</li>
   "creativeWorkStatus": "active",
   "url": "https://uomresearchit.github.io/programming_with_python/key-points.html",
   "identifier": "https://uomresearchit.github.io/programming_with_python/key-points.html",
-  "dateCreated": "2026-04-22",
-  "dateModified": "2026-04-22",
-  "datePublished": "2026-04-22"
+  "dateCreated": "2026-04-23",
+  "dateModified": "2026-04-23",
+  "datePublished": "2026-04-23"
 }
 
   </script><script>
