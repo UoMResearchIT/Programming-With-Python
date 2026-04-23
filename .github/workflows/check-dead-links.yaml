@@ -1,0 +1,20 @@
+name: Check Markdown links
+
+# read-write repo token
+# access to secrets
+on:
+  workflow_run:
+    workflows: ["Receive Pull Request"]
+    types:
+      - completed
+
+jobs:
+  markdown-link-check:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: tcort/github-action-markdown-link-check@v1.1.2
+      with:
+        use-quiet-mode: 'yes'
+        use-verbose-mode: 'yes'
+        check-modified-files-only: 'no'
