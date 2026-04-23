@@ -108,7 +108,7 @@ we can use `--prepend`, which behaves in the exact same way as `--add`).
 
 ## Searching for Packages
 
-Once you've added the channels you wish to use, you can now search them for the software that you need. This is simply carried out using `conda search`. For example, if we wished to find out what versions of [Gromacs](https://www.gromacs.org/About_Gromacs) are available, we can use:
+Once you've added the channels you wish to use, you can now search them for the software that you need. This is simply carried out using `conda search`. For example, if we wished to find out what versions of [Gromacs](https://www.gromacs.org/about.html) are available, we can use:
 
 ```bash
 conda search gromacs
