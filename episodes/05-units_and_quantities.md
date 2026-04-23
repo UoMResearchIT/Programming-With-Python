@@ -24,13 +24,7 @@ One of the most common problems in physics and the development of physical model
 
 In this lesson we will look at one of the available libraries in python for helping to avoid such problems. This is the [units](https://docs.astropy.org/en/stable/units/index.html) module in the [astropy](https://docs.astropy.org/en/stable/index.html) library.
 
-## Installing a new python library
-
-Following the conda lesson, we install the astropy library using:
-
-```bash
-conda install astropy
-```
+## Importing a module from a python library
 
 The `units` module can then be imported in your scripts using:
 
@@ -39,6 +33,24 @@ from astropy import units as u
 ```
 
 Importing as `u` is not necessary, but it is a common shorthand for this module, and so we'll use it below.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+As you are likely using the Jupyter interface to follow this lesson, it is likely that the `astropy` library will already be installed there. If not, then you may encounter an error when running this command. We will go into more detail on installing packages in a later lesson; for now, installing the library will depend on how you set your environment up initially; if you used `pip` (or are in Jupyter and `astropy` doesn't work), then you need to use
+
+```bash
+pip install astropy
+```
+
+Alternatively, if you installed some form of `conda`, then you can use
+
+```bash
+conda install astropy
+```
+
+We will go into more detail about `conda` in a later lesson.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Basics
 
@@ -421,11 +433,21 @@ This is verging on unreadable (as is demonstrated by us having to split a simple
 
 Fortunately there is support for cleaner temperature conversions in the [pint](https://pint.readthedocs.io/en/latest/index.html) package. This has similar functionality to the `astropy.unit` package, but has been built from the ground up with a focus on different aspects. These include unit parsing and standalone unit definitions, uncertainties integration, and (important for our example here), cleaner treatment of temperature units.
 
-Pint can be installed using conda (and the conda-forge channel):
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+Pint should already be installed if you are using Jupyter; however, as before, if you need to install it yourself, it can be installed using conda (and the conda-forge channel) with:
 
 ```bash
 conda install -c conda-forge pint
 ```
+
+or using pip with
+
+```bash
+pip install pint
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 The unit registry is loaded using:
 
