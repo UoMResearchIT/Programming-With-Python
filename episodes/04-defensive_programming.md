@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 University of Manchester
+
+SPDX-License-Identifier: apache-2.0
+-->
+
 ---
 title: Defensive Programming
 teaching: 0
