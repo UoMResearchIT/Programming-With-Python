@@ -92,133 +92,6 @@ min 	973.533195 	1353.989176 	1709.683679 ...
 max 	14734.232750 	17909.489730 	20431.092700 ...
 ```
 
-## Accessing elements, rows, and columns
-
-The other major difference to numpy arrays is that we cannot directly access the array elements using numerical indices such as `df[0,0]`. It is possible to access columns of data using the column headers as indices (for example, `df['gdpPercap_1952']`), but this is not recommended. Instead you should use the `iloc` and `loc` methods.
-
-The `iloc` method enables us to access the DataFrame as we would a numpy array:
-
-```python
-print(df.iloc[0,0])
-```
-```output
-1601.056136
-```
-
-while the `loc` method enables the same access using the index and column headers:
-
-```python
-print(df.loc["Albania", "gdpPercap_1952"])
-```
-```output
-1601.056136
-```
-
-For both of these methods, we can leave out the column indexes, and these will all be returned for the specified index row:
-
-```python
-print(df.loc["Albania"])
-```
-```output
-gdpPercap_1952    1601.056136
-gdpPercap_1957    1942.284244
-gdpPercap_1962    2312.888958
-gdpPercap_1967    2760.196931
-gdpPercap_1972    3313.422188
-gdpPercap_1977    3533.003910
-gdpPercap_1982    3630.880722
-gdpPercap_1987    3738.932735
-gdpPercap_1992    2497.437901
-gdpPercap_1997    3193.054604
-gdpPercap_2002    4604.211737
-gdpPercap_2007    5937.029526
-Name: Albania, dtype: float64
-```
-
-This will not work for column headings (in the inverse of the `df['gdpPercap_1952']` method) however. While it is quick to type, we recommend trying to avoid using this method of slicing the DataFrame, in favour of the methods described below.
-
-For both of these methods we can use the `:` character to select all elements in a row or column. For example, to get all information for Albania:
-
-```python
-print(df.loc["Albania", :])
-```
-
-or:
-
-```python
-print(df.iloc[0, :])
-```
-```output
-gdpPercap_1952    1601.056136
-gdpPercap_1957    1942.284244
-gdpPercap_1962    2312.888958
-gdpPercap_1967    2760.196931
-gdpPercap_1972    3313.422188
-gdpPercap_1977    3533.003910
-gdpPercap_1982    3630.880722
-gdpPercap_1987    3738.932735
-gdpPercap_1992    2497.437901
-gdpPercap_1997    3193.054604
-gdpPercap_2002    4604.211737
-gdpPercap_2007    5937.029526
-Name: Albania, dtype: float64
-```
-
-Note that here we knew that Albania was the first country in the DataFrame, so we were able to ask for the first column (0). If you needed to know the column ID for a particular country, you could do this using `get_loc()`, e.g. to get the column ID value for France:
-
-```python
-df.index.get_loc("France")
-```
-```output
-9
-```
-
-The `:` character by itself is shorthand to indicate all elements across that index, but it can also be combined with index values or column headers to specify a slice of the DataArray:
-
-```python
-print(df.loc["Albania", 'gdpPercap_1962':'gdpPercap_1972'])
-```
-```output
-gdpPercap_1962    2312.888958
-gdpPercap_1967    2760.196931
-gdpPercap_1972    3313.422188
-Name: Albania, dtype: float64
-```
-
-If either end of the slice definition is omitted, then the slice will run to the end of that index (just as it does for `:` by itself):
-
-```python
-print(df.loc["Albania", 'gdpPercap_1962':])
-```
-```output
-gdpPercap_1962    2312.888958
-gdpPercap_1967    2760.196931
-gdpPercap_1972    3313.422188
-gdpPercap_1977    3533.003910
-gdpPercap_1982    3630.880722
-gdpPercap_1987    3738.932735
-gdpPercap_1992    2497.437901
-gdpPercap_1997    3193.054604
-gdpPercap_2002    4604.211737
-gdpPercap_2007    5937.029526
-Name: Albania, dtype: float64
-```
-
-Slices can also be defined using a list of indexes or column headings:
-
-```python
-year_list = ['gdpPercap_1952','gdpPercap_1967','gdpPercap_1982','gdpPercap_1997']
-country_list = ['Albania','Belgium']
-print(df.loc[country_list, year_list])
-```
-
-```output
-         gdpPercap_1952  gdpPercap_1967  gdpPercap_1982  gdpPercap_1997
-country
-Albania     1601.056136     2760.196931     3630.880722     3193.054604
-Belgium     8343.105127    13149.041190    20979.845890    27561.196630
-```
-
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 ## Changing Column Labels
@@ -253,12 +126,146 @@ column labels.
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+Now that we have relabelled the columns, for simplicity's sake, let's shorten the name of the dataframe back to the original `df`:
+
+```python
+df = df_gdpPercap.copy(deep=True)
+```
+
+
+## Accessing elements, rows, and columns
+
+The other major difference to numpy arrays is that we cannot directly access the array elements using numerical indices such as `df[0,0]`. It is possible to access columns of data using the column headers as indices (for example, `df['1952']`), but this is not recommended. Instead you should use the `iloc` and `loc` methods.
+
+The `iloc` method enables us to access the DataFrame as we would a numpy array:
+
+```python
+print(df.iloc[0,0])
+```
+```output
+1601.056136
+```
+
+while the `loc` method enables the same access using the index and column headers:
+
+```python
+print(df.loc["Albania", "1952"])
+```
+```output
+1601.056136
+```
+
+For both of these methods, we can leave out the column indexes, and these will all be returned for the specified index row:
+
+```python
+print(df.loc["Albania"])
+```
+```output
+1952    1601.056136
+1957    1942.284244
+1962    2312.888958
+1967    2760.196931
+1972    3313.422188
+1977    3533.003910
+1982    3630.880722
+1987    3738.932735
+1992    2497.437901
+1997    3193.054604
+2002    4604.211737
+2007    5937.029526
+Name: Albania, dtype: float64
+```
+
+This will not work for column headings (in the inverse of the `df['1952']` method) however. While it is quick to type, we recommend trying to avoid using this method of slicing the DataFrame, in favour of the methods described below.
+
+For both of these methods we can use the `:` character to select all elements in a row or column. For example, to get all information for Albania:
+
+```python
+print(df.loc["Albania", :])
+```
+
+or:
+
+```python
+print(df.iloc[0, :])
+```
+```output
+1952    1601.056136
+1957    1942.284244
+1962    2312.888958
+1967    2760.196931
+1972    3313.422188
+1977    3533.003910
+1982    3630.880722
+1987    3738.932735
+1992    2497.437901
+1997    3193.054604
+2002    4604.211737
+2007    5937.029526
+Name: Albania, dtype: float64
+```
+
+Note that here we knew that Albania was the first country in the DataFrame, so we were able to ask for the first column (0). If you needed to know the column ID for a particular country, you could do this using `get_loc()`, e.g. to get the column ID value for France:
+
+```python
+df.index.get_loc("France")
+```
+```output
+9
+```
+
+The `:` character by itself is shorthand to indicate all elements across that index, but it can also be combined with index values or column headers to specify a slice of the DataArray:
+
+```python
+print(df.loc["Albania", '1962':'1972'])
+```
+```output
+1962    2312.888958
+1967    2760.196931
+1972    3313.422188
+Name: Albania, dtype: float64
+```
+
+If either end of the slice definition is omitted, then the slice will run to the end of that index (just as it does for `:` by itself):
+
+```python
+print(df.loc["Albania", '1962':])
+```
+```output
+1962    2312.888958
+1967    2760.196931
+1972    3313.422188
+1977    3533.003910
+1982    3630.880722
+1987    3738.932735
+1992    2497.437901
+1997    3193.054604
+2002    4604.211737
+2007    5937.029526
+Name: Albania, dtype: float64
+```
+
+Slices can also be defined using a list of indexes or column headings:
+
+```python
+year_list = ['1952','1967','1982','1997']
+country_list = ['Albania','Belgium']
+print(df.loc[country_list, year_list])
+```
+
+```output
+                1952          1967          1982          1997
+country                                                       
+Albania  1601.056136   2760.196931   3630.880722   3193.054604
+Belgium  8343.105127  13149.041190  20979.845890  27561.196630
+```
+
 ## Masking data
 
 Pandas Dataframes are based on numpy arrays, and retain some of the numpy tools, such as masked arrays. This enables us to apply selection criteria to the Dataframes, so that only the values that we require are shown. For example, the following selects all data where the GDP is above $10,000:
 
 ```python
-subset = df_gdpPercap.loc['Italy':'Poland', '1962':'1972']
+subset = df.loc['Italy':'Poland', '1962':'1972']
 print(subset[subset>10000])
 ```
 
@@ -277,7 +284,7 @@ Poland               NaN          NaN          NaN
 Pandas is integrated with matplotlib, and so data can be plotted directly using the integrated `plot` method. For example, to plot the GDP for Sweden:
 
 ```python
-df_gdpPercap.loc['Sweden',:].plot()
+df.loc['Sweden',:].plot()
 ```
 
 ![](fig/sweden-pandas-fig1.png){alt="Line plot of increase in Sweden's GDP from 1952 to 2002, with no axis labels."}
@@ -287,7 +294,7 @@ Note that, in the case above, we passed a single column of data to the `plot` me
 For example, we will transpose the GDP data for the first 3 countries in our dataset:
 
 ```python
-print(df_gdpPercap.iloc[0:3,:].T)
+print(df.iloc[0:3,:].T)
 ```
 
 ```output
@@ -310,7 +317,7 @@ This data is now ready to be plotted as a histogram - first we set the style of 
 
 ```python
 plt.style.use('ggplot')
-df_gdpPercap.iloc[0:3,:].T.plot(kind='bar')
+df.iloc[0:3,:].T.plot(kind='bar')
 plt.ylabel('GDP per capita')
 ```
 
@@ -332,7 +339,7 @@ axis (`axs`) objects. Pass the axis object to pandas when plotting your figure
 
 ```python
 fig, axs = plt.subplots()
-df_gdpPercap.loc['Albania':'Belgium',:].T.plot(kind='bar',ax=axs)
+df.loc['Albania':'Belgium',:].T.plot(kind='bar',ax=axs)
 plt.ylabel('GDP per capita')
 fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
 ```
@@ -346,7 +353,7 @@ fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
 We now want to plot the GDP data for Sweden and Iceland from 1972 onwards. The code block we will be using is:
 
 ```python
-df_gdpPercap<BLOCK>.T.plot(kind='line')
+df<BLOCK>.T.plot(kind='line')
 
 # Create legend.
 plt.legend(loc='upper left')
