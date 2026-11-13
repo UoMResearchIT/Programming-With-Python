@@ -189,6 +189,35 @@ else:
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
+## Functions
+
+::::::::::::::::::::::::::::::::::::: challenge
+
+### 8\. Creating a function
+
+Using string slicing, write a function called `outer` that returns a string made up of the first and last characters of an input variable, so that a call to your function should give the following result:
+
+```python
+print(outer('aluminium'))
+print(outer("gold"))
+```
+```output
+am
+gd
+```
+
+:::::::::::::::  solution
+
+```python
+def outer(input_string):
+    return input_string[0] + input_string[-1]
+```
+
+:::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::::::::
+
+
 :::::::::::::::::::::::::::::::::::::::::  callout
 
 ## Formatting Variables and Objects in Strings
