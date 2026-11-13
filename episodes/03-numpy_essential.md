@@ -211,9 +211,6 @@ def gauss(x, mu=0, sigma=1):
   of the Gaussian from **x**=-100 to **x**=100.
 3. Use the 'matplotlib' library to plot the curve with **µ**=0 and **σ**=10.
 
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 :::::::::::::::  solution
 
 ## challenge 1:
