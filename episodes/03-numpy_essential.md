@@ -244,14 +244,31 @@ plt.show()
 
 ## Noisy Signal
 
-Now we are going to add some random noise to that curve. To do this we need to create a Random Number Generator (RNG), which we can then use with the function `normal` from the module `random` provided by the NumPy library. We create an array of zeros of the same length as the array for our curve `g` as the mean values for the random noise, and then scale the magnitude of the noise so it is (roughly) a 10th of the magnitude of the Gaussian maximum. Finally, we then plot the result of adding the noise to the original curve:
+Now we are going to add some random noise to that curve. To do this we need to create a Random Number Generator (RNG), which we can then use with the function `normal` from the module `random` provided by the NumPy library. We create an array of zeros of the same length as the array for our curve `g` as the mean values for the random noise, and then scale the magnitude of the noise so it is (roughly) a 10th of the magnitude of the Gaussian maximum.
 
 ```python
 rng = np.random.default_rng()
 zeros = np.zeros(len(g))
 noise = rng.normal(zeros, g.max() / 10)
 noisy = g + noise
+```
+
+To identify any signal in the data we can use the standard deviation as an estimate of the noise around the mean value of the data:
+
+```python
+stddev_noisy = np.std(noisy)
+mean_noisy = np.mean(noisy)
+print(f'standard deviation is: {stddev_noisy:.5f}')
+print(f'mean value is: {mean_noisy:.5f}')
+```
+
+Finally, we then plot the result of adding the noise to the original curve, alongside some guides to show the mean and standard deviation of the noise:
+
+```python
 plt.plot(x, noisy)
+plt.plot(x, [mean_noisy]*len(x), 'g-')  # Plot a green line to show the mean of the noise
+plt.plot(x, [mean_noisy+stddev_noisy]*len(x), 'r-')  # Plot red lines to show mean +/- stddev
+plt.plot(x, [mean_noisy-stddev_noisy]*len(x), 'r-')
 plt.show()
 ```
 
@@ -269,20 +286,7 @@ it each time it is required.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-To identify any signal in the data we can use the standard deviation as an estimate of the noise around the mean value of the data.
-
-```python
-stddev_noisy = np.std(noisy)
-mean_noisy = np.mean(noisy)
-print(f'standard deviation is: {stddev_noisy:.5f}')
-print(f'mean value is: {mean_noisy:.5f}')
-```
-```output
-standard deviation is: 0.01159
-mean value is: 0.00505
-```
-
-We will create a mask for the data, by selecting all data points below this threshold value (we'll assume here that any signal we might be interested in is positive):
+Now we will create a mask for the data, by selecting all data points below this threshold value (we'll assume here that any signal we might be interested in is positive):
 
 ```python
 mask = noisy < (stddev_noisy + mean_noisy)
@@ -290,11 +294,15 @@ mask = noisy < (stddev_noisy + mean_noisy)
 
 This creates an array of boolean values, the same shape as our original data, with `True` values where the conditional statement has been met.
 
-The mask and noisy data can now be combined using the `array` function of the NumPy masked arrays module (`np.ma`). Any `True` value in the mask will exclude the corresponding element from subsequent computation or plotting:
+The mask and noisy data can now be combined using the `array` function of the NumPy masked arrays module (`np.ma`). Any `True` value in the mask will exclude the corresponding element from subsequent computation or plotting. Again, we plot the green and red lines to give a visual indication of what our computation is doing:
 
 ```python
-noisy_ma = np.ma.array(noisy, mask=mask)
-plt.plot(noisy_ma)
+noisy_masked = np.ma.array(noisy, mask=mask)
+plt.plot(x, noisy_masked)
+plt.xlim(-100,100)
+plt.plot(x, [mean_noisy]*len(x), 'g-')
+plt.plot(x, [mean_noisy+stddev_noisy]*len(x), 'r-')
+plt.plot(x, [mean_noisy-stddev_noisy]*len(x), 'r-')
 plt.show()
 ```
 
