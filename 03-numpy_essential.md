@@ -1,7 +1,7 @@
 ---
 title: Numpy and Matplotlib Essential
-teaching: 0
-exercises: 0
+teaching: 40
+exercises: 20
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

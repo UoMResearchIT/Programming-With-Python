@@ -1,7 +1,7 @@
 ---
 title: Defensive Programming
-teaching: 0
-exercises: 0
+teaching: 20
+exercises: 10
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

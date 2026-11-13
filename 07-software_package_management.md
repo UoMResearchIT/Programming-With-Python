@@ -1,7 +1,7 @@
 ---
 title: Software Package Management
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 5
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
