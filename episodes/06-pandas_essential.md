@@ -101,17 +101,38 @@ The `iloc` method enables us to access the DataFrame as we would a numpy array:
 ```python
 print(df.iloc[0,0])
 ```
+```output
+1601.056136
+```
 
 while the `loc` method enables the same access using the index and column headers:
 
 ```python
 print(df.loc["Albania", "gdpPercap_1952"])
 ```
+```output
+1601.056136
+```
 
 For both of these methods, we can leave out the column indexes, and these will all be returned for the specified index row:
 
 ```python
 print(df.loc["Albania"])
+```
+```output
+gdpPercap_1952    1601.056136
+gdpPercap_1957    1942.284244
+gdpPercap_1962    2312.888958
+gdpPercap_1967    2760.196931
+gdpPercap_1972    3313.422188
+gdpPercap_1977    3533.003910
+gdpPercap_1982    3630.880722
+gdpPercap_1987    3738.932735
+gdpPercap_1992    2497.437901
+gdpPercap_1997    3193.054604
+gdpPercap_2002    4604.211737
+gdpPercap_2007    5937.029526
+Name: Albania, dtype: float64
 ```
 
 This will not work for column headings (in the inverse of the `df['gdpPercap_1952']` method) however. While it is quick to type, we recommend trying to avoid using this method of slicing the DataFrame, in favour of the methods described below.
@@ -127,11 +148,29 @@ or:
 ```python
 print(df.iloc[0, :])
 ```
+```output
+gdpPercap_1952    1601.056136
+gdpPercap_1957    1942.284244
+gdpPercap_1962    2312.888958
+gdpPercap_1967    2760.196931
+gdpPercap_1972    3313.422188
+gdpPercap_1977    3533.003910
+gdpPercap_1982    3630.880722
+gdpPercap_1987    3738.932735
+gdpPercap_1992    2497.437901
+gdpPercap_1997    3193.054604
+gdpPercap_2002    4604.211737
+gdpPercap_2007    5937.029526
+Name: Albania, dtype: float64
+```
 
 Note that here we knew that Albania was the first country in the DataFrame, so we were able to ask for the first column (0). If you needed to know the column ID for a particular country, you could do this using `get_loc()`, e.g. to get the column ID value for France:
 
 ```python
 df.index.get_loc("France")
+```
+```output
+9
 ```
 
 The `:` character by itself is shorthand to indicate all elements across that index, but it can also be combined with index values or column headers to specify a slice of the DataArray:
@@ -139,11 +178,30 @@ The `:` character by itself is shorthand to indicate all elements across that in
 ```python
 print(df.loc["Albania", 'gdpPercap_1962':'gdpPercap_1972'])
 ```
+```output
+gdpPercap_1962    2312.888958
+gdpPercap_1967    2760.196931
+gdpPercap_1972    3313.422188
+Name: Albania, dtype: float64
+```
 
 If either end of the slice definition is omitted, then the slice will run to the end of that index (just as it does for `:` by itself):
 
 ```python
 print(df.loc["Albania", 'gdpPercap_1962':])
+```
+```output
+gdpPercap_1962    2312.888958
+gdpPercap_1967    2760.196931
+gdpPercap_1972    3313.422188
+gdpPercap_1977    3533.003910
+gdpPercap_1982    3630.880722
+gdpPercap_1987    3738.932735
+gdpPercap_1992    2497.437901
+gdpPercap_1997    3193.054604
+gdpPercap_2002    4604.211737
+gdpPercap_2007    5937.029526
+Name: Albania, dtype: float64
 ```
 
 Slices can also be defined using a list of indexes or column headings:
