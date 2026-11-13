@@ -200,7 +200,7 @@ column labels.
 Pandas Dataframes are based on numpy arrays, and retain some of the numpy tools, such as masked arrays. This enables us to apply selection criteria to the Dataframes, so that only the values that we require are shown. For example, the following selects all data where the GDP is above $10,000:
 
 ```python
-subset = df_gdpPercap.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+subset = df_gdpPercap.loc['Italy':'Poland', '1962':'1972']
 print(subset[subset>10000])
 ```
 
