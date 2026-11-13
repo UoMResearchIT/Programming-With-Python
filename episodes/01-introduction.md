@@ -1,7 +1,7 @@
 ---
 title: Python Basics Recap
-teaching: 0
-exercises: 0
+teaching: 5
+exercises: 20
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
