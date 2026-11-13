@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 University of Manchester
+
+SPDX-License-Identifier: apache-2.0
+-->
+
 > **ATTENTION** This is an experimental test of [The Carpentries Workbench](https://carpentries.github.io/workbench) lesson infrastructure.
 > It was automatically converted from the source lesson via [the lesson transition script](https://github.com/carpentries/lesson-transition/).
 > 
