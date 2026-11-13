@@ -222,6 +222,7 @@
 <li><a href="#loops">Loops</a></li>
 <li><a href="#software-modules">Software Modules</a></li>
 <li><a href="#if-statements-and-conditionals">If statements and conditionals</a></li>
+<li><a href="#functions">Functions</a></li>
 <li><a href="#generative-ai">Generative AI</a></li>
         </ul></div><!--/div.accordion-body-->
     </div><!--/div.accordion-collapse-->
@@ -658,6 +659,51 @@ returned.</p>
 </div>
 </div>
 </div>
+</section><section><h2 class="section-heading" id="functions">Functions<a class="anchor" aria-label="anchor" href="#functions"></a></h2>
+<hr class="half-width"><div id="creating-a-function" class="callout challenge">
+<div class="callout-square">
+<i class="callout-icon" data-feather="zap"></i>
+</div>
+<span class="callout-header">Challenge</span>
+<div id="creating-a-function" class="callout-inner">
+<h3 class="callout-title">8. Creating a function</h3>
+<div class="callout-content">
+<p>Using string slicing, write a function called <code>outer</code> that
+returns a string made up of the first and last characters of an input
+variable, so that a call to your function should give the following
+result:</p>
+<div class="codewrapper sourceCode" id="cb3">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a><span class="bu">print</span>(outer(<span class="st">'aluminium'</span>))</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a><span class="bu">print</span>(outer(<span class="st">"gold"</span>))</span></code></pre>
+</div>
+<div class="codewrapper">
+<h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="output" tabindex="0"><code><span><span class="va">am</span></span>
+<span><span class="va">gd</span></span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div id="accordionSolution9" class="accordion challenge-accordion accordion-flush">
+<div class="accordion-item">
+<button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution9" aria-expanded="false" aria-controls="collapseSolution9">
+  <h4 class="accordion-header" id="headingSolution9"> Show me the solution </h4>
+</button>
+<div id="collapseSolution9" class="accordion-collapse collapse" aria-labelledby="headingSolution9" data-bs-parent="#accordionSolution9">
+<div class="accordion-body">
+<div class="codewrapper sourceCode" id="cb5">
+<h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
+</h3>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="kw">def</span> outer(input_string):</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a>    <span class="cf">return</span> input_string[<span class="dv">0</span>] <span class="op">+</span> input_string[<span class="op">-</span><span class="dv">1</span>]</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div id="formatting-variables-and-objects-in-strings" class="callout">
 <div class="callout-square">
 <i class="callout-icon" data-feather="bell"></i>
@@ -675,13 +721,13 @@ syntax from version 3.6 onwards.</p>
 <p>To use <code>f-strings</code> simply start a string literal with
 <code>f</code> or <code>F</code>, then embed whatever you want
 interpolating into the string within curly braces <code>{}</code>:</p>
-<div class="codewrapper sourceCode" id="cb3">
+<div class="codewrapper sourceCode" id="cb6">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" tabindex="-1" aria-label="code-block-3-1"></a>two_int <span class="op">=</span> <span class="dv">2</span></span>
-<span id="cb3-2"><a href="#cb3-2" tabindex="-1" aria-label="code-block-3-2"></a>two_str <span class="op">=</span> <span class="st">"2"</span></span>
-<span id="cb3-3"><a href="#cb3-3" tabindex="-1" aria-label="code-block-3-3"></a>f_string <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>two_int<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>two_str<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">"</span></span>
-<span id="cb3-4"><a href="#cb3-4" tabindex="-1" aria-label="code-block-3-4"></a><span class="bu">print</span>(f_string)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" tabindex="-1" aria-label="code-block-6-1"></a>two_int <span class="op">=</span> <span class="dv">2</span></span>
+<span id="cb6-2"><a href="#cb6-2" tabindex="-1" aria-label="code-block-6-2"></a>two_str <span class="op">=</span> <span class="st">"2"</span></span>
+<span id="cb6-3"><a href="#cb6-3" tabindex="-1" aria-label="code-block-6-3"></a>f_string <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>two_int<span class="sc">}</span><span class="ss"> + </span><span class="sc">{</span>two_str<span class="sc">}</span><span class="ss"> = </span><span class="sc">{</span><span class="dv">2</span> <span class="op">+</span> <span class="dv">2</span><span class="sc">}</span><span class="ss">"</span></span>
+<span id="cb6-4"><a href="#cb6-4" tabindex="-1" aria-label="code-block-6-4"></a><span class="bu">print</span>(f_string)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -692,11 +738,11 @@ interpolating into the string within curly braces <code>{}</code>:</p>
 curly braces. For example, an integer <code>i</code> can be made to have
 a width <code>n</code> using <code>{i:nd}</code>, or
 <code>{i:0nd}</code> to pad it out with zeros:</p>
-<div class="codewrapper sourceCode" id="cb5">
+<div class="codewrapper sourceCode" id="cb8">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" tabindex="-1" aria-label="code-block-5-1"></a><span class="bu">print</span>(<span class="ss">f"One with four leading spaces </span><span class="sc">{</span><span class="dv">1</span><span class="sc">:5d}</span><span class="ss">"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" tabindex="-1" aria-label="code-block-5-2"></a><span class="bu">print</span>(<span class="ss">f"One with four leading zeros </span><span class="sc">{</span><span class="dv">1</span><span class="sc">:05d}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" tabindex="-1" aria-label="code-block-8-1"></a><span class="bu">print</span>(<span class="ss">f"One with four leading spaces </span><span class="sc">{</span><span class="dv">1</span><span class="sc">:5d}</span><span class="ss">"</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1" aria-label="code-block-8-2"></a><span class="bu">print</span>(<span class="ss">f"One with four leading zeros </span><span class="sc">{</span><span class="dv">1</span><span class="sc">:05d}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -706,12 +752,12 @@ One with four leading zeros 00001</code></pre>
 </div>
 <p>Floating point variables can have their precision specified with a
 number after a decimal point and an <code>f</code>:</p>
-<div class="codewrapper sourceCode" id="cb7">
+<div class="codewrapper sourceCode" id="cb10">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" tabindex="-1" aria-label="code-block-7-1"></a>pi <span class="op">=</span> <span class="fl">3.141592653589793</span></span>
-<span id="cb7-2"><a href="#cb7-2" tabindex="-1" aria-label="code-block-7-2"></a><span class="bu">print</span>(pi)</span>
-<span id="cb7-3"><a href="#cb7-3" tabindex="-1" aria-label="code-block-7-3"></a><span class="bu">print</span>(<span class="ss">f"pi to three decimal places is </span><span class="sc">{</span>pi<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" tabindex="-1" aria-label="code-block-10-1"></a>pi <span class="op">=</span> <span class="fl">3.141592653589793</span></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1" aria-label="code-block-10-2"></a><span class="bu">print</span>(pi)</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1" aria-label="code-block-10-3"></a><span class="bu">print</span>(<span class="ss">f"pi to three decimal places is </span><span class="sc">{</span>pi<span class="sc">:.3f}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -720,11 +766,11 @@ number after a decimal point and an <code>f</code>:</p>
 pi to three decimal places is 3.142</code></pre>
 </div>
 <p>Or made to use scientific notation with an <code>e</code>:</p>
-<div class="codewrapper sourceCode" id="cb9">
+<div class="codewrapper sourceCode" id="cb12">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" tabindex="-1" aria-label="code-block-9-1"></a><span class="bu">print</span>(<span class="fl">1e9</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" tabindex="-1" aria-label="code-block-9-2"></a><span class="bu">print</span>(<span class="ss">f"A billion in scientific notation is </span><span class="sc">{</span><span class="fl">1e9</span><span class="sc">:.1e}</span><span class="ss">"</span>)</span></code></pre>
+<pre class="sourceCode python" tabindex="0"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" tabindex="-1" aria-label="code-block-12-1"></a><span class="bu">print</span>(<span class="fl">1e9</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" tabindex="-1" aria-label="code-block-12-2"></a><span class="bu">print</span>(<span class="ss">f"A billion in scientific notation is </span><span class="sc">{</span><span class="fl">1e9</span><span class="sc">:.1e}</span><span class="ss">"</span>)</span></code></pre>
 </div>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
