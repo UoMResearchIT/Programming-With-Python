@@ -261,14 +261,18 @@ mean_noisy = np.mean(noisy)
 print(f'standard deviation is: {stddev_noisy:.5f}')
 print(f'mean value is: {mean_noisy:.5f}')
 ```
+```output
+standard deviation is: 0.01159
+mean value is: 0.00505
+```
 
 Finally, we then plot the result of adding the noise to the original curve, alongside some guides to show the mean and standard deviation of the noise:
 
 ```python
 plt.plot(x, noisy)
 plt.plot(x, [mean_noisy]*len(x), 'g-')  # Plot a green line to show the mean of the noise
-plt.plot(x, [mean_noisy+stddev_noisy]*len(x), 'r-')  # Plot red lines to show mean +/- stddev
-plt.plot(x, [mean_noisy-stddev_noisy]*len(x), 'r-')
+plt.plot(x, [mean_noisy+stddev_noisy]*len(x), 'r--')  # Plot red lines to show mean +/- stddev
+plt.plot(x, [mean_noisy-stddev_noisy]*len(x), 'r--')
 plt.show()
 ```
 
@@ -301,8 +305,8 @@ noisy_masked = np.ma.array(noisy, mask=mask)
 plt.plot(x, noisy_masked)
 plt.xlim(-100,100)
 plt.plot(x, [mean_noisy]*len(x), 'g-')
-plt.plot(x, [mean_noisy+stddev_noisy]*len(x), 'r-')
-plt.plot(x, [mean_noisy-stddev_noisy]*len(x), 'r-')
+plt.plot(x, [mean_noisy+stddev_noisy]*len(x), 'r--')
+plt.plot(x, [mean_noisy-stddev_noisy]*len(x), 'r--')
 plt.show()
 ```
 
