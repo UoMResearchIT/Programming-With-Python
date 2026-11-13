@@ -1,7 +1,7 @@
 ---
 title: Numpy and Matplotlib Essential
-teaching: 0
-exercises: 0
+teaching: 40
+exercises: 20
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -183,12 +183,6 @@ where **x** is an array, **µ** is the position of the centre of the curve/peak 
 1. Create a function called `gauss` which will take three arguments (inputs):
   **x**, **µ**, and **σ**,
   as defined above. *Hint*: you may wish to use the NumPy constant `pi`, and NumPy functions `square`, `sqrt` and `exp` for calcuating the square, square-root and exponential of **e** respectively for all elements in an array.
-2. Create a NumPy array using the Numpy function `linspace` which will contain 1000
-  points equally spaced between **x**=-100 and **x**=100. *Hint*: You can print the help
-  documentation of a function with 'help(name\_of\_the\_function)'.
-3. Using the above gauss function and the array, create an array which contains the values
-  of the Gaussian from **x**=-100 to **x**=100.
-4. Use the 'matplotlib' library to plot the curve with **µ**=0 and **σ**=10.
 
 :::::::::::::::  solution
 
@@ -203,9 +197,23 @@ def gauss(x, mu=0, sigma=1):
 
 :::::::::::::::::::::::::
 
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Using your Gaussian Function
+
+1. Create a NumPy array using the Numpy function `linspace` which will contain 1000
+  points equally spaced between **x**=-100 and **x**=100. *Hint*: You can print the help
+  documentation of a function with 'help(name\_of\_the\_function)'.
+2. Using the above gauss function and the array, create an array which contains the values
+  of the Gaussian from **x**=-100 to **x**=100.
+3. Use the 'matplotlib' library to plot the curve with **µ**=0 and **σ**=10.
+
 :::::::::::::::  solution
 
-## challenge 2:
+## challenge 1:
 
 ```python
 x = np.linspace(-100, 100, 1000)
@@ -215,7 +223,7 @@ x = np.linspace(-100, 100, 1000)
 
 :::::::::::::::  solution
 
-## challenge 3:
+## challenge 2:
 
 ```python
 mu = 0   # the position of the center of the peak
@@ -227,7 +235,7 @@ g = gauss(x, mu, sigma)
 
 :::::::::::::::  solution
 
-## challenge 4:
+## challenge 3:
 
 ```python
 plt.plot(x, g)

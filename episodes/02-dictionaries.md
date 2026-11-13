@@ -1,7 +1,7 @@
 ---
 title: Dictionaries
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 15
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives

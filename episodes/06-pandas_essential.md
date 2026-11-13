@@ -1,7 +1,7 @@
 ---
 title: Pandas Essential
-teaching: 0
-exercises: 0
+teaching: 30
+exercises: 15
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
@@ -219,23 +219,57 @@ Albania     1601.056136     2760.196931     3630.880722     3193.054604
 Belgium     8343.105127    13149.041190    20979.845890    27561.196630
 ```
 
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Changing Column Labels
+
+Note that the x-tick labels have been taken directly from the index values of the transposed DataFrame (which were the original column labels). These don't really need to be more than the year of the GDP values, so we could change the column labels to reflect this.
+
+First we make a new copy of the DataFrame (in case anything goes wrong):
+
+```python
+df_gdpPercap = df.copy(deep=True)
+```
+
+We have given this new dataframe a more appropriate name, replacing the information that will be removed from the column headers.
+
+Now we will use the inbuilt `str.strip` method to clean up our column labels for the new
+dataframe. Which of these commands is correct:
+
+1. `df_gdpPercap.columns = df.columns.str.strip('gdpPercap_')`
+2. `df_gdpPercap = df.columns.str.strip('gdpPercap_')`
+
+:::::::::::::::  solution
+
+## Solution
+
+The correct answer is 1. We have to pass the new column labels explicitly back to the
+array columns, otherwise all we do is replace the data array with a list of the new
+column labels.
+
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
 ## Masking data
 
 Pandas Dataframes are based on numpy arrays, and retain some of the numpy tools, such as masked arrays. This enables us to apply selection criteria to the Dataframes, so that only the values that we require are shown. For example, the following selects all data where the GDP is above $10,000:
 
 ```python
-subset = df.loc['Italy':'Poland', 'gdpPercap_1962':'gdpPercap_1972']
+subset = df_gdpPercap.loc['Italy':'Poland', '1962':'1972']
 print(subset[subset>10000])
 ```
 
 ```output
-             gdpPercap_1962  gdpPercap_1967  gdpPercap_1972
-country
-Italy                   NaN     10022.40131     12269.27378
-Montenegro              NaN             NaN             NaN
-Netherlands     12790.84956     15363.25136     18794.74567
-Norway          13450.40151     16361.87647     18965.05551
-Poland                  NaN             NaN             NaN
+                    1962         1967         1972
+country                                           
+Italy                NaN  10022.40131  12269.27378
+Montenegro           NaN          NaN          NaN
+Netherlands  12790.84956  15363.25136  18794.74567
+Norway       13450.40151  16361.87647  18965.05551
+Poland               NaN          NaN          NaN
 ```
 
 ## Plotting from Pandas
@@ -243,44 +277,40 @@ Poland                  NaN             NaN             NaN
 Pandas is integrated with matplotlib, and so data can be plotted directly using the integrated `plot` method. For example, to plot the GDP for Sweden:
 
 ```python
-df.loc['Sweden',:].plot()
-plt.xticks(rotation=90)
+df_gdpPercap.loc['Sweden',:].plot()
 ```
 
-![](fig/sweden-pandas-fig1.png){alt="Line plot of increase in Sweden's GDP from 1952 to 2002, with no axis labels, and awkward x-axis tick labels."}
-
-Note that we've had to rotate the xtick labels by 90 degrees, because they do not fit neatly under the x-axis. Later we will clean these up properly.
+![](fig/sweden-pandas-fig1.png){alt="Line plot of increase in Sweden's GDP from 1952 to 2002, with no axis labels."}
 
 Note that, in the case above, we passed a single column of data to the `plot` method - which it automatically transposed in order to make sense of the plot request (because this method usually works on rows of data). If you want to plot more than one column of data you will need to explicitly transpose the DataFrame yourself.
 
 For example, we will transpose the GDP data for the first 3 countries in our dataset:
 
 ```python
-print(df.iloc[0:3,:].T)
+print(df_gdpPercap.iloc[0:3,:].T)
 ```
 
 ```output
-country             Albania       Austria       Belgium
-gdpPercap_1952  1601.056136   6137.076492   8343.105127
-gdpPercap_1957  1942.284244   8842.598030   9714.960623
-gdpPercap_1962  2312.888958  10750.721110  10991.206760
-gdpPercap_1967  2760.196931  12834.602400  13149.041190
-gdpPercap_1972  3313.422188  16661.625600  16672.143560
-gdpPercap_1977  3533.003910  19749.422300  19117.974480
-gdpPercap_1982  3630.880722  21597.083620  20979.845890
-gdpPercap_1987  3738.932735  23687.826070  22525.563080
-gdpPercap_1992  2497.437901  27042.018680  25575.570690
-gdpPercap_1997  3193.054604  29095.920660  27561.196630
-gdpPercap_2002  4604.211737  32417.607690  30485.883750
-gdpPercap_2007  5937.029526  36126.492700  33692.605080
+country      Albania       Austria       Belgium
+1952     1601.056136   6137.076492   8343.105127
+1957     1942.284244   8842.598030   9714.960623
+1962     2312.888958  10750.721110  10991.206760
+1967     2760.196931  12834.602400  13149.041190
+1972     3313.422188  16661.625600  16672.143560
+1977     3533.003910  19749.422300  19117.974480
+1982     3630.880722  21597.083620  20979.845890
+1987     3738.932735  23687.826070  22525.563080
+1992     2497.437901  27042.018680  25575.570690
+1997     3193.054604  29095.920660  27561.196630
+2002     4604.211737  32417.607690  30485.883750
+2007     5937.029526  36126.492700  33692.605080
 ```
 
 This data is now ready to be plotted as a histogram - first we set the style of the plot to match that of the ggplot package in R:
 
 ```python
 plt.style.use('ggplot')
-df.iloc[0:3,:].T.plot(kind='bar')
-plt.xticks(rotation=90)
+df_gdpPercap.iloc[0:3,:].T.plot(kind='bar')
 plt.ylabel('GDP per capita')
 ```
 
@@ -302,8 +332,7 @@ axis (`axs`) objects. Pass the axis object to pandas when plotting your figure
 
 ```python
 fig, axs = plt.subplots()
-df.loc['Albania':'Belgium',:].T.plot(kind='bar',ax=axs)
-plt.xticks(rotation=90)
+df_gdpPercap.loc['Albania':'Belgium',:].T.plot(kind='bar',ax=axs)
 plt.ylabel('GDP per capita')
 fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
 ```
@@ -312,44 +341,9 @@ fig.savefig('albania-austria-belgium_GDP.png', bbox_inches='tight')
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Changing Column Labels
-
-Note that the x-tick labels have been taken directly from the index values of the transposed DataFrame (which were the original column labels). These don't really need to be more than the year of the GDP values, so we could change the column labels to reflect this.
-
-First we make a new copy of the DataFrame (in case anything goes wrong):
-
-```python
-df_gdpPercap = df.copy(deep=True)
-```
-
-We have given this new DataFrame a more appropriate name, replacing the information that will be removed from the column headers.
-
-Now we will use the inbuilt `str.strip` method to clean up our column labels for the new
-DataFrame. Which of these commands is correct:
-
-1. `df_gdpPercap.columns = df.columns.str.strip('gdpPercap_')`
-2. `df_gdpPercap = df.columns.str.strip('gdpPercap_')`
-
-:::::::::::::::  solution
-
-## Solution
-
-The correct answer is 1. We have to pass the new column labels explicitly back to the
-array columns, otherwise all we do is replace the DataFrame with a list of the new
-column labels.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
 ## Plotting GDP increases with time
 
-Now that we've cleaned up the column labels, we now want to plot the GDP data for
-Sweden and Iceland from 1972 onwards. The code block we will be using is:
+We now want to plot the GDP data for Sweden and Iceland from 1972 onwards. The code block we will be using is:
 
 ```python
 df_gdpPercap<BLOCK>.T.plot(kind='line')
