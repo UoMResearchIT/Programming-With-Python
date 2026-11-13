@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 University of Manchester
+
+SPDX-License-Identifier: apache-2.0
+-->
+
 ## Contributing
 
 [The Carpentries][cp-site] ([Software Carpentry][swc-site], [Data
