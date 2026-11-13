@@ -39,7 +39,7 @@ source: 'https://github.com/UoMResearchIT/programming_with_python'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'douglas.lowe@manchester.ac.uk'
+contact: 'andrew.gait@manchester.ac.uk'
 
 # Navigation ------------------------------------------------
 #
@@ -68,10 +68,10 @@ episodes:
 - 01-introduction.md
 - 02-dictionaries.md
 - 03-numpy_essential.md
-- 04-software_package_management.md
-- 05-defensive_programming.md
-- 06-units_and_quantities.md
-- 07-pandas_essential.md
+- 04-defensive_programming.md
+- 05-units_and_quantities.md
+- 06-pandas_essential.md
+- 07-software_package_management.md
 
 # Information for Learners
 learners: 
@@ -89,7 +89,7 @@ profiles:
 
 
 carpentry_description: Programming with Python
-url: https://uomresearchit.github.io/programming_with_python/
+url: https://uomresearchit.github.io/Programming-With-Python/
 analytics: carpentries
 lang: en
 workbench-beta: yes

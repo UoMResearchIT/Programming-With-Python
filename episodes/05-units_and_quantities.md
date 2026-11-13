@@ -24,13 +24,7 @@ One of the most common problems in physics and the development of physical model
 
 In this lesson we will look at one of the available libraries in python for helping to avoid such problems. This is the [units](https://docs.astropy.org/en/stable/units/index.html) module in the [astropy](https://docs.astropy.org/en/stable/index.html) library.
 
-## Installing a new python library
-
-Following the conda lesson, we install the astropy library using:
-
-```bash
-conda install astropy
-```
+## Importing a module from a python library
 
 The `units` module can then be imported in your scripts using:
 
@@ -39,6 +33,24 @@ from astropy import units as u
 ```
 
 Importing as `u` is not necessary, but it is a common shorthand for this module, and so we'll use it below.
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+As you are likely using the Jupyter interface to follow this lesson, it is likely that the `astropy` library will already be installed there. If not, then you may encounter an error when running this command. We will go into more detail on installing packages in a later lesson; for now, installing the library will depend on how you set your environment up initially; if you used `pip` (or are in Jupyter and `astropy` doesn't work), then you need to use
+
+```bash
+pip install astropy
+```
+
+Alternatively, if you installed some form of `conda`, then you can use
+
+```bash
+conda install astropy
+```
+
+We will go into more detail about `conda` in a later lesson.
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 ## Basics
 
@@ -54,6 +66,9 @@ When printing the variable the unit information will now be attached:
 
 ```python
 print(length)
+```
+```output
+26.2 m
 ```
 
 The type of this new variable is an `astropy` `Quantity`:
@@ -89,17 +104,24 @@ This enables the use of arithmetic operations when quantities have compatible un
 
 ```python
 distance_start = 10 * u.mm
-distance_end = 23 * u.km
+distance_end = 20 * u.km
 length = distance_end - distance_start
 print(length)
+```
+```output
+19.99999 km
 ```
 
 And it also enables the combining of quantities, for example, to calculate a speed:
 
 ```python
+distance = 45 * u.km
 time = 15 * u.minute
-speed = length / time
+speed = distance / time
 print(speed)
+```
+```output
+3.0 km / min
 ```
 
 By default the units library will select units to report for these values based on what the units are of the objects that you have passed it. You can, as before, convert these to the units of your choice:
@@ -107,11 +129,17 @@ By default the units library will select units to report for these values based 
 ```python
 print(speed.to(u.km/u.s))
 ```
+```output
+0.05 km / s
+```
 
 You can also convert the units to the base (irreducible) units for the unit system you are using with the `decompose` function (changing the unit system choice will be covered later):
 
 ```python
 print(speed.decompose())
+```
+```output
+50.0 m / s
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -121,10 +149,13 @@ print(speed.decompose())
 If you wish to reduce to different base units you can pass a list of those units to the `bases` parameter when calling the `decompose` function:
 
 ```python
-print(speed.decompose(bases=['km','s']))
+print(speed.decompose(bases=["km", "s"]))
+```
+```output
+0.05 km / s
 ```
 
-Note that the order of the values in the list passed to `bases` parameter doesn't matter. However, the base units you choose must be either one of the original units used, or a standard base unit. This function cannot be used to convert from km to cm, for example. Instead it is useful where you only want to reduce select units within the object.
+Note that the order of the values in the list passed to the `bases` parameter doesn't matter. However, the base units you choose must be either one of the original units used, or a standard base unit. This function cannot be used to convert from km to cm, for example. Instead it is useful where you only want to reduce select units within the object.
 
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -133,6 +164,9 @@ You can change the base system using functions such as `si` (to change to the de
 
 ```python
 print(speed.cgs)
+```
+```output
+5000.0 cm / s
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -151,7 +185,7 @@ print(jerk)
 ```
 
 ```output
-0.1111111111111111 m / (h min2)
+0.11111111111111112 m / (h min2)
 ```
 
 For the report we are writing we need to convert this to the units `km/hour^3`, which of
@@ -189,6 +223,9 @@ These can then be used in the same manner as the standard units:
 ```python
 speed.to(imperial.mile/u.hour)
 ```
+```output
+111.84681 mi/h​
+```
 
 ## Equivalent Units
 
@@ -205,18 +242,24 @@ This, however, does not work as above:
 ```python
 (656.281 * u.nm).to(u.Hz)
 ```
+```output
+UnitConversionError: 'nm' (length) and 'Hz' (frequency) are not convertible
+```
 
 Instead we need to inform `units` what unit equivalency we want it to use, which can be specified with the `equivalencies` option:
 
 ```python
 (656.281 * u.nm).to(u.Hz, equivalencies=u.spectral())
 ```
+```output
+4.5680502×10^14 Hz
+```
 
 In this case we use the `spectral` equivalence library, which allows conversions between wavelengths, wave number, frequency, and energy equivalent pairs. There are a number of other built-in equivalency libraries, for commonly used pairings.
 
 Other built-in equivalencies are:
 
-- Doppler (`dopplr_radio`, `doppler_optical`, `doppler_relativistic`)
+- Doppler (`doppler_radio`, `doppler_optical`, `doppler_relativistic`)
 - spectral flux density
 - temperature
 - brightness temperature
@@ -295,8 +338,8 @@ u.rad.find_equivalent_units()
 We can see from this that the degree unit is `u.deg`, so we can use this to define our angles:
 
 ```python
-angle = 90 * u.deg()
-print('angle in degrees: {}; and in radians: {}'.format(angle.value,angle.to(u.rad).value))
+angle = 90 * u.deg
+print(f'angle in degrees: {angle.value}; and in radians: {angle.to(u.rad).value}')
 ```
 
 ```output
@@ -306,9 +349,11 @@ angle in degrees: 90.0; and in radians: 1.5707963267948966
 Now we can pass the angle directly to `np.sin` without having to convert directly to radians:
 
 ```python
-print('sin of 90 degrees is: {}'.format(np.sin(angle)))
-print('sin of pi/2 radians is: {}'.format(np.sin(1.57079632)))
-print('sin of 90 degrees is not: {}'.format(np.sin(90)))
+import numpy as np
+
+print(f'sin of 90 degrees is: {np.sin(angle)}')
+print(f'sin of pi/2 radians is: {np.sin(1.57079632)}')
+print(f'sin of 90 degrees is not: {np.sin(90)}')
 ```
 
 ```output
@@ -323,6 +368,7 @@ Support has been added for using the units information in matplotlib plots. To u
 
 ```python
 from astropy.visualization import quantity_support
+quantity_support() # see note below
 ```
 
 We will create a numpy array of the angles between 0-180 degrees, and plot the sin of these:
@@ -332,7 +378,10 @@ angles = np.arange(181) * u.deg
 ```
 
 ```python
+import matplotlib.pyplot as plt
+
 plt.plot(angles, np.sin(angles))
+plt.show()
 ```
 
 ![](fig/sin_curve_deg.png){alt='Plot of sin curve for degrees between 0-180'}
@@ -344,13 +393,25 @@ plt.plot(angles.to(u.rad), np.sin(angles))
 
 ![](fig/sin_curve_rad.png){alt='Plot of sin curve for degrees between 0-180'}
 
+::::::::::::::::: callout
+NOTE
+The call to `quantity_support()` is required to "patch" `matplotlib` to recognize the `astropy.units`, and it will affect anything you plot from that point onward. 
+If you only need `quantity_support` for some plots, you can use a _context manager_:
+
+```python
+with quantity_support():
+  plt.plot(angles, np.sin(angles))
+```
+:::::::::::::::::::::::::
+
 ## Temperature
 
 Each of the temperature scales is considered as using an irreducible unit in standard usage. As a consequence of this we need to always specify that we are using the `u.temperature` equivalences when we convert between these:
 
 ```python
 t2 = 1 * u.deg_C
-print('{} is equivalent to {}'.format(t2,t2.to(imperial.Fahrenheit, equivalencies=u.temperature())))
+t2_deg_f = t2.to(imperial.Fahrenheit, equivalencies=u.temperature())
+print(f'{t2} is equivalent to {t2_deg_f}')
 ```
 
 ```output
@@ -364,27 +425,34 @@ To get the incremental value of 1 degree Celsius in Fahrenheit we would need to 
 ```python
 t1 = 0 * u.deg_C
 t2 = 1 * u.deg_C
-print('{} increment is equivalent to a {} increment'.format(
-    t2 - t1,
-    t2.to(imperial.Fahrenheit,equivalencies=u.temperature())
-        - t1.to(imperial.Fahrenheit, equivalencies=u.temperature())
-    )
-)
+t1_deg_f = t1.to(imperial.Fahrenheit, equivalencies=u.temperature())
+t2_deg_f = t2.to(imperial.Fahrenheit,equivalencies=u.temperature())
+print(f'{t2 - t1} increment is equivalent to a {t2_deg_f - t1_deg_f:.1f} increment')
 ```
 
 ```output
-1.0 deg_C increment is equivalent to a 1.7999999999999972 deg_F increment
+1.0 deg_C increment is equivalent to a 1.8 deg_F increment
 ```
 
-This is verging on unreadable (as is demonstrated by us having to split a simple arithmetic expression involving two variables across two lines of code).
+This is verging on unreadable (as is demonstrated by us having to split a simple arithmetic expression involving two variables across several lines of code).
 
 Fortunately there is support for cleaner temperature conversions in the [pint](https://pint.readthedocs.io/en/latest/index.html) package. This has similar functionality to the `astropy.unit` package, but has been built from the ground up with a focus on different aspects. These include unit parsing and standalone unit definitions, uncertainties integration, and (important for our example here), cleaner treatment of temperature units.
 
-Pint can be installed using conda (and the conda-forge channel):
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+Pint should already be installed if you are using Jupyter; however, as before, if you need to install it yourself, it can be installed using conda (and the conda-forge channel) with:
 
 ```bash
 conda install -c conda-forge pint
 ```
+
+or using pip with
+
+```bash
+pip install pint
+```
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
 
 The unit registry is loaded using:
 
@@ -399,22 +467,22 @@ This library has the temperature units as before:
 
 ```python
 t2 = 1 * ureg.degC
-print('{} is equivalent to {}'.format(t2,t2.to(ureg.degF)))
+print(f'{t2} is equivalent to {t2.to(ureg.degF):.1f}')
 ```
 
 ```output
-1 degree_Celsius is equivalent to 33.79999999999993 degree_Fahrenheit
+1 degree_Celsius is equivalent to 33.8 degree_Fahrenheit
 ```
 
 But it also includes the concept of temperature increments:
 
 ```python
 deltaT = 1 * ureg.delta_degC
-print('{} is equivalent to {}'.format(deltaT,deltaT.to(ureg.delta_degF)))
+print(f'{deltaT} is equivalent to {deltaT.to(ureg.delta_degF):.1f}')
 ```
 
 ```output
-1 delta_degree_Celsius is equivalent to 1.7999999999999998 delta_degree_Fahrenheit
+1 delta_degree_Celsius is equivalent to 1.8 delta_degree_Fahrenheit
 ```
 
 Because of the popularity of python this overlap of functionality of packages can be common. We would recommend exploring the different available packages that might cover your requirements before settling on one. And keep watching out for new packages, and be prepared to switch when starting new projects if/when you find better packages.

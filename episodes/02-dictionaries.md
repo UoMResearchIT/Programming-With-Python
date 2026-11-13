@@ -80,12 +80,12 @@ One example of such usage in research is the storage of metadata for data, progr
     {
       "@id": "#project-1",
       "@type": "Organization",
-      "name": "Science Workflows",
+      "name": "Science Workflows"
     },
     {
       "@id": "#person-1",
       "@type": "Person",
-      "name": "Alice Smith",
+      "name": "Alice Smith"
     }
   ]
 }
@@ -117,9 +117,6 @@ Following the previous example, we can create a python dictionary using the name
 
 ```python
 d = {'alice': 35, 'bob': 18}
-```
-
-```python
 print(d)
 ```
 
@@ -150,7 +147,7 @@ d4 = dict(zip(['jane','alice','bob'],[24,35,18]))
 To access an element of the dictionary we must use the *key*:
 
 ```python
-print('The age of alice is :', d['alice'])
+print(f'The age of alice is: {d["alice"]}')
 ```
 
 ```output
@@ -161,8 +158,8 @@ We can also use a variable to index the dictionary:
 
 ```python
 key = 'alice'
-print('The name of the person is used as key:', key)
-print('The value associated to that key is:', d[key])
+print(f'The name of the person is used as key: {key}')
+print(f'The value associated to that key is: {d[key]}')
 ```
 
 ```output
@@ -170,14 +167,14 @@ The name of the person is used as key: alice
 The value associated to that key is: 35
 ```
 
-### Adding an element
+### Adding and deleting elements
 
 Adding an element to a dictionary is done by creating a new key and attaching a value to it.
 
 ```python
-print('Original dictionary:', d)
+print(f'Original dictionary: {d}')
 d['jane'] = 24
-print('New dictionary:', d)
+print(f'New dictionary: {d}')
 ```
 
 ```output
@@ -191,11 +188,35 @@ To add one or more new elements we can also use the `update` method:
 d_extra = {'tom': 54, 'david': 87}
 
 d.update(d_extra)
-print('Updated dictionary:', d)
+print(f'Updated dictionary: {d}')
 ```
 
 ```output
 Updated dictionary: {'alice': 35, 'bob': 18, 'jane': 24, 'tom': 54, 'david': 87}
+```
+
+To delete an element, use the `del` method:
+
+```python
+del d['tom']
+print(f'Dictionary with item deleted: {d}')
+```
+
+```output
+Dictionary with item deleted: {'alice': 35, 'bob': 18, 'jane': 24, 'david': 87}
+```
+
+Alternatively, the `pop` function can be used to take an element out of a dictionary and assign it's value to a new variable:
+
+```python
+david_age = d.pop('david')
+print(f'Age of David: {david_age}')
+print(f'Dictionary with david popped out: {d}')
+```
+
+```output
+Age of David: 87
+Dictionary with david popped out: {'alice': 35, 'bob': 18, 'jane': 24}
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -226,9 +247,9 @@ TypeError: unsupported operand type(s) for +: 'dict' and 'dict'
 Keys have to be unique; you cannot have two keys with the same name. If you try to add an item using a key already present in the dictionary you will overwrite the previous value.
 
 ```python
-print('Original dictionary:', d)
+print(f'Original dictionary: {d}')
 d['alice'] = 12
-print('New dictionary:', d)
+print(f'New dictionary: {d}')
 ```
 
 ```output
@@ -249,9 +270,9 @@ d1 = {'alice': 12, 'bob': 18, 'jane': 24, 'tom': 54, 'david': 87}
 d2 = {'tom': 54, 'david': 87}
 d3 = {'bob': 18, 'alice': 35, 'jane': 24}
 d4 = {'alice': 35, 'bob': 18, 'jane': 24}
-print('Dictionary 1 and dictionary 2 are equal:', d1 == d2)
-print('Dictionary 1 and dictionary 3 are equal:', d1 == d3)
-print('Dictionary 3 and dictionary 4 are equal:', d3 == d4)
+print(f'Dictionary 1 and dictionary 2 are equal: {d1 == d2}')
+print(f'Dictionary 1 and dictionary 3 are equal: {d1 == d3}')
+print(f'Dictionary 3 and dictionary 4 are equal: {d3 == d4}')
 ```
 
 ```output
@@ -269,7 +290,7 @@ d.keys()
 ```
 
 ```output
-dict_keys(['alice', 'bob', 'jane', 'tom', 'david'])
+dict_keys(['alice', 'bob', 'jane'])
 ```
 
 ```python
@@ -277,7 +298,7 @@ d.values()
 ```
 
 ```output
-dict_values([12, 18, 24, 54, 87])
+dict_values([12, 18, 24])
 ```
 
 Note that the *dict\_keys* and *dict\_values* objects are iterable but are not lists. This means that they can be used somewhere like a `for` loop but you can not index them directly.
@@ -300,6 +321,30 @@ list(d.values())[0]
 
 ```output
 12
+```
+
+It is also possible to iterate through the keys and items in the dictionary at the same time using the `items` function,
+which returns a *dict\_items* object containing *key, value* pairs:
+
+```python
+d.items()
+```
+
+```output
+dict_items([('alice', 35), ('bob', 18), ('jane', 24)])
+```
+
+This is very useful when using a dictionary in a `for` loop:
+
+```python
+for key, value in d.items():
+    print(f'Name: {key}, Age: {value}')
+```
+
+```output
+Name: alice  Age: 35
+Name: bob  Age: 18
+Name: jane  Age: 24
 ```
 
 ## Presence (or not) of an element inside a dictionary
@@ -350,7 +395,7 @@ This package provides the method `json.load()` to read JSON data from a file and
 ```python
 import json
 
-with open('ro-crate-metadata-1.json') as f:
+with open('data/ro-crate-metadata-1.json') as f:
     data = json.load(f)
 ```
 
@@ -562,7 +607,7 @@ This caching behaviour is very useful for datasets for are accessed regularly.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- JSON is simple
+- JSON is a simple, easy to interpret format for unstructured data
 - Dictionaries are defined using `key`:`value` pairs
 - Dictionaries can be nested, and mixed with lists
 - Web API's can be accessed using the `requests` library

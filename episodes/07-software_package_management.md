@@ -22,11 +22,13 @@ exercises: 0
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-Virtual environments are a useful tool for isolating and managing the software packages you use. Doing this enables you to track the packages you use for your work (enabling you to create reproducable environments, so that others can also use your code). It also allows you to use packages which might have conflicting requirements (or even different versions of the same package) without the hassle of haveing to install and uninstall these each time.
+Virtual environments are a useful tool for isolating and managing the software packages you use. Doing this enables you to track the packages you use for your work, letting you create reproducable environments so that others can use your code. It also allows you to use packages which might have conflicting requirements (or even different versions of the same package) without the hassle of having to install and uninstall these each time.
 
-Python has a built in tools for managing virtual environments ([venv](https://docs.python.org/3/tutorial/venv.html)) and packages ([pip](https://pypi.org/project/pip/)). However we will not cover these tools today. While venv and pip are very useful for managing pure python packages, they are not very flexible when we want to use packages which are built on other languages (or perhaps do not use python at all). Another tool, conda, has been built to extend their functionality to cover these mixed-language packages, for a wide range of computing platforms, and it is this which we will cover today. More details on the differences between conda and pip are given in this [summary](https://www.anaconda.com/blog/understanding-conda-and-pip).
+Python has built in tools for managing virtual environments ([venv](https://docs.python.org/3/tutorial/venv.html)) and packages ([pip](https://pypi.org/project/pip/)). However, we will not cover these tools today. While venv and pip are very useful for managing pure python packages, they are not very flexible when we want to use packages which are built on other languages (or perhaps do not use python at all). Another tool, [conda](https://docs.conda.io/en/latest/index.html), has been built to extend their functionality to cover these mixed-language packages for a wide range of computing platforms, and it is this which we will cover today.
 
-The lesson below is not conducted using a python interpreter, but instead using the unix shell. When you are asked to type in code below, please do this in a terminal window and not in this browser.
+More details on the differences between conda and pip are given in this [summary](https://www.anaconda.com/blog/understanding-conda-and-pip). Other tools for package management exist as well as conda - popular ones include [uv](https://docs.astral.sh/uv/) and [poetry](https://python-poetry.org/). See here for a full list of [packaging projects](https://packaging.python.org/en/latest/key_projects/).
+
+The lesson below is not conducted using a Python interpreter, but instead using the unix shell. When you are asked to type in code below, please do this in a terminal window and not in a Jupyter notebook or other Python interpreter.
 
 ## Installing Conda
 
@@ -106,7 +108,7 @@ we can use `--prepend`, which behaves in the exact same way as `--add`).
 
 ## Searching for Packages
 
-Once you've added the channels you wish to use, you can now search them for the software that you need. This is simply carried out using `conda search`. For example, if we wished to find out what versions of [Gromacs](https://www.gromacs.org/About_Gromacs) are available, we can use:
+Once you've added the channels you wish to use, you can now search them for the software that you need. This is simply carried out using `conda search`. For example, if we wished to find out what versions of [Gromacs](https://www.gromacs.org/about.html) are available, we can use:
 
 ```bash
 conda search gromacs
@@ -393,7 +395,7 @@ This contains similar information to the standard `conda list` command, but in a
 A better method is to use:
 
 ```bash
-conda env export
+conda export
 ```
 
 ```output
@@ -419,12 +421,13 @@ dependencies:
 prefix: /home/mbessdl2/.conda/envs/myenv
 ```
 
-This will present the same information, but in the more readable [YAML](https://yaml.org/) format, and it will also include the channel information in the output. This information can be saved as a text file as before, and used to create a new environment using the command `conda env create`. However it is still operating system specific information.
+This will present the same information, but in the more readable [YAML](https://yaml.org/) format, and it will also include the channel information in the output. This information can be saved as a txt or yml file as before e.g. `conda export > envfile.yml`, and used to create a new environment using the command `conda env create` (see below). However it is still using operating system specific information.
 
 To create a higher-level record of the environment you can use:
 
 ```bash
-conda env export --from-history
+conda export --from-history > envfile.yml
+more envfile.yml
 ```
 
 ```output
@@ -462,7 +465,7 @@ The name that you give the environment does not have to be the same as the name 
 - `conda install -n <env> <pacakge(s)>` installs packages in a pre-existing environment
 - `conda activate <env>` activates the named environment, giving access to the software installed there
 - `conda deactivate` deactivates the current environment
-- `conda env export --from-history > <file.yml>` creates a portable record of your current environment
+- `conda export --from-history > <file.yml>` creates a portable record of your current environment
 - `conda env create --file <file.yml> <env>` creates a new environment from an environment file
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::

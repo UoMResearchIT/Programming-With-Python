@@ -170,8 +170,11 @@ Masked arrays associate a NumPy array with another array composed only of boolea
 
 To demonstrate this we are going to create a Gaussian function and use it to generate an example dataset and generate a plot. We will then add some noise to it and use a masked array to filter out the noisy data. This represents the kind of processing that can be used for datasets such as a seismographs, where we would wish to isolate single events from noisy background data.
 
-Reminder: the Gaussian function is defined by:
+*Reminder*: the Gaussian function is defined by:
 ![](fig/gauss_function.png){alt='Gaussian function equation.'}
+
+where **x** is an array, **µ** is the position of the centre of the curve/peak and **σ** is the width of the bell.
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -179,14 +182,13 @@ Reminder: the Gaussian function is defined by:
 
 1. Create a function called `gauss` which will take three arguments (inputs):
   **x**, **µ**, and **σ**,
-  as defined above. (x is an array, µ is the position of the centre of the
-  curve/peak and σ is the width of the bell)
-2. Create a NumPy array using the 'numpy' function 'linspace' which will contain 1000
-  points equally spaced between x=-100 and x=100. Hint: You can print the help
-  documentation of a function with 'help(name\_of\_the\_function)'
-3. Using the above gauss function and the array, create a list which contains the value
-  of the gauss from x=-100 to x=100.
-4. Use the 'matplotlib' library to plot the curve with mu=0 and sigma=10.
+  as defined above. *Hint*: you may wish to use the NumPy constant `pi`, and NumPy functions `square`, `sqrt` and `exp` for calcuating the square, square-root and exponential of **e** respectively for all elements in an array.
+2. Create a NumPy array using the Numpy function `linspace` which will contain 1000
+  points equally spaced between **x**=-100 and **x**=100. *Hint*: You can print the help
+  documentation of a function with 'help(name\_of\_the\_function)'.
+3. Using the above gauss function and the array, create an array which contains the values
+  of the Gaussian from **x**=-100 to **x**=100.
+4. Use the 'matplotlib' library to plot the curve with **µ**=0 and **σ**=10.
 
 :::::::::::::::  solution
 
@@ -194,8 +196,9 @@ Reminder: the Gaussian function is defined by:
 
 ```python
 def gauss(x, mu=0, sigma=1):
-    return (1. / (np.sqrt(2 * np.pi * sigma ** 2)) *
-            np.exp( - (x - mu) ** 2 / (2 * sigma ** 2)))
+    amp = 1. / (np.sqrt(2 * np.pi) * sigma)
+    inv = 1. / (2. * np.square(sigma))
+    return amp * np.exp(- np.square(x - mu) * inv)
 ```
 
 :::::::::::::::::::::::::
@@ -241,28 +244,42 @@ plt.show()
 
 ## Noisy Signal
 
-Now we are going to add some random noise to that curve. To do it we can use the NumPy function `normal` from the module `random` provided by NumPy library. We will scale the magnitude of the noise so it is (roughly) a 10th of the magnitude of the Gaussian maximum:
+Now we are going to add some random noise to that curve. To do this we need to create a Random Number Generator (RNG), which we can then use with the function `normal` from the module `random` provided by the NumPy library. We create an array of zeros of the same length as the array for our curve `g` as the mean values for the random noise, and then scale the magnitude of the noise so it is (roughly) a 10th of the magnitude of the Gaussian maximum. Finally, we then plot the result of adding the noise to the original curve:
 
 ```python
-noisy = np.random.normal(g, scale=g.max() / 10)
+rng = np.random.default_rng()
+zeros = np.zeros(len(g))
+noise = rng.normal(zeros, g.max() / 10)
+noisy = g + noise
 plt.plot(x, noisy)
 plt.show()
 ```
 
 ![](fig/gauss_curve_noisy.png){alt='Gaussian curve plot, with random noise added'}
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Matplotlib in Jupyter notebooks
+
+By default, a Jupyter notebook evaluates and displays the final step in a cell. In the
+case of the 'matplotlib' library's `plot(...)` function, this means that it automatically 
+displays a plot without requiring the `show()` function. However, since this function is
+required in other scenarios (e.g. a standalone python script), the course notes will include
+it each time it is required. 
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
 To identify any signal in the data we can use the standard deviation as an estimate of the noise around the mean value of the data.
 
 ```python
 stddev_noisy = np.std(noisy)
 mean_noisy = np.mean(noisy)
-print(f'standard deviation is: {stddev_noisy}')
-print(f'mean value is: {mean_noisy}')
+print(f'standard deviation is: {stddev_noisy:.5f}')
+print(f'mean value is: {mean_noisy:.5f}')
 ```
-
 ```output
-standard deviation is: 0.011592652442611553
-mean value is: 0.005047252119578472
+standard deviation is: 0.01159
+mean value is: 0.00505
 ```
 
 We will create a mask for the data, by selecting all data points below this threshold value (we'll assume here that any signal we might be interested in is positive):
@@ -358,7 +375,7 @@ type(imdata)
 ```
 
 ```output
-<class 'numpy.ndarray'>
+numpy.ndarray
 ```
 
 Note that this data is in the form of a NumPy array, and so we can use our standard NumPy tools for processing and displaying this data.
@@ -379,10 +396,10 @@ To improve the visible output we will carry out some simple analysis of the imag
 First we examine the general stats of the data (using built-in methods, except for the median, which has to be called from NumPy directly):
 
 ```python
-print('mean value im1:', imdata.mean())
-print('median value im1:', np.median(imdata))
-print('max value im1:', imdata.max())
-print('min value im1:', imdata.min())
+print(f'mean value im1: {imdata.mean()}')
+print(f'median value im1: {np.median(imdata)}')
+print(f'max value im1: {imdata.max()}')
+print(f'min value im1: {imdata.min()}')
 ```
 
 ```output
@@ -403,6 +420,7 @@ plt.ylabel('Pixel Count')
 ```
 
 ![](fig/photon_count_a.png){alt='Histogram showing photon count, with (almost) all values around 0.'}
+
 This confirms our suspicions that many pixels have very low photon counts.
 
 :::::::::::::::::::::::::::::::::::::::::  callout
@@ -435,6 +453,7 @@ plt.ylabel('Pixel Count')
 ```
 
 ![](fig/photon_count_c.png){alt='Histogram showing photon counts between 1 and 30'}
+
 We see that there is a bi-modal distribution, with the largest peak around 8-9 photons, and a smaller peak around 3-4 photons.
 
 Now that we can see that the majority of the data is below a photon count of 25, we can start manipulating our image plot to see more details of the nebulae:
@@ -467,17 +486,17 @@ plt.imshow(immasked.mask, cmap='gray', origin='lower')
 This mask is applied to the data for all built-in functions. But where we have to directly use a NumPy function we have to make sure we use the equivalent function in the mask (`ma`) library:
 
 ```python
-print('original average:', imdata.mean())
-print('Masked average:', immasked.mean())
-print()
-print('original max:', imdata.max())
-print('Masked max:', immasked.max())
-print()
-print('original min:', imdata.min())
-print('Masked min:', immasked.min())
-print()
-print('original median:', np.mean(imdata))
-print('Masked median:', np.ma.median(immasked))
+print(f'original average: {imdata.mean()}')
+print(f'Masked average: {immasked.mean()}\n')
+
+print(f'original max: {imdata.max()}')
+print(f'Masked max: {immasked.max()}\n')
+
+print(f'original min: {imdata.min()}')
+print(f'Masked min: {immasked.min()}\n')
+
+print(f'original median: {np.mean(imdata)}')
+print(f'Masked median: {np.ma.median(immasked)}')
 ```
 
 ```output

@@ -189,14 +189,82 @@ else:
 
 :::::::::::::::::::::::::::::::::::::::::::::::
 
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Formatting Variables and Objects in Strings
+
+Throughout this course, we will be printing the values of variables inside strings to demonstrate what the code does. There are a number of ways to this in Python; in this course we will be using `f-strings` which are the recommended string interpolation syntax from version 3.6 onwards.
+
+To use `f-strings` simply start a string literal with `f` or `F`, then embed whatever you want interpolating into the string within curly braces `{}`:
+
+```python
+two_int = 2
+two_str = "2"
+f_string = f"{two_int} + {two_str} = {2 + 2}"
+print(f_string)
+```
+```output
+2 + 2 = 4
+```
+
+Numerical values can be formatted using `:` inside the curly braces. For example, an integer `i` can be made to have a width `n` using `{i:nd}`, or `{i:0nd}` to pad it out with zeros:
+
+```python
+print(f"One with four leading spaces {1:5d}")
+print(f"One with four leading zeros {1:05d}")
+```
+```output
+One with four leading spaces     1
+One with four leading zeros 00001
+```
+
+Floating point variables can have their precision specified with a number after a decimal point and an `f`:
+```python
+pi = 3.141592653589793
+print(pi)
+print(f"pi to three decimal places is {pi:.3f}")
+```
+```output
+3.141592653589793
+pi to three decimal places is 3.142
+```
+
+Or made to use scientific notation with an `e`:
+
+```python
+print(1e9)
+print(f"A billion in scientific notation is {1e9:.1e}")
+```
+```output
+1000000000.0
+A billion in scientific notation is 1.0e+09
+```
+
+This is only scratching the surface of what you can do with `f-strings`, they are often the most powerful and concise way to format variables inside strings. However, there are occasions when other methods are preferable, and you should be careful using them with Python [before version 3.12](https://realpython.com/python-f-strings/#upgrading-f-strings-python-312-and-beyond).
+
+To learn more, see: [Python f-strings](https://realpython.com/python-f-strings/).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Generative AI
+
+We would like to reiterate the [Carpentries](https://carpentries.org/) stance on [Generative AI in coding](https://swcarpentry.github.io/python-novice-inflammation/01-intro.html#generative-ai) which you may have seen when preparing for this course.
+
+To summarise the position, the recommendation is that you **avoid** getting help from generative AI during the workshop for several reasons:
+
+ - For most problems you will encounter at this stage, help and answers can be found among the first results returned by searching the internet or looking on e.g. [StackOverflow](https://stackoverflow.com/questions).
+ - The foundational knowledge and skills you will learn in this lesson by writing and fixing your own programs are essential to be able to evaluate the correctness and safety of any code you receive from online help or a generative AI chatbot. If you choose to use these tools in the future, the expertise you gain from learning and practising these fundamentals on your own will help you use them more effectively.
+ - As you continue programming, the mistakes you make will be the kinds that have also been made – and overcome! – by everybody else who learned to program before you. Since these mistakes and the questions you are likely to have at this stage are common, they are also better represented than other, more specialised problems and tasks in the data that was used to train generative AI tools. This means that a generative AI chatbot is more likely to produce accurate responses to questions that novices ask, which could give you a false impression of how reliable they will be when you are ready to do things that are more advanced.
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- variables
-- lists
-- indexing
-- loops
-- conditionals
+- Assign values to variables using `=`
+- Generate lists using square brackets `[]`
+- Use indexes inside `[]`, starting at 0, to select characters from strings and items from lists
+- Use `for` to loop through items in iterable objects
+- Make conditional expressions using `==`, `!=`, `>`, `<`, `>=` and `<=`
+- Use `f'{}'` to embed formatted variables inside strings
+- Avoid use of generative AI for this course
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 

@@ -1,0 +1,14 @@
+# SPDX-FileCopyrightText: 2024 University of Manchester
+#
+# SPDX-License-Identifier: apache-2.0
+
+name: Add License and Copyright Headers
+on:
+  pull_request
+
+jobs:
+  check:
+    permissions:
+      pull-requests: write
+      contents: write
+    uses: UoMResearchIT/actions/.github/workflows/apply-reuse.yml@main
