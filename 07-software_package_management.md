@@ -115,27 +115,28 @@ conda search gromacs
 ```
 
 ```output
-# Name                       Version           Build  Channel
+Loading channels: done
+# Name                       Version           Build  Channel             
+gromacs                         2022 mpi_openmpi_dblprec_h0f13b7e_1  conda-forge         
+gromacs                         2022 mpi_openmpi_h3d77499_0  conda-forge         
+gromacs                         2022 mpi_openmpi_h4e5722d_1  conda-forge         
+gromacs                         2022 nompi_dblprec_h7d6517f_1  conda-forge         
+gromacs                         2022 nompi_h330e5a5_0  conda-forge         
+gromacs                         2022 nompi_h60d7471_101  conda-forge         
+gromacs                       2022.1 mpi_openmpi_dblprec_h0f13b7e_0  conda-forge         
+gromacs                       2022.1 mpi_openmpi_dblprec_hc185e0b_1  conda-forge         
+gromacs                       2022.1 mpi_openmpi_h4e5722d_0  conda-forge         
+gromacs                       2022.1 mpi_openmpi_hc63aba2_1  conda-forge         
+gromacs                       2022.1 nompi_cuda_ha81c2ac_1  conda-forge         
+...
+gromacs                       2021.1      h3ddc34e_0  bioconda            
+gromacs                       2021.1 mpi_openmpi_h9969a6a_1  bioconda            
+gromacs                       2021.1 mpi_openmpi_h9969a6a_2  bioconda            
+gromacs                       2021.1 nompi_hcc3dda7_101  bioconda            
+gromacs                       2021.1 nompi_hcc3dda7_102  bioconda            
+gromacs                       2021.3 mpi_openmpi_h9969a6a_0  bioconda            
+gromacs                       2021.3 nompi_hcc3dda7_0  bioconda            
 gromacs                        4.6.5               0  bioconda
-gromacs                       2018.3      h470a237_0  bioconda
-gromacs                       2018.4      h470a237_0  bioconda
-gromacs                       2018.5      h04f5b5a_0  bioconda
-gromacs                       2018.6      h04f5b5a_0  bioconda
-gromacs                       2018.6      h04f5b5a_1  bioconda
-gromacs                       2018.6      hd895feb_2  bioconda
-gromacs                         2019      h04f5b5a_0  bioconda
-gromacs                       2019.1      h04f5b5a_0  bioconda
-gromacs                       2019.1      h04f5b5a_1  bioconda
-gromacs                       2019.1      h04f5b5a_2  bioconda
-gromacs                       2020.5      hd895feb_1  bioconda
-gromacs                       2020.5      hd895feb_2  bioconda
-gromacs                       2020.5      hd895feb_3  bioconda
-gromacs                       2020.5      hd895feb_4  bioconda
-gromacs                       2020.5      hd895feb_5  bioconda
-gromacs                       2020.6      h94ec9d8_0  bioconda
-gromacs                         2021      hd895feb_0  bioconda
-gromacs                         2021      hd895feb_1  bioconda
-gromacs                       2021.1      hd895feb_0  bioconda
 ```
 
 This shows you the name of the package you searched for, then the version of the software, build number (which can increment up as bugs are fixed, see above for version 2020.5), and the channel that the package is in.
@@ -147,16 +148,25 @@ conda search "gromacs>=2020"
 ```
 
 ```output
-# Name                       Version           Build  Channel
-gromacs                       2020.5      hd895feb_1  bioconda
-gromacs                       2020.5      hd895feb_2  bioconda
-gromacs                       2020.5      hd895feb_3  bioconda
-gromacs                       2020.5      hd895feb_4  bioconda
-gromacs                       2020.5      hd895feb_5  bioconda
-gromacs                       2020.6      h94ec9d8_0  bioconda
-gromacs                         2021      hd895feb_0  bioconda
-gromacs                         2021      hd895feb_1  bioconda
-gromacs                       2021.1      hd895feb_0  bioconda
+Loading channels: done
+# Name                       Version           Build  Channel             
+gromacs                         2022 mpi_openmpi_dblprec_h0f13b7e_1  conda-forge         
+gromacs                         2022 mpi_openmpi_h3d77499_0  conda-forge         
+gromacs                         2022 mpi_openmpi_h4e5722d_1  conda-forge         
+gromacs                         2022 nompi_dblprec_h7d6517f_1  conda-forge         
+gromacs                         2022 nompi_h330e5a5_0  conda-forge         
+gromacs                         2022 nompi_h60d7471_101  conda-forge         
+gromacs                       2022.1 mpi_openmpi_dblprec_h0f13b7e_0  conda-forge         
+gromacs                       2022.1 mpi_openmpi_dblprec_hc185e0b_1  conda-forge         
+gromacs                       2022.1 mpi_openmpi_h4e5722d_0  conda-forge         
+...
+gromacs                       2021.1      h3ddc34e_0  bioconda            
+gromacs                       2021.1 mpi_openmpi_h9969a6a_1  bioconda            
+gromacs                       2021.1 mpi_openmpi_h9969a6a_2  bioconda            
+gromacs                       2021.1 nompi_hcc3dda7_101  bioconda            
+gromacs                       2021.1 nompi_hcc3dda7_102  bioconda            
+gromacs                       2021.3 mpi_openmpi_h9969a6a_0  bioconda            
+gromacs                       2021.3 nompi_hcc3dda7_0  bioconda 
 ```
 
 Note that we've put the search string in quotations, in order to ensure it is passed to conda correctly.
@@ -169,24 +179,23 @@ conda search "numpy==1.20.*"
 
 ```output
 # Name                       Version           Build  Channel
-numpy                         1.20.0  py37h3795f5d_0  conda-forge
-numpy                         1.20.0  py37ha9839cc_0  conda-forge
-numpy                         1.20.0  py38h64deac9_0  conda-forge
-numpy                         1.20.0  py39h3c955ea_0  conda-forge
-numpy                         1.20.1  py37h3795f5d_0  conda-forge
-numpy                         1.20.1  py37h43259c0_0  pkgs/main
-numpy                         1.20.1  py37ha9839cc_0  conda-forge
-numpy                         1.20.1  py37hd6e1bb9_0  pkgs/main
-numpy                         1.20.1  py38h43259c0_0  pkgs/main
-numpy                         1.20.1  py38h64deac9_0  conda-forge
-numpy                         1.20.1  py38hd6e1bb9_0  pkgs/main
-numpy                         1.20.1  py39h3c955ea_0  conda-forge
-numpy                         1.20.1  py39h43259c0_0  pkgs/main
-numpy                         1.20.1  py39hd6e1bb9_0  pkgs/main
-numpy                         1.20.2  py37h84c02c4_0  conda-forge
-numpy                         1.20.2  py37hc415c66_0  conda-forge
-numpy                         1.20.2  py38had91d27_0  conda-forge
-numpy                         1.20.2  py39h7eed0ac_0  conda-forge
+Loading channels: done
+# Name                       Version           Build  Channel             
+numpy                         1.20.0  py37h620df1f_0  conda-forge         
+numpy                         1.20.0  py37haa41c4c_0  conda-forge         
+numpy                         1.20.0  py38h18fd61f_0  conda-forge         
+numpy                         1.20.0  py39hdbf815f_0  conda-forge         
+numpy                         1.20.1  py37h620df1f_0  conda-forge         
+numpy                         1.20.1  py37haa41c4c_0  conda-forge         
+numpy                         1.20.1  py38h18fd61f_0  conda-forge         
+numpy                         1.20.1  py39hdbf815f_0  conda-forge         
+numpy                         1.20.2  py37h038b26d_0  conda-forge         
+numpy                         1.20.2  py37h620df1f_0  conda-forge         
+numpy                         1.20.2  py38h9894fe3_0  conda-forge         
+numpy                         1.20.2  py39hdbf815f_0  conda-forge         
+numpy                         1.20.3  py37h038b26d_0  conda-forge         
+numpy                         1.20.3  py37h038b26d_1  conda-forge         
+...
 ```
 
 Note that the build string now starts with `pyXX`, where `XX` indicates the version of python the package was built against. When conda packages are dependent on python then they usually will be built against a number of different versions of python - which gives more flexibility when trying to create an environment. Also note that two channels are listed here, the default `pkgs/main` and `conda-forge`. These duplicate some versions, but also note that `conda-forge` has the most recent version of the `numpy` software, whereas the default channel does not. `conda-forge` tends to be updated more frequently than the default channels.
