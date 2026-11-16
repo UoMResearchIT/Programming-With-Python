@@ -1525,7 +1525,7 @@ extract information about the object.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb57">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1557,7 +1557,7 @@ title of any DOI it is given.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb58">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -1645,7 +1645,7 @@ times scale linearly with the size of the dictionary?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>The dictionaries can be created using the <code>zip</code>
 method:</p>
@@ -2602,7 +2602,7 @@ problem in this test?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
 <div class="accordion-body">
 <p>The test assumes that <code>val</code> is a number, and throws an
 uncontrolled error if it is not.</p>
@@ -2782,7 +2782,7 @@ crashing.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution2" aria-expanded="false" aria-controls="collapseSolution2">
   <h4 class="accordion-header" id="headingSolution2"> Show me the solution </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
 <div class="accordion-body">
 <div class="codewrapper sourceCode" id="cb11">
 <h3 class="code-label">PYTHON<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
@@ -2905,7 +2905,7 @@ raise and error if the value is NaN.</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution3" aria-expanded="false" aria-controls="collapseSolution3">
   <h4 class="accordion-header" id="headingSolution3"> Show me the solution </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
 <div class="accordion-body">
 <p>Because the test checks if a value is NaN, we need to add
 <code>not</code> before the test, to ensure that the <code>assert</code>
@@ -3244,7 +3244,7 @@ us?</p>
 <button class="accordion-button solution-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSolution1" aria-expanded="false" aria-controls="collapseSolution1">
   <h4 class="accordion-header" id="headingSolution1"> Show me the solution </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>Answer 2 is correct. Decompose will only reduce to base units (or
 existing units), and so can’t change minutes to hours, or metres to
@@ -4092,7 +4092,7 @@ any links that you are not going to use.
  -->
 </section></section><section id="aio-07-software_package_management"><p>Content from <a href="07-software_package_management.html">Software Package Management</a></p>
 <hr>
-<p>Last updated on 2026-11-13 |
+<p>Last updated on 2026-11-16 |
 
         <a href="https://github.com/UoMResearchIT/programming_with_python/edit/main/episodes/07-software_package_management.md" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -4282,27 +4282,28 @@ available, we can use:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># Name                       Version           Build  Channel
-gromacs                        4.6.5               0  bioconda
-gromacs                       2018.3      h470a237_0  bioconda
-gromacs                       2018.4      h470a237_0  bioconda
-gromacs                       2018.5      h04f5b5a_0  bioconda
-gromacs                       2018.6      h04f5b5a_0  bioconda
-gromacs                       2018.6      h04f5b5a_1  bioconda
-gromacs                       2018.6      hd895feb_2  bioconda
-gromacs                         2019      h04f5b5a_0  bioconda
-gromacs                       2019.1      h04f5b5a_0  bioconda
-gromacs                       2019.1      h04f5b5a_1  bioconda
-gromacs                       2019.1      h04f5b5a_2  bioconda
-gromacs                       2020.5      hd895feb_1  bioconda
-gromacs                       2020.5      hd895feb_2  bioconda
-gromacs                       2020.5      hd895feb_3  bioconda
-gromacs                       2020.5      hd895feb_4  bioconda
-gromacs                       2020.5      hd895feb_5  bioconda
-gromacs                       2020.6      h94ec9d8_0  bioconda
-gromacs                         2021      hd895feb_0  bioconda
-gromacs                         2021      hd895feb_1  bioconda
-gromacs                       2021.1      hd895feb_0  bioconda</code></pre>
+<pre class="output" tabindex="0"><code>Loading channels: done
+# Name                       Version           Build  Channel
+gromacs                         2022 mpi_openmpi_dblprec_h0f13b7e_1  conda-forge
+gromacs                         2022 mpi_openmpi_h3d77499_0  conda-forge
+gromacs                         2022 mpi_openmpi_h4e5722d_1  conda-forge
+gromacs                         2022 nompi_dblprec_h7d6517f_1  conda-forge
+gromacs                         2022 nompi_h330e5a5_0  conda-forge
+gromacs                         2022 nompi_h60d7471_101  conda-forge
+gromacs                       2022.1 mpi_openmpi_dblprec_h0f13b7e_0  conda-forge
+gromacs                       2022.1 mpi_openmpi_dblprec_hc185e0b_1  conda-forge
+gromacs                       2022.1 mpi_openmpi_h4e5722d_0  conda-forge
+gromacs                       2022.1 mpi_openmpi_hc63aba2_1  conda-forge
+gromacs                       2022.1 nompi_cuda_ha81c2ac_1  conda-forge
+...
+gromacs                       2021.1      h3ddc34e_0  bioconda
+gromacs                       2021.1 mpi_openmpi_h9969a6a_1  bioconda
+gromacs                       2021.1 mpi_openmpi_h9969a6a_2  bioconda
+gromacs                       2021.1 nompi_hcc3dda7_101  bioconda
+gromacs                       2021.1 nompi_hcc3dda7_102  bioconda
+gromacs                       2021.3 mpi_openmpi_h9969a6a_0  bioconda
+gromacs                       2021.3 nompi_hcc3dda7_0  bioconda
+gromacs                        4.6.5               0  bioconda</code></pre>
 </div>
 <p>This shows you the name of the package you searched for, then the
 version of the software, build number (which can increment up as bugs
@@ -4319,16 +4320,25 @@ gromacs versions greater than <code>2020</code> we can use:</p>
 <div class="codewrapper">
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
-<pre class="output" tabindex="0"><code># Name                       Version           Build  Channel
-gromacs                       2020.5      hd895feb_1  bioconda
-gromacs                       2020.5      hd895feb_2  bioconda
-gromacs                       2020.5      hd895feb_3  bioconda
-gromacs                       2020.5      hd895feb_4  bioconda
-gromacs                       2020.5      hd895feb_5  bioconda
-gromacs                       2020.6      h94ec9d8_0  bioconda
-gromacs                         2021      hd895feb_0  bioconda
-gromacs                         2021      hd895feb_1  bioconda
-gromacs                       2021.1      hd895feb_0  bioconda</code></pre>
+<pre class="output" tabindex="0"><code>Loading channels: done
+# Name                       Version           Build  Channel
+gromacs                         2022 mpi_openmpi_dblprec_h0f13b7e_1  conda-forge
+gromacs                         2022 mpi_openmpi_h3d77499_0  conda-forge
+gromacs                         2022 mpi_openmpi_h4e5722d_1  conda-forge
+gromacs                         2022 nompi_dblprec_h7d6517f_1  conda-forge
+gromacs                         2022 nompi_h330e5a5_0  conda-forge
+gromacs                         2022 nompi_h60d7471_101  conda-forge
+gromacs                       2022.1 mpi_openmpi_dblprec_h0f13b7e_0  conda-forge
+gromacs                       2022.1 mpi_openmpi_dblprec_hc185e0b_1  conda-forge
+gromacs                       2022.1 mpi_openmpi_h4e5722d_0  conda-forge
+...
+gromacs                       2021.1      h3ddc34e_0  bioconda
+gromacs                       2021.1 mpi_openmpi_h9969a6a_1  bioconda
+gromacs                       2021.1 mpi_openmpi_h9969a6a_2  bioconda
+gromacs                       2021.1 nompi_hcc3dda7_101  bioconda
+gromacs                       2021.1 nompi_hcc3dda7_102  bioconda
+gromacs                       2021.3 mpi_openmpi_h9969a6a_0  bioconda
+gromacs                       2021.3 nompi_hcc3dda7_0  bioconda </code></pre>
 </div>
 <p>Note that we’ve put the search string in quotations, in order to
 ensure it is passed to conda correctly.</p>
@@ -4343,24 +4353,23 @@ wish to find all numpy packages with version 1.20:</p>
 <h3 class="code-label">OUTPUT<i aria-hidden="true" data-feather="chevron-left"></i><i aria-hidden="true" data-feather="chevron-right"></i>
 </h3>
 <pre class="output" tabindex="0"><code># Name                       Version           Build  Channel
-numpy                         1.20.0  py37h3795f5d_0  conda-forge
-numpy                         1.20.0  py37ha9839cc_0  conda-forge
-numpy                         1.20.0  py38h64deac9_0  conda-forge
-numpy                         1.20.0  py39h3c955ea_0  conda-forge
-numpy                         1.20.1  py37h3795f5d_0  conda-forge
-numpy                         1.20.1  py37h43259c0_0  pkgs/main
-numpy                         1.20.1  py37ha9839cc_0  conda-forge
-numpy                         1.20.1  py37hd6e1bb9_0  pkgs/main
-numpy                         1.20.1  py38h43259c0_0  pkgs/main
-numpy                         1.20.1  py38h64deac9_0  conda-forge
-numpy                         1.20.1  py38hd6e1bb9_0  pkgs/main
-numpy                         1.20.1  py39h3c955ea_0  conda-forge
-numpy                         1.20.1  py39h43259c0_0  pkgs/main
-numpy                         1.20.1  py39hd6e1bb9_0  pkgs/main
-numpy                         1.20.2  py37h84c02c4_0  conda-forge
-numpy                         1.20.2  py37hc415c66_0  conda-forge
-numpy                         1.20.2  py38had91d27_0  conda-forge
-numpy                         1.20.2  py39h7eed0ac_0  conda-forge</code></pre>
+Loading channels: done
+# Name                       Version           Build  Channel
+numpy                         1.20.0  py37h620df1f_0  conda-forge
+numpy                         1.20.0  py37haa41c4c_0  conda-forge
+numpy                         1.20.0  py38h18fd61f_0  conda-forge
+numpy                         1.20.0  py39hdbf815f_0  conda-forge
+numpy                         1.20.1  py37h620df1f_0  conda-forge
+numpy                         1.20.1  py37haa41c4c_0  conda-forge
+numpy                         1.20.1  py38h18fd61f_0  conda-forge
+numpy                         1.20.1  py39hdbf815f_0  conda-forge
+numpy                         1.20.2  py37h038b26d_0  conda-forge
+numpy                         1.20.2  py37h620df1f_0  conda-forge
+numpy                         1.20.2  py38h9894fe3_0  conda-forge
+numpy                         1.20.2  py39hdbf815f_0  conda-forge
+numpy                         1.20.3  py37h038b26d_0  conda-forge
+numpy                         1.20.3  py37h038b26d_1  conda-forge
+...</code></pre>
 </div>
 <p>Note that the build string now starts with <code>pyXX</code>, where
 <code>XX</code> indicates the version of python the package was built
@@ -4812,9 +4821,9 @@ any links that you are not going to use.
   "creativeWorkStatus": "active",
   "url": "https://uomresearchit.github.io/Programming-With-Python/aio.html",
   "identifier": "https://uomresearchit.github.io/Programming-With-Python/aio.html",
-  "dateCreated": "2026-11-13",
-  "dateModified": "2026-11-13",
-  "datePublished": "2026-11-13"
+  "dateCreated": "2026-11-16",
+  "dateModified": "2026-11-16",
+  "datePublished": "2026-11-16"
 }
 
   </script><script>
